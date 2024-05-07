@@ -10,7 +10,7 @@ const navLinks = [
   { name: 'Profile', path: CONSTANTS.ROUTES.PROFILE },
 ];
 
-const authenticated = true;
+const authenticated = false;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="fixed top-0 z-10 w-full bg-white shadow-sm bg-opacity-85 backdrop-blur-sm">
+    <nav className="fixed top-0 z-50 w-full bg-white shadow-sm bg-opacity-85 backdrop-blur-sm">
       <div className="flex items-center justify-between h-12 px-4 mx-auto md:h-16 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between w-full">
           <Brand />
@@ -67,7 +67,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               <div
-                className="fixed top-0 right-0 flex flex-col items-end w-64 h-screen p-4 bg-white shadow-lg md:hidden"
+                className="fixed top-0 right-0 flex flex-col items-end w-2/3 h-screen p-4 bg-white shadow-lg md:hidden"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close button */}
@@ -80,9 +80,27 @@ const Navbar = () => {
                 </button>
 
                 {/* Links */}
-                <div className="flex flex-col justify-center w-full h-full px-2 pt-2 pb-3 space-y-6 sm:px-3">
-                  {getNavLinkItems(path)}
-                </div>
+                {authenticated ? (
+                  <div className="flex flex-col justify-center w-full h-full px-2 pt-2 pb-3 space-y-6 sm:px-3">
+                    {getNavLinkItems(path)}
+                  </div>
+                ) : (
+                  <div className="flex flex-col justify-end w-full h-full px-2 pt-2 pb-3 space-y-6 sm:px-3">
+                    <BaseButton
+                      className="rounded-full"
+                      outline
+                      onClick={() => navigate(CONSTANTS.ROUTES.SIGN_IN)}
+                    >
+                      <p className="text-md">Sign In</p>
+                    </BaseButton>
+                    <BaseButton
+                      className="rounded-full"
+                      onClick={() => navigate(CONSTANTS.ROUTES.SIGN_UP)}
+                    >
+                      <p className="text-md">Sign Up</p>
+                    </BaseButton>
+                  </div>
+                )}
 
                 <div className="flex items-center justify-center w-full mt-4">
                   <p className="text-xs text-gray-500">
@@ -104,7 +122,7 @@ const HamburgerMenuIcon = () => {
     <>
       <span className="sr-only">Open main menu</span>
       <svg
-        className="block w-6 h-6"
+        className="block w-6 h-6 "
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -115,6 +133,7 @@ const HamburgerMenuIcon = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
+          className="text-prim-1"
           d="M4 6h16M4 12h16M4 18h16"
         />
       </svg>
@@ -139,6 +158,7 @@ const CloseMenuIcon = () => {
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
+          className="text-prim-1"
           d="M6 18L18 6M6 6l12 12"
         />
       </svg>
