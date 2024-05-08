@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { XMarkIcon } from '@heroicons/react/24/solid';
+import { Bars4Icon } from '@heroicons/react/24/solid';
 import Brand from '../common/Brand';
 import BaseButton from '../common/Button/BaseButton';
 import CONSTANTS from '../../constants/constant';
@@ -10,7 +12,7 @@ const navLinks = [
   { name: 'Profile', path: CONSTANTS.ROUTES.PROFILE },
 ];
 
-const authenticated = false;
+const authenticated = true;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +58,7 @@ const Navbar = () => {
               aria-expanded="false"
               onClick={() => setIsOpen(!isOpen)}
             >
-              <HamburgerMenuIcon />
+              <Bars4Icon className="w-6 h-6 text-prim-1" />
             </button>
           </div>
 
@@ -76,7 +78,7 @@ const Navbar = () => {
                   className="p-2 rounded-md"
                   onClick={() => setIsOpen(false)}
                 >
-                  <CloseMenuIcon />
+                  <XMarkIcon className="w-6 h-6 text-prim-1" />
                 </button>
 
                 {/* Links */}
@@ -113,56 +115,6 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
-
-// Hamburger menu icon
-const HamburgerMenuIcon = () => {
-  return (
-    <>
-      <span className="sr-only">Open main menu</span>
-      <svg
-        className="block w-6 h-6 "
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          className="text-prim-1"
-          d="M4 6h16M4 12h16M4 18h16"
-        />
-      </svg>
-    </>
-  );
-};
-
-// Close menu icon
-const CloseMenuIcon = () => {
-  return (
-    <>
-      <span className="sr-only">Close main menu</span>
-      <svg
-        className="block w-6 h-6"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          className="text-prim-1"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
-    </>
   );
 };
 
