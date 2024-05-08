@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import BaseButton from '../common/Button/BaseButton';
 
-const LandingSlide = ({ children, onNext, onPrevious }) => {
+const LandingSlide = ({ children, onNext, onPrevious, className }) => {
   const [isCurrent, setIsCurrent] = useState(true);
   const slideRef = useRef(null);
 
@@ -34,9 +34,11 @@ const LandingSlide = ({ children, onNext, onPrevious }) => {
   return (
     <div
       ref={slideRef}
-      className={`items-center justify-center space-y-4 container-slide ${
-        isCurrent ? 'active-slide' : ''
-      }`}
+      className={[
+        'items-center justify-center space-y-4 container-slide',
+        className,
+        isCurrent ? 'active-slide' : '',
+      ].join(' ')}
     >
       {children}
       <div className="flex flex-row mt-20 space-x-4">
