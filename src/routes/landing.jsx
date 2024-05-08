@@ -1,7 +1,7 @@
 import assets from '../assets';
 import BaseButton from '../components/common/Button/BaseButton';
 import Divider from '../components/common/Divider';
-import LandingSlide from '../components/templates/LandingSlide';
+import LandingSlide from '../components/layouts/LandingSlide';
 
 const industries = [
   { name: 'IT & Media', icon: 'computer' },
@@ -20,7 +20,7 @@ const industries = [
 const LandingPage = () => {
   return (
     <div className="">
-      <LandingSlide className={'gap-8'}>
+      <LandingSlide className={''}>
         <h1 className="text-4xl font-black text-center text-prim-1">emploi</h1>
 
         <div className="flex flex-col w-full space-y-4">
@@ -30,7 +30,7 @@ const LandingPage = () => {
             {industries.map((industry) => (
               <BaseButton
                 key={industry.name}
-                className="rounded-md hover:shadow-lg"
+                className="py-4 rounded-md hover:shadow-lg"
               >
                 <img
                   src={assets[industry.icon]}
