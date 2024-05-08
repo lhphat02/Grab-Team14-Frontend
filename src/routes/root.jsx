@@ -1,10 +1,10 @@
-import Navbar from '../components/shared/Navbar';
+import MainNavBar from '../components/MainNavBar';
 import { Outlet } from 'react-router-dom';
 
 const Root = () => {
   return (
     <>
-      <Navbar />
+      <MainNavBar />
       <Outlet />
     </>
   );
