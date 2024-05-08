@@ -8,7 +8,7 @@ const SignInPage = () => {
 
   return (
     <div className="justify-center bg-gray-100 container-page">
-      <div className="flex flex-col w-full max-w-sm px-6 py-4 space-y-6 bg-white shadow-md md:px-12 md:py-8 md:space-y-8 rounded-xl">
+      <div className="flex flex-col w-full max-w-md px-6 py-4 space-y-6 bg-white shadow-md md:px-12 md:py-8 md:space-y-8 rounded-xl">
         <div className="md:space-y-2">
           <h1 className="font-black text-center text-prim-1">emploi</h1>
 
