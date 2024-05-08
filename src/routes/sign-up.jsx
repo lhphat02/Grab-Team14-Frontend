@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import BaseButton from '../components/common/Button/BaseButton';
 import BaseInput from '../components/common/BaseInput';
 import CONSTANTS from '../constants/constant';
+import { isMailValid } from '../utils/checker';
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -30,6 +31,11 @@ const SignUpPage = () => {
 
     if (!email || !password || !confirmPassword) {
       setError('Please fill in all required fields.');
+      return;
+    }
+
+    if (!isMailValid(email)) {
+      setError('Invalid email address.');
       return;
     }
 
