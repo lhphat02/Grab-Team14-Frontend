@@ -75,7 +75,7 @@
   }
 
   .container-page {
-    @apply flex flex-col items-center min-h-screen p-4 sm:p-12 md:p-16 lg:p-20 xl:p-24 m-auto w-full;
+    @apply flex flex-col items-center min-h-screen px-4 sm:px-12 md:px-16 lg:px-20 xl:px-24 m-auto w-full;
   }
 
   .container-slide {
@@ -93,5 +93,9 @@
   .btn-outline {
     @apply flex border items-center justify-center border-prim-1 text-prim-1 py-2 px-6 rounded-lg
       hover:bg-prim-1 hover:text-white;
+  }
+
+  .input-base:focus-within label {
+    @apply w-full opacity-100 pointer-events-auto;
   }
 }
