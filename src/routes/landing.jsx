@@ -30,7 +30,7 @@ const LandingPage = () => {
             {industries.map((industry) => (
               <BaseButton
                 key={industry.name}
-                className="rounded-full hover:shadow-lg"
+                className="rounded-md hover:shadow-lg"
               >
                 <img
                   src={assets[industry.icon]}
