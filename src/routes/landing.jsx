@@ -1,7 +1,7 @@
 import assets from '../assets';
 import BaseButton from '../components/common/Button/BaseButton';
 import Divider from '../components/common/Divider';
-import LandingSlide from '../components/layouts/LandingSlide';
+import LandingSlide from '../components/layouts/SlideLayout';
 
 const industries = [
   { name: 'IT & Media', icon: 'computer' },
