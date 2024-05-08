@@ -2,45 +2,85 @@ import { Link, useNavigate } from 'react-router-dom';
 import BaseButton from '../components/common/Button/BaseButton';
 import CONSTANTS from '../constants/constant';
 import BaseInput from '../components/common/BaseInput';
+import AuthFormLayout from '../components/layouts/AuthFormLayout';
+import { useState } from 'react';
+import { isMailValid } from '../utils/checker';
 
 const SignInPage = () => {
   const navigate = useNavigate();
 
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const [error, setError] = useState(null);
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const { email, password } = formData;
+
+    if (!email || !password) {
+      setError('Please fill in all required fields.');
+      return;
+    }
+
+    if (!isMailValid(email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+
+    navigate(CONSTANTS.ROUTES.JOB_LIST);
+  };
+
+  // console.log('Form data: ', formData);
+  console.log('Error: ', error);
+
   return (
-    <div className="justify-center bg-gray-100 container-page">
-      <div className="flex flex-col w-full max-w-md px-6 py-4 space-y-6 bg-white shadow-md md:px-12 md:py-8 md:space-y-8 rounded-xl">
-        <div className="md:space-y-2">
-          <h1 className="font-black text-center text-prim-1">emploi</h1>
+    <AuthFormLayout
+      title="Sign In"
+      formDetails={
+        <>
+          <BaseInput
+            label="Email"
+            type="email"
+            name="email"
+            placeholder="Email"
+            onChange={handleChange}
+            required
+          />
 
-          <h5 className="font-semibold text-center text-prim-1">
-            {' '}
-            Simplify your career
-          </h5>
-        </div>
-
-        <form
-          className="flex flex-col space-y-6"
-          onSubmit={() => navigate(CONSTANTS.ROUTES.JOB_LIST)}
-        >
-          <BaseInput label="Email" placeholder="Enter your email" />
           <BaseInput
             label="Password"
-            placeholder="Enter your password"
             type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+            required
           />
-          <BaseButton className="py-2 text-white rounded-full bg-prim-1">
-            Sign In
-          </BaseButton>
-        </form>
 
-        <div className="flex flex-col items-center justify-center w-full space-x-2 md:flex-row">
-          <p>Don&apos;t have an account?</p>
+          {error ? <p className="text-center text-red-500">{error}</p> : null}
+
+          <BaseButton>Sign In</BaseButton>
+        </>
+      }
+      onFormSubmit={handleSubmit}
+      footer={
+        <>
+          <p className="">Don&apos;t have an account?</p>
           <Link to={CONSTANTS.ROUTES.SIGN_UP}>
-            <p className="underline text-prim-1">Sign up here</p>
+            <p className="underline text-prim-1">Sign Up</p>
           </Link>
-        </div>
-      </div>
-    </div>
+        </>
+      }
+    />
   );
 };
 
