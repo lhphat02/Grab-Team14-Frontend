@@ -42,7 +42,7 @@ const JobLocation = ({ location, arrangement }) => (
 );
 
 const JobCard = ({ jobData }) => (
-  <div className="flex flex-col items-start justify-between w-full max-w-md gap-6 p-6 bg-white border rounded-sm shadow-md hover:shadow-lg hover:cursor-pointer">
+  <div className="flex flex-col items-start justify-between w-full gap-6 p-6 bg-white border rounded-sm shadow-md hover:shadow-xl hover:cursor-pointer">
     <JobInfo
       postedDate={jobData.date}
       jobType={jobData.type}
