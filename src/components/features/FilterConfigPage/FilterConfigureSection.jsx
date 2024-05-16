@@ -1,11 +1,9 @@
 import {
   BookmarkSquareIcon,
   PencilSquareIcon,
-  FunnelIcon,
 } from '@heroicons/react/24/solid';
 
-import BaseButton from '../../common/Button/BaseButton';
-import BaseSelect from '../../common/BaseSelect';
+import BaseButton from '../../common/BaseButton';
 import BaseInput from '../../common/BaseInput';
 import Accordion from '../../common/Accordion';
 import MOCK from '../../../constants/mockData';
@@ -16,12 +14,16 @@ const filterAccordions = [
   {
     title: 'Work Type',
     options: MOCK.OPTIONS.TYPE,
-    defaultSelected: [MOCK.OPTIONS.TYPE[0], MOCK.OPTIONS.TYPE[1]],
+    defaultSelected: [
+      MOCK.OPTIONS.TYPE[0],
+      MOCK.OPTIONS.TYPE[1],
+      MOCK.OPTIONS.TYPE[4],
+    ],
   },
   {
     title: 'Industry',
     options: MOCK.OPTIONS.INDUSTRY,
-    defaultSelected: [MOCK.OPTIONS.INDUSTRY[0], MOCK.OPTIONS.INDUSTRY[1]],
+    defaultSelected: [MOCK.OPTIONS.INDUSTRY[0]],
   },
   {
     title: 'Experience Level',
@@ -32,8 +34,9 @@ const filterAccordions = [
     title: 'Work Arrangement',
     options: MOCK.OPTIONS.WORKING_MODE,
     defaultSelected: [
-      MOCK.OPTIONS.WORKING_MODE[0],
-      MOCK.OPTIONS.WORKING_MODE[1],
+      MOCK.OPTIONS.TYPE[0],
+      MOCK.OPTIONS.TYPE[1],
+      MOCK.OPTIONS.TYPE[2],
     ],
   },
   {
