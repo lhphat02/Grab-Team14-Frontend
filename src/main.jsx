@@ -13,6 +13,7 @@ import Loading from './components/common/Loading.jsx';
 const LandingPage = lazy(() => import('./routes/landing.jsx'));
 const JobListPage = lazy(() => import('./routes/job-list.jsx'));
 const FilterConfigurePage = lazy(() => import('./routes/filter-configure.jsx'));
+const HistoryPage = lazy(() => import('./routes/history.jsx'));
 const ProfilePage = lazy(() => import('./routes/profile.jsx'));
 const SignInPage = lazy(() => import('./routes/sign-in.jsx'));
 const SignUpPage = lazy(() => import('./routes/sign-up.jsx'));
@@ -57,6 +58,18 @@ const router = createBrowserRouter([
             }
           >
             <FilterConfigurePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: CONSTANTS.ROUTES.HISTORY,
+        element: (
+          <Suspense
+            fallback={
+              <Loading statusMessage="Loading History Page" fullScreen={true} />
+            }
+          >
+            <HistoryPage />
           </Suspense>
         ),
       },
