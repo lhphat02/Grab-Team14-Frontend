@@ -6,15 +6,16 @@ import NavbarLayout from '../../layouts/NavbarLayout';
 const navLinks = [
   { name: 'Jobs', path: CONSTANTS.ROUTES.JOB_LIST },
   { name: 'Filter', path: CONSTANTS.ROUTES.FILTER_CONFIG },
+  { name: 'History', path: CONSTANTS.ROUTES.HISTORY },
   { name: 'Profile', path: CONSTANTS.ROUTES.PROFILE },
 ];
 
 const authenticated = true;
 
 const MainNavBar = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
-  const navigate = useNavigate();
 
   return (
     <NavbarLayout
