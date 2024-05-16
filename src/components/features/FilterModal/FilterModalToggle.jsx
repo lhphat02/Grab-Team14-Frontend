@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import BaseModal from '../../common/BaseModel';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/solid';
-import BaseButton from '../../common/Button/BaseButton';
+import BaseButton from '../../common/BaseButton';
 import FilterModalSidebar from './FilterModalSidebar';
 import MainFilter from './SectionContent/MainFilter';
 import { XMarkIcon } from '@heroicons/react/24/solid';
