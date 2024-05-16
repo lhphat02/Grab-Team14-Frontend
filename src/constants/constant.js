@@ -14,6 +14,7 @@ const CONSTANTS = {
     SIGN_IN: '/sign-in',
     SIGN_UP: '/sign-up',
     FILTER_CONFIG: '/filter-configure',
+    HISTORY: '/history',
     PROFILE: '/profile',
   },
 };
