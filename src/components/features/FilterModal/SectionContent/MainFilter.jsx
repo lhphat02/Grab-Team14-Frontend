@@ -1,7 +1,7 @@
 import MOCK from '../../../../constants/mockData';
 import MultiSelectAccordion from '../../../common/MultiSelectAccordion';
 
-const accordions = [
+const filterAccordions = [
   {
     title: 'Work Type',
     options: MOCK.OPTIONS.TYPE,
@@ -40,7 +40,7 @@ const accordions = [
 const MainFilter = () => {
   return (
     <div className="flex flex-col w-full gap-4 ">
-      {accordions.map((accordion, index) => (
+      {filterAccordions.map((accordion, index) => (
         <MultiSelectAccordion
           key={index}
           title={accordion.title}
