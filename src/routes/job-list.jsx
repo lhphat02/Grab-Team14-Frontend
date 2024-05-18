@@ -1,8 +1,8 @@
 import SearchBar from '../components/common/SearchBar';
-import JobListContainer from '../components/features/JobListPage/JobListContainer';
+import FilterModalToggle from '../components/features/joblist/filter/FilterModalToggle';
+import JobListContainer from '../components/features/joblist/JobListContainer';
 import JobPageLayout from '../components/layouts/JobPageLayout';
 import MOCK from '../constants/mockData';
-import FilterModalToggle from '../components/features/FilterModal/FilterModalToggle';
 
 const JobListPage = () => {
   return (
