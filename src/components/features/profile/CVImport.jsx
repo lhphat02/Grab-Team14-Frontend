@@ -49,7 +49,7 @@ const CVImport = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full gap-8 p-8 bg-white rounded-lg shadow-md">
+    <div className="flex flex-col items-center justify-between w-full h-full gap-8">
       <div className="flex items-center justify-between w-full">
         <div className="flex items-end gap-4">
           <p className="text-xl font-semibold text-prim-1">Your CV:</p>
