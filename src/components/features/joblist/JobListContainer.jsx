@@ -1,4 +1,4 @@
-import JobCard from './JobCard';
+import JobCard from './card/JobCard';
 
 const JobListContainer = ({ data }) => {
   return (
