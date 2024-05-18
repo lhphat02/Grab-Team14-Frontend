@@ -4,7 +4,7 @@ import axios from 'axios';
 import BaseButton from '../../common/BaseButton';
 
 const CoverLetterImport = () => {
-  const [coverLetter, setCoverLetter] = useState('');
+  const [coverLetter, setCoverLetter] = useState('123');
   const [originalCoverLetter, setOriginalCoverLetter] = useState('');
 
   useEffect(() => {
@@ -29,7 +29,8 @@ const CoverLetterImport = () => {
   const handleSave = async () => {
     try {
       // Example: Send the cover letter text to a backend server here
-      await axios.post('/api/cover-letter', { coverLetter }); // Replace with your backend endpoint
+      // Replace with your backend endpoint
+      // await axios.post('/api/cover-letter', { coverLetter });
       setOriginalCoverLetter(coverLetter);
       console.log('Cover letter saved:', coverLetter);
     } catch (error) {
