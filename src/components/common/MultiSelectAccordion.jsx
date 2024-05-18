@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
-import { ChevronUpIcon } from '@heroicons/react/24/solid';
+import { useEffect, useState } from 'react';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 
 /**
- * MultiSelectAccordion component allows users to select multiple options from a list.
- * @param {Object[]} options - The list of options to display.
- * @param {function} onChange - Callback function to handle changes in the selected options.
- * @param {Object[]} defaultSelected - The list of default selections to be preselected.
+ * Component for displaying a multi-select accordion.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.title - The title of the accordion.
+ * @param {Object[]} props.options - The list of options.
+ * @param {Function} props.onChange - The function to handle option change.
+ * @param {Object[]} [props.defaultSelected] - The default selected options.
+ * @returns {JSX.Element} The MultiSelectAccordion component.
  */
 const MultiSelectAccordion = ({
   title,
@@ -17,7 +20,10 @@ const MultiSelectAccordion = ({
   const [selectedOptions, setSelectedOptions] = useState(defaultSelected);
   const [isOpen, setIsOpen] = useState(false);
 
-  // Handle option selection
+  useEffect(() => {
+    setSelectedOptions(defaultSelected);
+  }, [defaultSelected]);
+
   const handleOptionToggle = (option) => {
     let updatedSelectedOptions;
     if (selectedOptions.find((selected) => selected.value === option.value)) {
@@ -31,30 +37,24 @@ const MultiSelectAccordion = ({
     onChange(updatedSelectedOptions);
   };
 
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <div className="flex flex-col w-full select-none">
-      {/* Button to display selected options */}
       <div
         onClick={toggleDropdown}
         className="flex items-center justify-between w-full p-4 text-left border border-gray-300 rounded-md cursor-pointer"
       >
-        {/* Title and selected options */}
         <div className="flex items-center gap-2">
           <p className="text-base font-semibold text-prim-1">{title}:</p>
-
           <p className="text-base text-gray-500">
             {selectedOptions.length > 0
               ? selectedOptions.map((option) => option.label).join(', ')
-              : null}
+              : 'Select options'}
           </p>
         </div>
-
-        {/* Dropdown icon */}
         {isOpen ? (
           <ChevronUpIcon className="w-6 h-6 text-gray-500" />
         ) : (
@@ -62,7 +62,6 @@ const MultiSelectAccordion = ({
         )}
       </div>
 
-      {/* List of options, collapsible */}
       {isOpen && (
         <ul className="w-full mt-4 mb-8 bg-white">
           <div className="flex flex-wrap gap-4">
