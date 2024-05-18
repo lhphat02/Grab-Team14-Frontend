@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import BaseButton from '../../common/Button/BaseButton';
 import CONSTANTS from '../../../constants/constant';
 import NavbarLayout from '../../layouts/NavbarLayout';
+import BaseButton from '../../common/BaseButton';
 
 const navLinks = [
   { name: 'Jobs', path: CONSTANTS.ROUTES.JOB_LIST },
