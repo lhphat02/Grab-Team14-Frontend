@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import FilterPageLayout from '../components/layouts/FiltetPageLayout';
-import FilterConfigureSection from '../components/features/FilterConfigPage/FilterConfigureSection';
-import FilterList from '../components/features/FilterConfigPage/FilterList';
-
+import FilterConfigureSection from '../components/features/filter/FilterConfigureSection';
+import FilterList from '../components/features/filter/FilterList';
 import MOCK from '../constants/mockData';
 
 /**
@@ -16,19 +15,21 @@ const FilterConfigurePage = () => {
   const [filterData, setFilterData] = useState(null);
   const [isEditEnabled, setIsEditEnabled] = useState(false);
 
-  // Handles the change of the selected filter option.
   const handleOptionChange = (optionId) => {
     setFilterData(
       MOCK.FILTERS.find((filter) => filter.id === optionId) || null
     );
   };
 
-  // Toggles the edit mode.
   const handleEditToggle = () => {
     setIsEditEnabled((prev) => !prev);
   };
 
-  // Sets the active filter data on initial render.
+  const handleSave = (updatedFilterData) => {
+    setFilterData(updatedFilterData);
+    // Future: Implement API call to save the updated filter data
+  };
+
   useEffect(() => {
     const activeFilter =
       MOCK.FILTERS.find((filter) => filter.active === true) || null;
@@ -44,6 +45,8 @@ const FilterConfigurePage = () => {
         filterData={filterData}
         isEditEnabled={isEditEnabled}
         onEditToggle={handleEditToggle}
+        options={MOCK.OPTIONS}
+        onSave={handleSave}
       />
     </FilterPageLayout>
   );
