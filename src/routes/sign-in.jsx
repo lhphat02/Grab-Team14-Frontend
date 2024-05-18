@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
-import BaseButton from '../components/common/Button/BaseButton';
 import CONSTANTS from '../constants/constant';
 import BaseInput from '../components/common/BaseInput';
 import AuthFormLayout from '../components/layouts/AuthFormLayout';
 import { useState } from 'react';
 import { isMailValid } from '../utils/checker';
+import BaseButton from '../components/common/BaseButton';
 
 const SignInPage = () => {
   const navigate = useNavigate();
@@ -44,43 +44,45 @@ const SignInPage = () => {
   console.log('Error: ', error);
 
   return (
-    <AuthFormLayout
-      title="Sign In"
-      formDetails={
-        <>
-          <BaseInput
-            label="Email"
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            required
-          />
+    <div className="items-center justify-center bg-gray-100 container-page">
+      <AuthFormLayout
+        title="Sign In"
+        formDetails={
+          <>
+            <BaseInput
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              required
+            />
 
-          <BaseInput
-            label="Password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            required
-          />
+            <BaseInput
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              required
+            />
 
-          {error ? <p className="text-center text-red-500">{error}</p> : null}
+            {error ? <p className="text-center text-red-500">{error}</p> : null}
 
-          <BaseButton>Sign In</BaseButton>
-        </>
-      }
-      onFormSubmit={handleSubmit}
-      footer={
-        <>
-          <p className="">Don&apos;t have an account?</p>
-          <Link to={CONSTANTS.ROUTES.SIGN_UP}>
-            <p className="underline text-prim-1">Sign Up</p>
-          </Link>
-        </>
-      }
-    />
+            <BaseButton>Sign In</BaseButton>
+          </>
+        }
+        onFormSubmit={handleSubmit}
+        footer={
+          <>
+            <p className="">Don&apos;t have an account?</p>
+            <Link to={CONSTANTS.ROUTES.SIGN_UP}>
+              <p className="underline text-prim-1">Sign Up</p>
+            </Link>
+          </>
+        }
+      />
+    </div>
   );
 };
 

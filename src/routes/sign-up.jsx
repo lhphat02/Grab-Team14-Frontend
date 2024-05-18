@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import BaseButton from '../components/common/Button/BaseButton';
 import BaseInput from '../components/common/BaseInput';
 import CONSTANTS from '../constants/constant';
 import { isMailValid } from '../utils/checker';
 import AuthFormLayout from '../components/layouts/AuthFormLayout';
+import BaseButton from '../components/common/BaseButton';
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -48,55 +48,57 @@ const SignUpPage = () => {
   console.log('Error: ', error);
 
   return (
-    <AuthFormLayout
-      title="Sign Up"
-      formDetails={
-        <>
-          <BaseInput
-            label="Email"
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            value={formData.email}
-            required
-          />
+    <div className="items-center justify-center bg-gray-100 container-page">
+      <AuthFormLayout
+        title="Sign Up"
+        formDetails={
+          <>
+            <BaseInput
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              value={formData.email}
+              required
+            />
 
-          <BaseInput
-            label="Password"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={formData.password}
-            required
-          />
+            <BaseInput
+              label="Password"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              value={formData.password}
+              required
+            />
 
-          <BaseInput
-            label="Confirm Password"
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            onChange={handleChange}
-            value={formData.confirmPassword}
-            required
-          />
+            <BaseInput
+              label="Confirm Password"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              onChange={handleChange}
+              value={formData.confirmPassword}
+              required
+            />
 
-          {error ? <p className="text-center text-red-500">{error}</p> : null}
+            {error ? <p className="text-center text-red-500">{error}</p> : null}
 
-          <BaseButton>Sign Up</BaseButton>
-        </>
-      }
-      onFormSubmit={handleSubmit}
-      footer={
-        <>
-          <p className="">Already have an account?</p>
-          <Link to={CONSTANTS.ROUTES.SIGN_IN}>
-            <p className="underline text-prim-1">Sign In</p>
-          </Link>
-        </>
-      }
-    />
+            <BaseButton>Sign Up</BaseButton>
+          </>
+        }
+        onFormSubmit={handleSubmit}
+        footer={
+          <>
+            <p className="">Already have an account?</p>
+            <Link to={CONSTANTS.ROUTES.SIGN_IN}>
+              <p className="underline text-prim-1">Sign In</p>
+            </Link>
+          </>
+        }
+      />
+    </div>
   );
 };
 
