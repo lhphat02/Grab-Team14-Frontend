@@ -15,11 +15,11 @@ const JobDetailModalTabs = ({ onSelectTab }) => {
   };
 
   return (
-    <div className="flex justify-around w-full px-8">
+    <div className="flex justify-around w-full px-4 md:px-8">
       {tabs.map((tab) => (
         <button
           key={tab.id}
-          className={`text-base font-semibold w-full p-4 transition duration-100 ${
+          className={`md:text-base text-sm font-semibold w-full p-4 transition duration-100 ${
             selectedTab === tab.id
               ? 'text-prim-1 border-b-2 border-prim-1'
               : 'text-gray-600 border-b-2 border-white hover:text-prim-1'

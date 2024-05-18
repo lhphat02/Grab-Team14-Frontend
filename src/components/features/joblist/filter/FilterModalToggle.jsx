@@ -12,7 +12,7 @@ import AdvancedFilter from './section/AdvancedFilter';
 
 const FilterModalToggle = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState('blockchain');
+  const [currentSection, setCurrentSection] = useState('main');
 
   const handleOpenModal = () => {
     setCurrentSection(sections[0].id);
@@ -36,11 +36,6 @@ const FilterModalToggle = () => {
       label: 'Advanced',
       icon: <WrenchScrewdriverIcon className="w-5 h-5 text-prim-1" />,
     },
-    // {
-    //   id: 'settings',
-    //   label: 'Settings',
-    //   icon: <Cog6ToothIcon className="w-5 h-5 text-prim-1" />,
-    // },
   ];
 
   const renderSectionContent = () => {
@@ -49,8 +44,6 @@ const FilterModalToggle = () => {
         return <MainFilter />;
       case 'advanced':
         return <AdvancedFilter />;
-      case 'settings':
-        return <div>Settings component</div>;
       default:
         return null;
     }
@@ -71,21 +64,21 @@ const FilterModalToggle = () => {
       </BaseButton>
 
       <BaseModal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <div className="flex w-full ">
+        <div className="flex flex-col w-full max-h-screen overflow-y-auto md:overflow-y-hidden md:flex-row">
           <FilterModalSidebar
             sections={sections}
             currentSection={currentSection}
             onSelectSection={setCurrentSection}
           />
-          <div className="flex flex-col w-full">
-            <div className="flex items-center justify-between w-full p-4 border-b">
+          <div className="flex flex-col w-full h-full md:h-auto">
+            <div className="flex items-center justify-between w-full p-4 border-2 border-b">
               {getCurrentSectionLabel()}
               <XMarkIcon
                 onClick={handleCloseModal}
                 className="w-8 h-8 p-1 rounded-full cursor-pointer text-prim-1 hover:bg-gray-100"
               />
             </div>
-            <div className="w-full p-4 overflow-y-auto">
+            <div className="w-full p-4 border-2 bg-gray-50 md:overflow-y-auto md:bg-white">
               {renderSectionContent()}
             </div>
           </div>

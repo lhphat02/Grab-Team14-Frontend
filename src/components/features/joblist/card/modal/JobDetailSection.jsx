@@ -11,14 +11,14 @@ const requirements = ['type', 'workingMode', 'experienceLevel'];
 
 const JobDetailSection = ({ jobData }) => {
   return (
-    <div className="flex flex-col h-full gap-6 px-4 py-8 overflow-y-auto">
+    <div className="flex flex-col w-full h-full gap-6 px-2 py-8 overflow-y-auto md:px-4">
       {/* Job Requirements */}
       <div className="flex items-center w-full gap-2">
         <BriefcaseIcon className="w-6 h-6 text-prim-1" />
         {requirements.map((requirement, index) => (
           <div key={index} className="select-none">
             {jobData[requirement] && (
-              <span className="px-2 py-1 text-sm border rounded-md bg-slate-100 text-prim-1">
+              <span className="px-1 py-1 text-xs border rounde*:d-md md:px-2 md:text-sm bg-slate-100 text-prim-1">
                 {jobData[requirement]}
               </span>
             )}
@@ -40,14 +40,15 @@ const JobDetailSection = ({ jobData }) => {
       </div>
 
       {/* Job Link */}
-      <div className="flex items-end w-full gap-2 ">
+      <div className="flex flex-wrap items-end w-full gap-2">
         <LinkIcon className="w-6 h-6 text-prim-1" />
-        <p className="text-sm">{jobData.platform}: </p>
+        <p className="text-sm"> {jobData.platform}: </p>
         <a
           href={jobData.jobLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-prim-1 hover:underline"
+          className="text-sm break-all text-prim-1 overflow-clip hover:underline"
+          style={{ wordWrap: 'break-word' }}
         >
           {shortenText(jobData.jobLink, 50)}
         </a>
@@ -63,61 +64,8 @@ const JobDetailSection = ({ jobData }) => {
       {/* Job description */}
       <div className="w-full">
         <h4 className="text-lg font-semibold text-prim-1">About the job:</h4>
-        <p className="text-justify ">
-          Sunt pariatur esse minim enim nulla consectetur aliqua ex do pariatur.
-          Excepteur ea et commodo occaecat eu aliquip ea pariatur esse non
-          Lorem. Exercitation cupidatat officia nostrud pariatur eu velit irure
-          officia. Sunt pariatur esse minim enim nulla consectetur aliqua ex do
-          pariatur. Excepteur ea et commodo occaecat eu aliquip ea pariatur esse
-          non Lorem. Exercitation cupidatat officia nostrud pariatur eu velit
-          irure officia. Sunt pariatur esse minim enim nulla consectetur aliqua
-          ex do pariatur. Excepteur ea et commodo occaecat eu aliquip ea
-          pariatur esse non Lorem. Exercitation cupidatat officia nostrud
-          <br />
-          pariatur eu velit irure officia. Sunt pariatur esse minim enim nulla
-          consectetur aliqua ex do pariatur. Excepteur ea et commodo occaecat eu
-          aliquip ea pariatur esse non Lorem. Exercitation cupidatat officia
-          nostrud pariatur eu velit irure officia. Sunt pariatur esse minim enim
-          nulla consectetur aliqua ex do pariatur. Excepteur ea et commodo
-          occaecat eu aliquip ea pariatur esse non Lorem. Exercitation cupidatat
-          officia nostrud pariatur eu velit irure officia. Sunt pariatur esse
-          minim enim nulla consectetur aliqua ex do pariatur. Excepteur ea et
-          commodo occaecat eu aliquip ea pariatur esse non Lorem. Exercitation
-          cupidatat officia nostrud pariatur eu velit irure officia. Sunt
-          <br />
-          pariatur esse minim enim nulla consectetur aliqua ex do pariatur.
-          Excepteur ea et commodo occaecat eu aliquip ea pariatur esse non
-          Lorem. Exercitation cupidatat officia nostrud pariatur eu velit irure
-          officia. Sunt pariatur esse minim enim nulla consectetur aliqua ex do
-          pariatur. Excepteur ea et commodo occaecat eu aliquip ea pariatur esse
-          non Lorem. Exercitation cupidatat officia nostrud pariatur eu velit
-          irure officia. Sunt pariatur esse minim enim nulla consectetur aliqua
-          ex do pariatur. Excepteur ea et commodo occaecat eu aliquip ea
-          pariatur esse non Lorem. Exercitation cupidatat officia nostrud
-          pariatur eu velit irure officia. Sunt pariatur esse minim enim nulla
-          consectetur aliqua ex do pariatur. Excepteur ea et commodo occaecat eu
-          aliquip ea pariatur esse non Lorem. Exercitation cupidatat officia
-          nostrud pariatur eu velit irure officia. Sunt pariatur esse minim enim
-          nulla consectetur aliqua ex do pariatur. Excepteur ea et commodo
-          occaecat eu aliquip ea pariatur esse non Lorem. Exercitation cupidatat
-          officia nostrud pariatur eu velit irure officia. Sunt pariatur esse
-          <br />
-          minim enim nulla consectetur aliqua ex do pariatur. Excepteur ea et
-          commodo occaecat eu aliquip ea pariatur esse non Lorem. Exercitation
-          cupidatat officia nostrud pariatur eu velit irure officia. Sunt
-          pariatur esse minim enim nulla consectetur aliqua ex do pariatur.
-          Excepteur ea et commodo occaecat eu aliquip ea pariatur esse non
-          Lorem. Exercitation cupidatat officia nostrud pariatur eu velit irure
-          officia. Sunt pariatur esse minim enim nulla consectetur aliqua ex do
-          pariatur. Excepteur ea et commodo occaecat eu aliquip ea pariatur esse
-          non Lorem. Exercitation cupidatat officia nostrud pariatur eu velit
-          irure officia. Sunt pariatur esse minim enim nulla consectetur aliqua
-          ex do pariatur. Excepteur ea et commodo occaecat eu aliquip ea
-          pariatur esse non Lorem. Exercitation cupidatat officia nostrud
-          pariatur eu velit irure officia. Sunt pariatur esse minim enim nulla
-          consectetur aliqua ex do pariatur. Excepteur ea et commodo occaecat eu
-          aliquip ea pariatur esse non Lorem. Exercitation cupidatat officia
-          nostrud pariatur eu velit irure officia.
+        <p className="text-sm text-justify md:text-base">
+          {jobData.description}
         </p>
       </div>
     </div>

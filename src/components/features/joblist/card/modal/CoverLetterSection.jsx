@@ -9,9 +9,11 @@ const CoverLetterSection = () => {
 
   return (
     <div className="flex items-center justify-center h-full p-4">
-      <BaseButton className="w-1/3" onClick={handleGenerateCoverLetter}>
+      <BaseButton className="md:w-1/3" onClick={handleGenerateCoverLetter}>
         <CogIcon className="w-6 h-6 " />
-        <p className="font-semibold">Generate Cover Letter</p>
+        <p className="text-sm font-semibold md:text-base">
+          Generate Cover Letter
+        </p>
       </BaseButton>
     </div>
   );

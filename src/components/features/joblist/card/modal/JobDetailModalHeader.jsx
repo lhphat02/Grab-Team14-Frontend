@@ -17,7 +17,7 @@ const JobDetailModalHeader = ({
   };
 
   return (
-    <div className="flex items-center justify-between w-full p-4 border-b">
+    <div className="flex flex-col items-center justify-between w-full gap-4 p-4 border-b md:flex-row">
       <div className="flex items-center h-full gap-4">
         <img
           src={logo || assets.logo_svg}
@@ -39,14 +39,14 @@ const JobDetailModalHeader = ({
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between w-full gap-2 md:w-auto">
         <a href={applyLink} target="_blank" rel="noopener noreferrer">
-          <BaseButton>Apply</BaseButton>
+          <BaseButton className="text-sm md:text-base">Apply</BaseButton>
         </a>
 
         <BaseButton onClick={handleBookmark}>
-          <BookmarkIcon className="w-6 h-6" />
-          <p>Save</p>
+          <BookmarkIcon className="w-4 h-4 md:w-6 md:h-6" />
+          <p className="text-sm md:text-base">Save</p>
         </BaseButton>
 
         <XMarkIcon

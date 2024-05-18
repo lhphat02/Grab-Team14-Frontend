@@ -1,13 +1,13 @@
 const FilterModalSidebar = ({ sections, currentSection, onSelectSection }) => {
   return (
-    <div className="w-1/3 p-4 border-r">
+    <div className="w-full p-2 bg-white border-b md:h-full h-1/5 md:p-4 md:border-r md:w-1/3">
       {sections.map((section) => (
         <button
           key={section.id}
-          className={`flex gap-2 items-center w-full text-left py-4 px-4 mb-2 rounded-lg text-prim-1 ${
+          className={`flex gap-2 items-center w-full text-left md:p-4 p-2 mb-2 rounded-lg text-prim-1 ${
             currentSection === section.id
               ? 'bg-gray-100 font-semibold'
-              : 'hover:bg-gray-100 '
+              : 'hover:bg-gray-100'
           }`}
           onClick={() => onSelectSection(section.id)}
         >

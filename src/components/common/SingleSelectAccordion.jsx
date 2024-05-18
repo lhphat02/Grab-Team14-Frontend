@@ -38,7 +38,7 @@ const SingleSelectAccordion = ({
   };
 
   return (
-    <div className="flex flex-col w-full select-none">
+    <div className="flex flex-col w-full bg-white select-none">
       {/* Button to display selected option */}
       <div
         onClick={toggleDropdown}
@@ -65,7 +65,7 @@ const SingleSelectAccordion = ({
 
       {/* List of options, collapsible */}
       {isOpen && (
-        <ul className="w-full mt-4 mb-8 bg-white">
+        <ul className="w-full p-4 bg-white border rounded-b-md">
           <div className="flex flex-wrap gap-4">
             {options.map((option) => (
               <li

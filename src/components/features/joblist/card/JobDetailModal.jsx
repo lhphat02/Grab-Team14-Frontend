@@ -44,7 +44,7 @@ const JobDetailModal = ({ isOpen, onClose, jobData }) => {
           onClose={onClose}
         />
         <JobDetailModalTabs onSelectTab={setCurrentTab} />
-        <div className="flex-1 px-4 pb-4 overflow-y-auto transition duration-300">
+        <div className="flex-1 pb-4 overflow-y-auto transition duration-300 md:px-4">
           {renderSectionContent()}
         </div>
       </div>
