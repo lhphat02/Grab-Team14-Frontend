@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import BaseButton from '../common/Button/BaseButton';
+import BaseButton from '../common/BaseButton';
 
 const LandingSlide = ({ children, onNext, onPrevious, className }) => {
   const [isCurrent, setIsCurrent] = useState(true);
