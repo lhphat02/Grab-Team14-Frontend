@@ -3,7 +3,7 @@ const BaseModal = ({ isOpen, onClose, children }) => {
 
   return (
     <div className="fixed inset-0 z-50 w-full overflow-y-auto">
-      <div className="flex items-center justify-center w-full h-full min-h-screen px-4 py-12">
+      <div className="flex items-center justify-center w-full h-full min-h-screen px-4 py-4">
         <div
           className="fixed inset-0 transition-opacity"
           onClick={onClose}
