@@ -1,5 +1,5 @@
 import assets from '../assets';
-import BaseButton from '../components/common/Button/BaseButton';
+import BaseButton from '../components/common/BaseButton';
 import Divider from '../components/common/Divider';
 import LandingSlide from '../components/layouts/SlideLayout';
 
