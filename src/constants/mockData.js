@@ -1,6 +1,7 @@
 const MOCK = {
   JOBS: [
     {
+      id: 1,
       title: 'Software Engineer',
       description: 'Develop and maintain software applications.',
       date: new Date('2024-05-01'),
@@ -24,6 +25,7 @@ const MOCK = {
       platform: 'Linkedin',
     },
     {
+      id: 2,
       title: 'Frontend Engineer',
       description: 'Create and improve user interfaces.',
       date: new Date('2024-05-01'),
@@ -46,6 +48,7 @@ const MOCK = {
       platform: 'Linkedin',
     },
     {
+      id: 3,
       title: 'Cloud Engineer',
       description: 'Manage cloud infrastructure and services.',
       date: new Date('2024-05-01'),
@@ -68,6 +71,7 @@ const MOCK = {
       platform: 'Indeed',
     },
     {
+      id: 4,
       title: '.NET Developer',
       description: 'Develop applications using .NET framework.',
       date: new Date('2024-05-01'),
@@ -90,6 +94,7 @@ const MOCK = {
       platform: 'TopCV',
     },
     {
+      id: 5,
       title: 'IOS Engineer',
       description: 'Develop and maintain iOS applications.',
       date: new Date('2024-05-01'),
