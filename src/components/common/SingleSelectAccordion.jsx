@@ -48,9 +48,11 @@ const SingleSelectAccordion = ({
       >
         {/* Title and selected option */}
         <div className="flex items-center gap-2">
-          <p className="text-base font-semibold text-prim-1">{title}:</p>
+          <p className="text-sm font-semibold md:text-base text-prim-1">
+            {title}:
+          </p>
 
-          <p className="text-base text-gray-500">
+          <p className="text-sm text-gray-500 md:text-base">
             {selectedOption ? selectedOption.label : 'Select an option'}
           </p>
         </div>
