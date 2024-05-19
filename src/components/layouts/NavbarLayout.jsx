@@ -8,7 +8,7 @@ const NavbarLayout = ({ desktopContent, mobileContent }) => {
 
   return (
     <nav className="fixed top-0 z-50 w-full bg-white shadow-sm bg-opacity-85 backdrop-blur-sm">
-      <div className="flex items-center justify-between h-12 px-4 mx-auto md:h-16 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between h-12 px-4 mx-auto sm:px-6 lg:px-8">
         <div className="flex items-center justify-between w-full">
           <Brand />
 
