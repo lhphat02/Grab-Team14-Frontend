@@ -209,7 +209,11 @@ const FilterConfigureSection = ({
         ))}
       </div>
       <Accordion
-        title={<p className="text-lg font-semibold text-prim-1">Advanced</p>}
+        title={
+          <p className="text-sm font-semibold md:text-base text-prim-1">
+            Advanced
+          </p>
+        }
       >
         {advancedFilters.map((filter, index) => (
           <div key={index} className="flex flex-col w-full gap-2">
