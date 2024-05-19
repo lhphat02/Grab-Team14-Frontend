@@ -57,7 +57,6 @@ const HeroSlide = () => {
       industry,
       workType,
       arrangement,
-      searchExisting: true,
     }).toString();
 
     navigate(`/job-list?${searchParams}`);
