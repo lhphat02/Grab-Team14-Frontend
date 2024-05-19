@@ -112,6 +112,81 @@ const MOCK = {
       platform: 'ITviec',
     },
   ],
+  SAVE_JOBS: [
+    {
+      title: 'Software Engineer',
+      description: 'Develop and maintain software applications.',
+      date: new Date('2024-05-01'),
+      jobLink: 'https://www.linkedin.com/jobs/view/3700102746/',
+      applyLink:
+        'https://www.worldquant.com/career-listing/?application=4065713006',
+      companyName: 'Google',
+      companyLink: 'https://www.google.com',
+      companyImageUrl:
+        'https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png',
+      location: 'Mountain View, CA',
+      companyLocation:
+        '1600 Amphitheatre Pkwy, Mountain View, CA 94043, United States',
+      skills: ['JavaScript', 'Python'],
+      keyword: 'Software',
+      experienceLevel: 'Mid-Senior',
+      time: 'Full-time',
+      type: 'Full-time',
+      workingMode: 'Remote',
+      industry: 'IT & Media',
+      platform: 'Linkedin',
+      status: 'SAVED',
+      savedDate: new Date('2024-05-19'),
+    },
+    {
+      title: 'Frontend Engineer',
+      description: 'Create and improve user interfaces.',
+      date: new Date('2024-05-01'),
+      jobLink: 'https://www.linkedin.com/jobs/view/3700102746/',
+      applyLink:
+        'https://www.worldquant.com/career-listing/?application=4065713006',
+      companyName: 'Meta',
+      companyLink: 'https://www.facebook.com',
+      companyImageUrl:
+        'https://i.pinimg.com/originals/b7/06/fa/b706fa17832e8854ee125404a655f0df.jpg',
+      location: 'Menlo Park, CA',
+      companyLocation: '1 Hacker Wy, Menlo Park, CA 94025, United States',
+      skills: ['React', 'CSS'],
+      keyword: 'Frontend',
+      experienceLevel: 'Mid-Senior',
+      time: 'Full-time',
+      type: 'Full-time',
+      workingMode: 'On-site',
+      industry: 'IT & Media',
+      platform: 'Linkedin',
+      status: 'INTERVIEWED',
+      savedDate: new Date('2024-05-21'),
+    },
+    {
+      title: 'Cloud Engineer',
+      description: 'Manage cloud infrastructure and services.',
+      date: new Date('2024-05-01'),
+      jobLink: 'https://www.linkedin.com/jobs/view/3700102746/',
+      applyLink:
+        'https://www.worldquant.com/career-listing/?application=4065713006',
+      companyName: 'Amazon',
+      companyLink: 'https://www.amazon.com',
+      companyImageUrl:
+        'https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_amazon-256.png',
+      location: 'Seattle, WA',
+      companyLocation: '440 Terry Ave N, Seattle, WA 98109, United States',
+      skills: ['AWS', 'DevOps'],
+      keyword: 'Cloud',
+      experienceLevel: 'Entry',
+      time: 'Full-time',
+      type: 'Full-time',
+      workingMode: 'Hybrid',
+      industry: 'IT & Media',
+      platform: 'Indeed',
+      status: 'REJECTED',
+      savedDate: new Date('2024-05-23'),
+    },
+  ],
   OPTIONS: {
     TIME: [
       { value: 'ANY', label: 'Any' },
@@ -161,6 +236,12 @@ const MOCK = {
       { value: 'REMOTE', label: 'Remote' },
       { value: 'HYBRID', label: 'Hybrid' },
     ],
+    JOB_STATUS: [
+      { value: 'SAVED', label: 'Saved' },
+      { value: 'APPLIED', label: 'Applied' },
+      { value: 'REJECTED', label: 'Rejected' },
+      { value: 'INTERVIEWED', label: 'Interviewed' },
+    ],
   },
   FILTERS: [
     {
@@ -199,5 +280,4 @@ const MOCK = {
     },
   ],
 };
-
 export default MOCK;
