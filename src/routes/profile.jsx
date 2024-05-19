@@ -22,8 +22,14 @@ const ProfilePage = () => {
 
   return (
     <ProfilePageLayout>
-      <div className="flex w-full h-full gap-12">
-        <secion className="flex flex-col w-1/2 h-full gap-8 items-between">
+      <div className="flex flex-col-reverse w-full h-full gap-12 md:flex-row">
+        <section className="flex flex-col w-full h-full gap-4 p-4 bg-white rounded-lg shadow-md md:gap-12 md:p-8">
+          <CVImport />
+          <Divider />
+          <CoverLetterImport />
+        </section>
+
+        <secion className="flex flex-col h-full gap-8 d:w-1/2 items-between">
           <div className="flex items-end justify-center w-full gap-2 p-4 bg-white rounded-lg shadow-md">
             <p className="text-lg font-semibold">Hello,</p>
             <p className="text-lg font-semibold text-prim-1">
@@ -49,12 +55,6 @@ const ProfilePage = () => {
             <p>Logout</p>
           </BaseButton>
         </secion>
-
-        <section className="flex flex-col w-full h-full gap-12 p-8 bg-white rounded-lg shadow-md">
-          <CVImport />
-          <Divider />
-          <CoverLetterImport />
-        </section>
       </div>
     </ProfilePageLayout>
   );

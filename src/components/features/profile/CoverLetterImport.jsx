@@ -41,8 +41,10 @@ const CoverLetterImport = () => {
   const isModified = coverLetter !== originalCoverLetter;
 
   return (
-    <div className="flex flex-col w-full h-full gap-8">
-      <p className="text-xl font-semibold text-prim-1">Your Cover Letter:</p>
+    <div className="flex flex-col w-full h-full gap-4 md:gap-8">
+      <p className="text-base font-semibold text-center md:text-start md:text-xl text-prim-1">
+        Your Cover Letter:
+      </p>
       <textarea
         value={coverLetter}
         onChange={handleChange}

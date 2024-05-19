@@ -49,13 +49,15 @@ const CVImport = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full gap-8">
-      <div className="flex items-center justify-between w-full">
+    <div className="flex flex-col justify-between w-full h-full gap-4 md:gap-8 md:items-center">
+      <div className="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
         <div className="flex items-end gap-4">
-          <p className="text-xl font-semibold text-prim-1">Your CV:</p>
+          <p className="text-base font-semibold md:text-xl text-prim-1">
+            Your CV:
+          </p>
           {cvFile && (
             <p
-              className="text-lg underline rounded-lg cursor-pointer text-prim-1"
+              className="text-sm underline rounded-lg cursor-pointer md:text-lg text-prim-1"
               onClick={handleCVView}
             >
               {cvFile.name || 'CV path'}
