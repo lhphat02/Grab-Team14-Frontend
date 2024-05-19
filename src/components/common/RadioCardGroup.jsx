@@ -22,8 +22,8 @@ const RadioCardGroup = ({ options, onChange, className }) => {
           key={index}
           className={`border w-full hover:bg-gray-100 rounded-md p-4 cursor-pointer ${
             selectedOption === option.id
-              ? 'bg-gray-100  border-prim-1'
-              : 'border-gray-300 bg-white '
+              ? 'bg-gray-100 border-prim-1'
+              : 'border-gray-300 bg-white'
           }`}
         >
           <input

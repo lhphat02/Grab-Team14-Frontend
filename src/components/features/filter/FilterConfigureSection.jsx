@@ -1,4 +1,8 @@
-import { CheckCircleIcon, PencilSquareIcon } from '@heroicons/react/24/solid';
+import {
+  CheckCircleIcon,
+  PencilSquareIcon,
+  ArrowLeftIcon,
+} from '@heroicons/react/24/solid';
 import { useEffect, useState } from 'react';
 
 import Accordion from '../../common/Accordion';
@@ -16,6 +20,8 @@ import SingleSelectAccordion from '../../common/SingleSelectAccordion';
  * @param {Function} props.onEditToggle - Function to toggle edit mode.
  * @param {Object} props.options - The available options for the filters.
  * @param {Function} props.onSave - Function to save the filter configuration.
+ * @param {boolean} props.showSection - Flag indicating if the section should be shown.
+ * @param {Function} props.onCloseSection - Function to close the section.
  * @returns {JSX.Element} The FilterConfigureSection component.
  */
 const FilterConfigureSection = ({
@@ -24,6 +30,8 @@ const FilterConfigureSection = ({
   onEditToggle,
   options,
   onSave,
+  showSection,
+  onCloseSection,
 }) => {
   const [inputValues, setInputValues] = useState({});
   const [filterName, setFilterName] = useState('');
@@ -121,20 +129,30 @@ const FilterConfigureSection = ({
   }
 
   return (
-    <section className="flex flex-col items-start justify-start w-full h-full gap-8 p-8 overflow-y-auto bg-white rounded-lg shadow-md">
-      {/* Headbar */}
-      <div className="flex items-center justify-between w-full">
-        {isEditEnabled ? (
-          <BaseInput
-            value={filterName}
-            onChange={(e) => setFilterName(e.target.value)}
-            placeholder="Filter Name"
-          />
-        ) : (
-          <h4 className="text-2xl text-prim-1">{filterData?.name}</h4>
-        )}
-
-        <div className="flex gap-2">
+    <section
+      className={`flex-col items-start justify-start w-full h-full md:p-8 overflow-y-auto bg-white rounded-lg md:shadow-md md:flex ${
+        showSection ? '' : 'hidden'
+      }`}
+    >
+      <div className="flex flex-col items-center justify-between w-full gap-4 pb-4 border-b-2 md:flex-row">
+        <div className="flex items-center w-full gap-4">
+          <div
+            className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-slate-100"
+            onClick={onCloseSection}
+          >
+            <ArrowLeftIcon className="w-6 h-6 text-prim-1" />
+          </div>
+          {isEditEnabled ? (
+            <BaseInput
+              value={filterName}
+              onChange={(e) => setFilterName(e.target.value)}
+              placeholder="Filter Name"
+            />
+          ) : (
+            <h4 className="text-2xl text-prim-1">{filterData?.name}</h4>
+          )}
+        </div>
+        <div className="flex justify-between w-full gap-2 md:w-auto">
           {filterData?.active ? (
             <BaseButton outline disabled>
               <p>Active</p>
@@ -144,7 +162,6 @@ const FilterConfigureSection = ({
               <p>Activate</p>
             </BaseButton>
           )}
-
           {isEditEnabled ? (
             <BaseButton onClick={handleSave}>
               <p>Save</p>
@@ -158,10 +175,8 @@ const FilterConfigureSection = ({
           )}
         </div>
       </div>
-
       {/* Keywords and location filters */}
-      <div className="flex w-full gap-4">
-        {/* Keywords filter */}
+      <div className="flex flex-col w-full gap-4 mt-4 md:flex-row">
         <div className="flex flex-col w-full gap-4">
           <p className="font-semibold text-prim-1">Keywords:</p>
           <BaseInput
@@ -171,8 +186,6 @@ const FilterConfigureSection = ({
             onChange={(e) => handleInputChange('keyword', e.target.value)}
           />
         </div>
-
-        {/* Location filter */}
         <div className="flex flex-col w-full gap-4">
           <p className="font-semibold text-prim-1">Location:</p>
           <BaseInput
@@ -183,9 +196,7 @@ const FilterConfigureSection = ({
           />
         </div>
       </div>
-
-      {/* Basic filters */}
-      <div className="flex flex-col justify-between w-full gap-4">
+      <div className="flex flex-col justify-between w-full gap-4 my-4 ">
         {filterAccordions.map((accordion, index) => (
           <SingleSelectAccordion
             key={index}
@@ -197,8 +208,6 @@ const FilterConfigureSection = ({
           />
         ))}
       </div>
-
-      {/* Advanced filters */}
       <Accordion
         title={<p className="text-lg font-semibold text-prim-1">Advanced</p>}
       >

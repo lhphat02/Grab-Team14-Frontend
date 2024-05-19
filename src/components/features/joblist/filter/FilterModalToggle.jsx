@@ -71,14 +71,14 @@ const FilterModalToggle = () => {
             onSelectSection={setCurrentSection}
           />
           <div className="flex flex-col w-full h-full md:h-auto">
-            <div className="flex items-center justify-between w-full p-4 border-2 border-b">
+            <div className="flex items-center justify-between w-full p-4 border-b-2">
               {getCurrentSectionLabel()}
               <XMarkIcon
                 onClick={handleCloseModal}
                 className="w-8 h-8 p-1 rounded-full cursor-pointer text-prim-1 hover:bg-gray-100"
               />
             </div>
-            <div className="w-full p-4 border-2 bg-gray-50 md:overflow-y-auto md:bg-white">
+            <div className="w-full p-4 bg-gray-50 md:overflow-y-auto md:bg-white">
               {renderSectionContent()}
             </div>
           </div>
