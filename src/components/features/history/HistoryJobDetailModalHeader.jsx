@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import assets from '../../../assets';
 import Divider from '../../common/Divider';
@@ -7,11 +8,19 @@ import MOCK from '../../../constants/mockData';
 import Loading from '../../common/Loading';
 
 const HistoryJobDetailModalHeader = ({ jobData, onClose }) => {
-  const handleChangeStatus = () => {
+  const [status, setStatus] = useState(jobData?.status);
+
+  useEffect(() => {
+    if (jobData) {
+      setStatus(jobData.status);
+    }
+  }, [jobData]);
+
+  const handleChangeStatus = (e) => {
+    const newStatus = e.target.value;
+    setStatus(newStatus);
     // Future: Implement API call to update job status
   };
-
-  console.log(jobData);
 
   if (!jobData) {
     return <Loading statusMessage="Loading job details..." />;
@@ -48,7 +57,7 @@ const HistoryJobDetailModalHeader = ({ jobData, onClose }) => {
         <BaseSelect
           showLabel={false}
           options={MOCK.OPTIONS.JOB_STATUS}
-          value={jobData?.status}
+          value={status}
           onChange={handleChangeStatus}
         />
 
