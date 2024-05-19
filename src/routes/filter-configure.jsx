@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import FilterPageLayout from '../components/layouts/FiltetPageLayout';
 import FilterConfigureSection from '../components/features/filter/FilterConfigureSection';
@@ -9,15 +9,14 @@ import useMediaQuery from '../hooks/useMediaQuery';
 const FilterConfigurePage = () => {
   const [filterData, setFilterData] = useState(null);
   const [isEditEnabled, setIsEditEnabled] = useState(false);
-  const [showConfigureSection, setShowConfigureSection] = useState(false);
-  const previousFilter = useRef(null);
+  const [showConfigureSection, setShowConfigureSection] = useState(true);
 
   const isMobile = useMediaQuery(768);
 
   const handleOptionChange = (optionId) => {
-    const newFilterData =
-      MOCK.FILTERS.find((filter) => filter.id === optionId) || null;
-    setFilterData(newFilterData);
+    setFilterData(
+      MOCK.FILTERS.find((filter) => filter.id === optionId) || null
+    );
     if (isMobile) {
       setShowConfigureSection(true);
     }
@@ -32,19 +31,14 @@ const FilterConfigurePage = () => {
   };
 
   useEffect(() => {
-    const activeFilter =
-      MOCK.FILTERS.find((filter) => filter.active === true) || null;
-    if (activeFilter) {
-      setFilterData(activeFilter);
+    if (!isMobile) {
+      const activeFilter =
+        MOCK.FILTERS.find((filter) => filter.active === true) || null;
+      if (activeFilter) {
+        setFilterData(activeFilter);
+      }
     }
-  }, []);
-
-  useEffect(() => {
-    if (isMobile && filterData !== previousFilter.current) {
-      setShowConfigureSection(true);
-    }
-    previousFilter.current = filterData;
-  }, [filterData, isMobile]);
+  }, [isMobile]);
 
   return (
     <FilterPageLayout>

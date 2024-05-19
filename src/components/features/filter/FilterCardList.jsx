@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
-const RadioCardGroup = ({ options, onChange, className }) => {
+const FilterCardList = ({ options, onChange, className }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
-  useEffect(() => {
-    const activeOption = options.find((option) => option.active === true);
-    if (activeOption) {
-      setSelectedOption(activeOption.id);
-    }
-  }, [options]);
+  /// Default selected option ///
+  //
+  // const isMobile = useMediaQuery(768);
+  // useEffect(() => {
+  //   if (!isMobile) {
+  //     const activeOption = options.find((option) => option.active === true);
+
+  //     if (activeOption) {
+  //       setSelectedOption(activeOption.id);
+  //     }
+  //   }
+  // }, [isMobile, options]);
 
   const handleOptionChange = (optionId) => {
     setSelectedOption(optionId);
@@ -47,4 +54,4 @@ const RadioCardGroup = ({ options, onChange, className }) => {
   );
 };
 
-export default RadioCardGroup;
+export default FilterCardList;

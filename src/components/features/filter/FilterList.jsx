@@ -1,6 +1,6 @@
 import { PlusIcon } from '@heroicons/react/24/solid';
 import BaseButton from '../../common/BaseButton';
-import RadioCardGroup from '../../common/RadioCardGroup';
+import FilterCardList from './FilterCardList';
 
 /**
  * Component for displaying a list of filters.
@@ -24,7 +24,7 @@ const FilterList = ({ data, handleOnChange, showSection }) => {
     >
       <h4 className="text-prim-1">Filters</h4>
       <div className="w-full h-full pr-2 overflow-y-auto scroll-p-16">
-        <RadioCardGroup options={data} onChange={handleOnChange} />
+        <FilterCardList options={data} onChange={handleOnChange} />
       </div>
       <BaseButton className="w-full" onClick={handleCreateFilter}>
         <p>Create new filter</p>

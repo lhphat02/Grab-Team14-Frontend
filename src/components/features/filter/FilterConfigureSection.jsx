@@ -125,7 +125,7 @@ const FilterConfigureSection = ({
   ];
 
   if (!filterData) {
-    return <Loading />;
+    return <Loading statusMessage="Please select a filter to configure" />;
   }
 
   return (
