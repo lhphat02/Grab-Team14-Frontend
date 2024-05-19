@@ -11,7 +11,6 @@ import entertainment from './entertainment.svg';
 import healthcare from './healthcare.svg';
 import manufactoring from './manufactoring.svg';
 import money from './money.svg';
-import career_background from './career_background.jpg';
 import on_site from './on_site.svg';
 import remote from './remote.svg';
 import hybrid from './hybrid.svg';
@@ -36,7 +35,6 @@ export default {
   healthcare,
   manufactoring,
   money,
-  career_background,
   on_site,
   remote,
   hybrid,
