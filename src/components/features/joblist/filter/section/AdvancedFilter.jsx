@@ -1,36 +1,52 @@
+import { useState, useEffect } from 'react';
 import BaseInput from '../../../../common/BaseInput';
-import MOCK from '../../../../../constants/mockData';
 
 const advancedFilters = [
   {
     label: 'Exclude titles',
     placeholder: 'Keywords',
-    value: MOCK.FILTERS[1].excludeTitles || '',
+    key: 'excludeTitles',
   },
   {
     label: 'Exclude companies',
     placeholder: 'Keywords',
-    value: MOCK.FILTERS[1].excludeCompanies || '',
+    key: 'excludeCompanies',
   },
   {
     label: 'Include description',
     placeholder: 'Keywords',
-    value: MOCK.FILTERS[1].includeDescription || '',
+    key: 'includeDescription',
   },
   {
     label: 'Exclude description',
     placeholder: 'Keywords',
-    value: MOCK.FILTERS[1].excludeDescription || '',
+    key: 'excludeDescription',
   },
 ];
 
-const AdvancedFilter = () => {
+const AdvancedFilter = ({ advanceFilterData, onAdvancedFilterChange }) => {
+  const [filters, setFilters] = useState({});
+
+  useEffect(() => {
+    setFilters(advanceFilterData);
+  }, [advanceFilterData]);
+
+  const handleInputChange = (key, value) => {
+    const updatedFilters = { ...filters, [key]: value };
+    setFilters(updatedFilters);
+    onAdvancedFilterChange(updatedFilters);
+  };
+
   return (
     <div className="flex flex-col w-full gap-8 overflow-y-auto">
       {advancedFilters.map((filter, index) => (
         <div key={index} className="flex flex-col w-full gap-2 md:p-2">
           <p className="font-semibold text-prim-1">{filter.label}:</p>
-          <BaseInput placeholder={filter.placeholder} value={filter.value} />
+          <BaseInput
+            placeholder={filter.placeholder}
+            value={filters[filter.key] || ''}
+            onChange={(e) => handleInputChange(filter.key, e.target.value)}
+          />
         </div>
       ))}
     </div>
