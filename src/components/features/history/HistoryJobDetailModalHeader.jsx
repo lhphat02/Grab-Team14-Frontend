@@ -1,4 +1,4 @@
-import { XMarkIcon, BookmarkIcon } from '@heroicons/react/24/solid';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 import assets from '../../../assets';
 import Divider from '../../common/Divider';
 import BaseButton from '../../common/BaseButton';

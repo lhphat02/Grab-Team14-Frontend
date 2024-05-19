@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import JobDetailSection from '../joblist/card/modal/JobDetailSection';
 import JobMatchingSection from '../joblist/card/modal/JobMatchingSection';
 import CoverLetterSection from '../joblist/card/modal/CoverLetterSection';
-import JobDetailModalHeader from '../joblist/card/modal/JobDetailModalHeader';
 import BaseModal from '../../common/BaseModel';
 import JobDetailModalTabs from '../joblist/card/modal/JobDetailModalTabs';
 import HistoryJobDetailModalHeader from './HistoryJobDetailModalHeader';

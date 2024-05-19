@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { formatDate } from '../../../utils/formatter';
 import HistoryJobDetailModal from './HistoryJobDetailModal';
 import MOCK from '../../../constants/mockData';
-import Loading from '../../common/Loading';
 
 const HistoryJobCard = ({ jobData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
