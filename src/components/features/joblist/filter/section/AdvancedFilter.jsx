@@ -28,7 +28,7 @@ const AdvancedFilter = () => {
   return (
     <div className="flex flex-col w-full gap-8 overflow-y-auto">
       {advancedFilters.map((filter, index) => (
-        <div key={index} className="flex flex-col w-full gap-2">
+        <div key={index} className="flex flex-col w-full gap-2 md:p-2">
           <p className="font-semibold text-prim-1">{filter.label}:</p>
           <BaseInput placeholder={filter.placeholder} value={filter.value} />
         </div>
