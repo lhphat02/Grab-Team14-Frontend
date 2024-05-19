@@ -76,7 +76,7 @@ const getNavLinkItems = (path) =>
       key={link.name}
       to={link.path}
       className={`font-semibold hover:text-prim-1 ${
-        path === link.path ? 'text-prim-1' : 'text-gray-300'
+        path === link.path ? 'text-prim-1' : 'text-gray-400'
       }`}
     >
       {link.name}
