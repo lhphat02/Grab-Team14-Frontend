@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BaseModal from '../../../common/BaseModel';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/solid';
 import BaseButton from '../../../common/BaseButton';
@@ -7,12 +7,16 @@ import MainFilter from './section/MainFilter';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { FunnelIcon } from '@heroicons/react/24/solid';
 import { WrenchScrewdriverIcon } from '@heroicons/react/24/solid';
-// import { Cog6ToothIcon } from '@heroicons/react/24/solid';
 import AdvancedFilter from './section/AdvancedFilter';
 
-const FilterModalToggle = () => {
+const FilterModalToggle = ({
+  queryData,
+  onMainFilterChange,
+  onAdvanceFilterChange,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentSection, setCurrentSection] = useState('main');
+  const [filterData, setFilterData] = useState({});
 
   const handleOpenModal = () => {
     setCurrentSection(sections[0].id);
@@ -24,6 +28,10 @@ const FilterModalToggle = () => {
     setIsModalOpen(false);
     document.body.style.overflow = 'auto';
   };
+
+  useEffect(() => {
+    setFilterData(queryData);
+  }, [queryData]);
 
   const sections = [
     {
@@ -41,9 +49,19 @@ const FilterModalToggle = () => {
   const renderSectionContent = () => {
     switch (currentSection) {
       case 'main':
-        return <MainFilter />;
+        return (
+          <MainFilter
+            mainFilterData={filterData}
+            onMainFilterChange={onMainFilterChange}
+          />
+        );
       case 'advanced':
-        return <AdvancedFilter />;
+        return (
+          <AdvancedFilter
+            advanceFilterData={filterData}
+            onAdvancedFilterChange={onAdvanceFilterChange}
+          />
+        );
       default:
         return null;
     }

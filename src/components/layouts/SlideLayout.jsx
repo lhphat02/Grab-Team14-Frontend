@@ -35,7 +35,7 @@ const LandingSlide = ({ children, onNext, onPrevious, className }) => {
     <div
       ref={slideRef}
       className={[
-        'items-center justify-center space-y-4 container-slide',
+        'space-y-4 container-slide items-center',
         className,
         isCurrent ? 'active-slide' : '',
       ].join(' ')}

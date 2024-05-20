@@ -11,6 +11,15 @@ import entertainment from './entertainment.svg';
 import healthcare from './healthcare.svg';
 import manufactoring from './manufactoring.svg';
 import money from './money.svg';
+import on_site from './on_site.svg';
+import remote from './remote.svg';
+import hybrid from './hybrid.svg';
+import any from './any.svg';
+import full_time from './full_time.svg';
+import part_time from './part_time.svg';
+import contract from './contract.svg';
+import intern from './intern.svg';
+import volunteer from './volunteer.svg';
 
 export default {
   logo,
@@ -26,4 +35,13 @@ export default {
   healthcare,
   manufactoring,
   money,
+  on_site,
+  remote,
+  hybrid,
+  any,
+  full_time,
+  part_time,
+  contract,
+  intern,
+  volunteer,
 };

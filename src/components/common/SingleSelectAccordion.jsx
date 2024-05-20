@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
-import { ChevronUpIcon } from '@heroicons/react/24/solid';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
 
 /**
  * SingleSelectAccordion component allows users to select a single option from a list.
@@ -53,7 +52,7 @@ const SingleSelectAccordion = ({
           </p>
 
           <p className="text-sm text-gray-500 md:text-base">
-            {selectedOption ? selectedOption.label : 'Select an option'}
+            {selectedOption ? selectedOption.label : 'NONE'}
           </p>
         </div>
 

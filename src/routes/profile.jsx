@@ -30,7 +30,7 @@ const ProfilePage = () => {
         </section>
 
         <section className="flex flex-col h-full gap-8 d:w-1/2 items-between">
-          <div className="flex items-end justify-center w-full gap-2 p-4 bg-white rounded-lg shadow-md">
+          <div className="flex items-end justify-center w-full gap-2 px-8 py-4 bg-white rounded-lg shadow-md">
             <p className="text-lg font-semibold">Hello,</p>
             <p className="text-lg font-semibold text-prim-1">
               lhphat.dev@gmail.com

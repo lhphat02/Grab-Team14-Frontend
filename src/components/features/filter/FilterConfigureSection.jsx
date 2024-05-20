@@ -10,6 +10,7 @@ import BaseButton from '../../common/BaseButton';
 import BaseInput from '../../common/BaseInput';
 import Loading from '../../common/Loading';
 import SingleSelectAccordion from '../../common/SingleSelectAccordion';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
 /**
  * Component for configuring and managing filters.
@@ -35,6 +36,7 @@ const FilterConfigureSection = ({
 }) => {
   const [inputValues, setInputValues] = useState({});
   const [filterName, setFilterName] = useState('');
+  const isMobile = useMediaQuery(768);
 
   useEffect(() => {
     setInputValues(filterData);
@@ -136,12 +138,14 @@ const FilterConfigureSection = ({
     >
       <div className="flex flex-col items-center justify-between w-full gap-4 pb-4 border-b-2 md:flex-row">
         <div className="flex items-center w-full gap-4">
-          <div
-            className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-slate-100"
-            onClick={onCloseSection}
-          >
-            <ArrowLeftIcon className="w-6 h-6 text-prim-1" />
-          </div>
+          {isMobile && (
+            <div
+              className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-slate-100"
+              onClick={onCloseSection}
+            >
+              <ArrowLeftIcon className="w-6 h-6 text-prim-1" />
+            </div>
+          )}
           {isEditEnabled ? (
             <BaseInput
               value={filterName}
