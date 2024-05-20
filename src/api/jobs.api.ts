@@ -39,3 +39,11 @@ export const getJobListAPI = async (getJobListReq: QueryModel): Promise<Paginati
     throw new Error(e);
   }
 };
+
+export interface Post {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  date: Date;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { ReactNode, useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { RangeValue } from 'rc-picker/lib/interface.d';
@@ -100,7 +101,6 @@ const Filter: React.FC<Filter> = ({
         </S.TagsWrapper>
       )}
 
-
       <S.BtnWrapper>
         <S.Btn onClick={() => resetFilter()}>{t('jobsFeed.reset')}</S.Btn>
         <S.Btn onClick={() => applyFilter()} type="primary">
@@ -152,34 +152,12 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
   );
 
   const filterJobs = useCallback(
-    (isReset = false) => {
-      let updatedJobs = [...jobs];
-      if ((author || title || dates[0] || selectedTags.length) && !isReset) {
-        updatedJobs = jobs.filter((post) => {
-          const postAuthor = post.author.toLowerCase();
-          const enteredAuthor = author.toLowerCase();
-          const postTitle = post.title.toLowerCase();
-          const enteredTitle = title.toLowerCase();
-          const postTags = post.tags;
-          const postDate = Dates.getDate(post.date);
+    (state: any) => {
+      const filteredJobs = jobs;
 
-          const fieldsValidators = [
-            new AuthorValidator(postAuthor, enteredAuthor),
-            new TitleValidator(postTitle, enteredTitle),
-            new DatesValidator(postDate, dates),
-            new TagsValidator(postTags, selectedTags),
-          ];
-
-          return fieldsValidators.map((validator) => validator.validate()).every((i) => i);
-        });
-      }
-      setFilteredJobs(
-        updatedJobs.sort((a, b) => {
-          return b.date - a.date;
-        }),
-      );
+      setFilteredJobs(filteredJobs);
     },
-    [jobs, author, title, dates, selectedTags],
+    [jobs],
   );
 
   useEffect(() => {
@@ -245,7 +223,7 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
           <Filter
             author={author}
             title={title}
-            jobsTagData={ jobsTagData}
+            jobsTagData={jobsTagData}
             onTagClick={onTagClick}
             selectedTagsIds={selectedTagsIds}
             selectedTags={selectedTags}

@@ -11,7 +11,7 @@ export interface BaseJobProps {
   companyName: string;
   companyLocation: string;
   date: Date;
-  type: String;
+  type: string;
   industry?: string;
   experience?: string;
   className?: string;
@@ -32,27 +32,27 @@ export const BaseJob: React.FC<BaseJobProps> = ({
 }) => {
   return (
     <S.JobCard>
-    <S.Wrapper>
-      <S.ImgWrapper>
-        <img src={companyImageUrl} alt={title} width={84} height={84} />
-      </S.ImgWrapper>
+      <S.Wrapper>
+        <S.ImgWrapper>
+          <img src={companyImageUrl} alt={title} width={84} height={84} />
+        </S.ImgWrapper>
 
-      <S.InfoWrapper>
-        <S.InfoHeaderWrapper>
-          <S.TitleWrapper>
-            <S.Title level={5}>{title}</S.Title>
-          </S.TitleWrapper>
+        <S.InfoWrapper>
+          <S.InfoHeaderWrapper>
+            <S.TitleWrapper>
+              <S.Title level={5}>{title}</S.Title>
+            </S.TitleWrapper>
 
-          <S.Text>
-            {companyName} - {companyLocation}
-          </S.Text>
-        </S.InfoHeaderWrapper>
+            <S.Text>
+              {companyName} - {companyLocation}
+            </S.Text>
+          </S.InfoHeaderWrapper>
 
-        <S.InfoBottomWrapper>
-          <S.DateText>date</S.DateText>
-        </S.InfoBottomWrapper>
-      </S.InfoWrapper>
-    </S.Wrapper>
-  </S.JobCard>
+          <S.InfoBottomWrapper>
+            <S.DateText>date</S.DateText>
+          </S.InfoBottomWrapper>
+        </S.InfoWrapper>
+      </S.Wrapper>
+    </S.JobCard>
   );
 };

@@ -18,23 +18,23 @@ export const JobsFeed: React.FC = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const dispatch = useAppDispatch();
-  let query = useAppSelector((state) => state.query.query);
+  const query = useAppSelector((state) => state.query.query);
 
   useEffect(() => {
-    let queryRequest : QueryRequest = {
+    const queryRequest: QueryRequest = {
       initialQuery: query!,
-      nowQuery: null
-    }
+      nowQuery: null,
+    };
     dispatch(getJobList(queryRequest))
       .unwrap()
-      .then(data => {
-        setJobs(jobs.concat(data?.docs || []))
+      .then((data) => {
+        setJobs(jobs.concat(data?.docs || []));
       })
       .finally(() => setLoaded(true));
-  }, [query]);
+  }, [dispatch, jobs, query]);
 
   const next = () => {
-    let newQuery: QueryModel = {
+    const newQuery: QueryModel = {
       page: page + 1,
       limit: 10,
     };
@@ -47,11 +47,10 @@ export const JobsFeed: React.FC = () => {
       {({ filteredJobs }) =>
         filteredJobs?.length || !loaded ? (
           <BaseJobList next={next} hasMore={hasMore}>
-            {
-            filteredJobs.map((job, index) => (
+            {filteredJobs.map((job, index) => (
               <BaseJob
                 key={index}
-                title= {job.title}
+                title={job.title}
                 companyImageUrl={job.companyImageUrl}
                 companyName={job.companyName}
                 companyLocation={job.companyLocation}
@@ -59,7 +58,6 @@ export const JobsFeed: React.FC = () => {
                 type={job.type}
                 industry={job.industry}
                 experience={job.experience}
-
               />
             ))}
           </BaseJobList>

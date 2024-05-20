@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable prefer-const */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PaginationResponse, getJobListAPI } from '@app/api/jobs.api';
 import { useAppSelector } from '@app/hooks/reduxHooks';
@@ -26,7 +28,7 @@ const initialState: JobSlice = {
   workingMode: '',
 };
 
-let initModel: QueryModel = {
+const initModel: QueryModel = {
   page: 1,
   limit: 10,
 };
@@ -38,7 +40,7 @@ export interface QueryRequest {
 
 export const getJobList = createAsyncThunk('job/getJobList', async (queryRequest: QueryRequest, { dispatch }) => {
   console.log('queryRequest', queryRequest);
-  var query: QueryModel;
+  let query: QueryModel;
   query = queryRequest.initialQuery;
   console.log('queryRequest', queryRequest);
   let getJobListReq = queryRequest.nowQuery;
