@@ -1,6 +1,6 @@
 const CONSTANTS = {
   API_ENDPOINT: {
-    BASE_URL_LOCAL: 'http://localhost:5173',
+    BASE_URL_LOCAL: 'http://localhost:3000',
   },
   APP: {
     APP_NAME: 'emploi',
