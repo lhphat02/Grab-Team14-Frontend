@@ -5,9 +5,12 @@ import AuthFormLayout from '../components/layouts/AuthFormLayout';
 import { useState } from 'react';
 import { isMailValid } from '../utils/checker';
 import BaseButton from '../components/common/BaseButton';
-
+import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { doLogin } from '@app/store/slices/authSlice';
 const SignInPage = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
 
   const [formData, setFormData] = useState({
     email: '',
@@ -37,7 +40,17 @@ const SignInPage = () => {
       return;
     }
 
-    navigate(CONSTANTS.ROUTES.JOB_LIST);
+    dispatch(doLogin({ email, password}))
+      .unwrap()
+      .then(data => {
+        console.log('data', data);
+        return data;
+      })
+      .then(() =>     navigate(CONSTANTS.ROUTES.JOB_LIST)      )
+      .catch((err) => {
+        console.log(err);
+      });
+
   };
 
   // console.log('Form data: ', formData);
