@@ -2,6 +2,7 @@ import React from 'react';
 import {
   DashboardOutlined,
   HomeOutlined,
+  UnorderedListOutlined,
 } from '@ant-design/icons';
 import { ReactComponent as NftIcon } from '@app/assets/icons/nft-icon.svg';
 
@@ -30,6 +31,6 @@ export const sidebarNavigation: SidebarNavigationItem[] = [
     title: 'common.job',
     key: 'job',
     url: '/jobs',
-    icon: <DashboardOutlined />,
+    icon: <UnorderedListOutlined />,
   }
 ];

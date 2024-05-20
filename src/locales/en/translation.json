@@ -569,7 +569,11 @@
     "reset": "Reset",
     "tag": "Tag",
     "titleSearch": "Title",
-    "to": "To"
+    "to": "To",
+    "type": "Job Type",
+    "workingMode": "Working Mode",
+    "experienceLevel": "Experience Level",
+    "industry": "Industry"
   },
   "notifications": {
     "basic": "Basic notification",

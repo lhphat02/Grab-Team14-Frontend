@@ -18,7 +18,7 @@ export const JobsFeed: React.FC = () => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const dispatch = useAppDispatch();
-  const query = useAppSelector((state) => state.query.query);
+  let query = useAppSelector((state) => state.query.query);
 
   useEffect(() => {
     const queryRequest: QueryRequest = {
@@ -31,7 +31,7 @@ export const JobsFeed: React.FC = () => {
         setJobs(jobs.concat(data?.docs || []));
       })
       .finally(() => setLoaded(true));
-  }, [dispatch, jobs, query]);
+  }, [query]);
 
   const next = () => {
     const newQuery: QueryModel = {

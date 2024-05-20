@@ -1,25 +1,28 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { ReactNode, useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RangeValue } from 'rc-picker/lib/interface.d';
 import { BaseHashTag, IHashTag } from '@app/components/common/BaseHashTag/BaseHashTag';
 import { AuthorValidator, TitleValidator, DatesValidator, TagsValidator } from '../Validator';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { newsTags as defaultTags } from '@app/constants/newsTags';
 import { AppDate, Dates } from '@app/constants/Dates';
-import { Post } from '@app/api/jobs.api';
+import { JobListResponse,} from '@app/api/jobs.api';
 import * as S from './JobsFilter.styles';
 import { BaseDropdown } from '@app/components/common/BaseDropdown/Dropdown';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
 
 interface JobsFilterProps {
-  jobs: Post[];
+  jobs: JobListResponse[];
   jobsTags?: IHashTag[];
-  children: ({ filteredJobs }: { filteredJobs: Post[] }) => ReactNode;
+  children: ({ filteredJobs }: { filteredJobs: JobListResponse[] }) => ReactNode;
 }
 
 interface Filter {
-  author: string;
-  title: string;
+  search: string;
+  selectedIndustry: string;
+  selectedLocation: string;
+  selectedExperience: string;
+  selectedWorkingMode: string;
+  selectedType: string;
   jobsTagData: IHashTag[];
   onTagClick: (tag: IHashTag) => void;
   selectedTagsIds: Array<string>;
@@ -31,8 +34,13 @@ interface Filter {
 }
 
 const Filter: React.FC<Filter> = ({
-  author,
-  title,
+  search,
+  selectedIndustry,
+  selectedLocation,
+  selectedExperience,
+  selectedWorkingMode,
+  selectedType,
+  selectedTime,
   jobsTagData,
   onTagClick,
   selectedTagsIds,
@@ -44,6 +52,9 @@ const Filter: React.FC<Filter> = ({
 }) => {
   const { t } = useTranslation();
   const { mobileOnly } = useResponsive();
+  const dispatch = useAppDispatch();
+
+
 
   const applyFilter = () => {
     onApply();
@@ -81,15 +92,15 @@ const Filter: React.FC<Filter> = ({
         <S.SearchIcon />
         <S.Input
           placeholder={t('jobsFeed.Search')}
-          value={author}
-          onChange={(event) => updateFilteredField('author', event.target.value)}
+          value={search}
+          onChange={(event) => updateFilteredField('search', event.target.value)}
         />
       </S.InputWrapper>
 
       <BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
-          <S.AddTagText>{t('jobsFeed.tag')}</S.AddTagText>
+          <S.AddTagText>{t('jobsFeed.industry')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
 
@@ -100,6 +111,53 @@ const Filter: React.FC<Filter> = ({
           ))}
         </S.TagsWrapper>
       )}
+
+<BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
+        <S.AddTagWrapper>
+          <S.PlusIcon />
+          <S.AddTagText>{t('jobsFeed.type')}</S.AddTagText>
+        </S.AddTagWrapper>
+      </BaseDropdown>
+
+      {!!selectedTags.length && (
+        <S.TagsWrapper>
+          {selectedTags.map((tag) => (
+            <BaseHashTag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
+          ))}
+        </S.TagsWrapper>
+      )}
+
+
+<BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
+        <S.AddTagWrapper>
+          <S.PlusIcon />
+          <S.AddTagText>{t('jobsFeed.workingMode')}</S.AddTagText>
+        </S.AddTagWrapper>
+      </BaseDropdown>
+
+      {!!selectedTags.length && (
+        <S.TagsWrapper>
+          {selectedTags.map((tag) => (
+            <BaseHashTag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
+          ))}
+        </S.TagsWrapper>
+      )}
+
+<BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
+        <S.AddTagWrapper>
+          <S.PlusIcon />
+          <S.AddTagText>{t('jobsFeed.experienceLevel')}</S.AddTagText>
+        </S.AddTagWrapper>
+      </BaseDropdown>
+
+      {!!selectedTags.length && (
+        <S.TagsWrapper>
+          {selectedTags.map((tag) => (
+            <BaseHashTag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
+          ))}
+        </S.TagsWrapper>
+      )}
+
 
       <S.BtnWrapper>
         <S.Btn onClick={() => resetFilter()}>{t('jobsFeed.reset')}</S.Btn>
@@ -113,6 +171,13 @@ const Filter: React.FC<Filter> = ({
 
 export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children }) => {
   const [filterFields, setFilterFields] = useState<{
+    search: string;
+    selectedIndustry: string;
+    selectedLocation: string;
+    selectedExperience: string;
+    selectedWorkingMode: string;
+    selectedType: string;
+    
     author: string;
     title: string;
     selectedTags: IHashTag[];
@@ -152,12 +217,34 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
   );
 
   const filterJobs = useCallback(
-    (state: any) => {
-      const filteredJobs = jobs;
+    (isReset = false) => {
+      let updatedJobs = [...jobs];
+      if ((author || title || dates[0] || selectedTags.length) && !isReset) {
+        updatedJobs = jobs.filter((post) => {
+          const postAuthor = post.author.toLowerCase();
+          const enteredAuthor = author.toLowerCase();
+          const postTitle = post.title.toLowerCase();
+          const enteredTitle = title.toLowerCase();
+          const postTags = post.tags;
+          const postDate = Dates.getDate(post.date);
 
-      setFilteredJobs(filteredJobs);
+          const fieldsValidators = [
+            new AuthorValidator(postAuthor, enteredAuthor),
+            new TitleValidator(postTitle, enteredTitle),
+            new DatesValidator(postDate, dates),
+            new TagsValidator(postTags, selectedTags),
+          ];
+
+          return fieldsValidators.map((validator) => validator.validate()).every((i) => i);
+        });
+      }
+      setFilteredJobs(
+        updatedJobs.sort((a, b) => {
+          return b.date - a.date;
+        }),
+      );
     },
-    [jobs],
+    [jobs, author, title, dates, selectedTags],
   );
 
   useEffect(() => {
@@ -198,7 +285,6 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
             onOpenChange={(open) => setOverlayOpen(open)}
             content={
               <Filter
-                author={author}
                 title={title}
                 jobsTagData={jobsTagData}
                 onTagClick={onTagClick}
@@ -221,9 +307,8 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
 
         {!mobileOnly && (
           <Filter
-            author={author}
             title={title}
-            jobsTagData={jobsTagData}
+            jobsTagData={ jobsTagData}
             onTagClick={onTagClick}
             selectedTagsIds={selectedTagsIds}
             selectedTags={selectedTags}
