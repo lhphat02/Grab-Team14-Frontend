@@ -17,11 +17,11 @@ interface BaseHashTagProps {
 export const BaseHashTag: React.FC<BaseHashTagProps> = ({ title, color, bgColor, removeTag, ...otherProps }) => {
   const style = {
     color: color || 'var(--white)',
-    backgroundColor: bgColor ? `var(--${bgColor}-color)` : 'var(--orange)',
+    backgroundColor: bgColor ? `var(--${bgColor}-color)` : 'var(--gray)',
   };
   return (
     <S.TagWrapper style={style} {...otherProps}>
-      #{title}
+       {title}
       {!!removeTag && (
         <S.RemoveTagWrapper
           onClick={(e) => {

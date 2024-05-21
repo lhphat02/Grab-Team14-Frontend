@@ -49,7 +49,7 @@ export const BaseJob: React.FC<BaseJobProps> = ({
           </S.InfoHeaderWrapper>
 
           <S.InfoBottomWrapper>
-            <S.DateText>date</S.DateText>
+            <S.DateText>{date.toLocaleString()}</S.DateText>
           </S.InfoBottomWrapper>
         </S.InfoWrapper>
       </S.Wrapper>

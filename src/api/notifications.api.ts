@@ -4,7 +4,7 @@ export interface Message {
 }
 
 export interface Mention extends Message {
-  userName: string;
+  username: string;
   userIcon: string;
   place: string;
   href: string;
@@ -28,7 +28,7 @@ export const notifications = [
   {
     id: 4,
     description: 'header.notifications.mention',
-    userName: 'Steve Manson',
+    username: 'Steve Manson',
     userIcon:
       'https://res.cloudinary.com/lapkinthegod/image/upload/v1629187274/young-male-doctor-white-uniform_x7dcrs.jpg',
     place: 'medical-dashboard.latestScreenings.title',

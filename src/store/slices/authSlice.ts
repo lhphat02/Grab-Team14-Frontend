@@ -12,7 +12,7 @@ import {
   setNewPassword,
 } from '@app/api/auth.api';
 import { setUser } from '@app/store/slices/userSlice';
-import { deleteToken, deleteUser, persistToken, readToken } from '@app/services/localStorage.service';
+import { deleteToken, deleteUser, persistToken, persistUser, readToken } from '@app/services/localStorage.service';
 import Cookies from 'js-cookie';
 import { UserModel } from '@app/domain/UserModel';
 
@@ -29,10 +29,14 @@ const initialState: AuthSlice = {
 export const doLogin = createAsyncThunk('auth/doLogin', async (loginPayload: LoginRequest, { dispatch }) =>
   login(loginPayload).then((res) => {
     dispatch(setUser(res.user));
+    persistUser(res.user);
+
     // Cookies.set('refreshToken', res.refreshToken, { expires: 30 });
     // Cookies.set('accessToken', res.accessToken, { expires: 1 });
 
-    return res.token, res.user;
+    return {
+      payload: res.user,
+    };
   }),
 );
 
@@ -67,9 +71,10 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(doLogin.fulfilled, (state, action) => {
       state.user = action.payload;
+      state.token = Cookies.get('access_token');
     });
     builder.addCase(doLogout.fulfilled, (state) => {
-      state.token = '';
+      state.token = null;
     });
   },
 });

@@ -159,7 +159,7 @@
     "error": "Error",
     "feed": "Feed",
     "job": "Job",
-    "firstName": "First Name",
+    "fullName": "Full Name",
     "forgotPass": "Forgot Password",
     "forgotPasswordPage": "Forgot password page",
     "formError": "An error has occured",
@@ -424,7 +424,7 @@
       "countryError": "Country is required",
       "done": "Done",
       "female": "Female",
-      "firstNameError": "First Name is required",
+      "fullNameError": "First Name is required",
       "gender": "Gender",
       "info": "Info",
       "lastNameError": "Last Name is required",
@@ -470,8 +470,38 @@
       "switch": "Switch",
       "upload": "Upload",
       "usa": "U.S.A"
+    },
+    "uploadFormLabels": {
+      "blue": "Blue",
+      "checkboxGroup": "Checkbox Group",
+      "china": "China",
+      "clickToDrag": "Click or drag file to this area to upload your CV",
+      "clickToUpload": "Click to upload",
+      "colorError": "Please select your favorite colors!",
+      "countryError": "Please select your country!",
+      "cv": "Upload your CV",
+      "coverLetter": "Upload Your Cover Letter",
+      "green": "Green",
+      "inputNumber": "Input Number",
+      "item": "Item",
+      "itemError": "Please pick an item!",
+      "machines": "machines",
+      "radioButton": "Radio Button",
+      "radioGroup": "Radio Group",
+      "rate": "Rate",
+      "red": "Red",
+      "select": "Select",
+      "selectColor": "Please select favorite colors",
+      "selectCountry": "Please select a country",
+      "selectMultiple": "Select [multiple]",
+      "slider": "Slider",
+      "supportSingle": "Support for a single or bulk upload.",
+      "switch": "Switch",
+      "upload": "Upload",
+      "usa": "U.S.A"
     }
   },
+
   "header": {
     "changeLanguage": "Change language",
     "changeTheme": "Change theme",
@@ -573,7 +603,8 @@
     "type": "Job Type",
     "workingMode": "Working Mode",
     "experienceLevel": "Experience Level",
-    "industry": "Industry"
+    "industry": "Industry",
+    "time": "Time"
   },
   "notifications": {
     "basic": "Basic notification",
@@ -668,13 +699,16 @@
         "yourCardNumber": "Your card number",
         "yourName": "Your name"
       },
+      "cv": {
+        "title": "Upload your CV"
+      },
       "personalInfo": {
         "birthday": "Birthday",
         "contactInfo": "Contact Info",
         "female": "Female",
         "language": "Language",
         "male": "Male",
-        "nickname": "Nickname",
+        "username": "username",
         "notValidWebsite": "Please input a valid URL!",
         "notVerified": "Not verified",
         "otherInfo": "Other info",
