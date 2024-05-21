@@ -113,6 +113,7 @@
     "unchecked": "Unchecked"
   },
   "common": {
+    "history": "History",
     "address": "Address",
     "advancedForms": "Advanced Forms",
     "age": "Age",
@@ -605,6 +606,14 @@
     "experienceLevel": "Experience Level",
     "industry": "Industry",
     "time": "Sort by Time"
+  },
+  "historyJobsFeed": {
+    "filter": "Status Filter",
+    "all": "All",
+    "interviewed": "Interviewed",
+    "approved": "Approved",
+    "rejected": "Rejected",
+    "saved": "Saved"
   },
   "notifications": {
     "basic": "Basic notification",

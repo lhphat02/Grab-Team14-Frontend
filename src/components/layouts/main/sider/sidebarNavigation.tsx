@@ -13,22 +13,16 @@ export interface SidebarNavigationItem {
 }
 
 export const sidebarNavigation: SidebarNavigationItem[] = [
-  // {
-  //   title: 'common.apps',
-  //   key: 'apps',
-  //   icon: <HomeOutlined />,
-  //   children: [
-  //     {
-  //       title: 'common.feed',
-  //       key: 'feed',
-  //       url: '/apps/feed',
-  //     },
-  //   ],
-  // },
   {
     title: 'common.job',
     key: 'job',
     url: '/jobs',
     icon: <UnorderedListOutlined />,
   },
+  {
+    title: 'common.history',
+    key: 'history',
+    url: '/history',
+    icon: <UnorderedListOutlined />,
+  }
 ];

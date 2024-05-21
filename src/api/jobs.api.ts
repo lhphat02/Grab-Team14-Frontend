@@ -37,6 +37,24 @@ export interface JobDetailResponse {
   description: string;
 }
 
+export interface HistoryJobListResponse {
+  id: string;
+  title: string;
+  date: Date;
+  status: string;
+  companyName: string;
+  companyLink: string;
+  companyImageUrl: string;
+  location?: string;
+  companyLocation?: string;
+  experience?: string;
+  type?: string;
+  workingMode?: string;
+  industry?: [string];
+  platform: 'Linkedin' | 'Topcv' | 'Indeed' | 'Vietnamworks';
+  description: string;
+}
+
 export interface PaginationResponse {
   totalDocs: number;
   limit: number;
@@ -62,6 +80,15 @@ export const getJobListAPI = async (getJobListReq: QueryModel): Promise<Paginati
 export const getJobDetailAPI = async (id: string): Promise<JobDetailResponse | undefined> => {
   try {
     const response = await httpApi.get<JobDetailResponse>(`/job/${id}`);
+    return response.data;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
+
+export const getHistoryJobListAPI = async (): Promise<HistoryJobListResponse[] | undefined> => {
+  try {
+    const response = await httpApi.get<HistoryJobListResponse[]>(`/userJob/history/`);
     return response.data;
   } catch (e: any) {
     throw new Error(e);
