@@ -1,25 +1,38 @@
 import { useState } from 'react';
 import * as S from './HeroSlide.styles';
+import { Select } from 'antd';
+import { locationFilter } from '@app/constants/enums/filters';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { setQuery } from '@app/store/slices/querySlice';
+import { QueryModel } from '@app/domain/QueryModel';
+import { useNavigate } from 'react-router-dom';
 
 interface HeroSlideProps {
   onSlideChange: () => void;
 }
 
 const HeroSlide: React.FC<HeroSlideProps> = ({ onSlideChange }) => {
-  const [query, setQuery] = useState({
-    keyword: '',
-    location: '',
-  });
-
-  const handleSearchbarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery({ ...query, [e.target.name]: e.target.value });
-  };
-
+  const [location, setLocation] = useState<string>('');
+  const [keyword, setKeyword] = useState<string>('');
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const handleOnSearch = () => {
-    const searchParams = new URLSearchParams({
-      keyword: query.keyword,
-      location: query.location,
-    }).toString();
+    console.log('location', location)
+    console.log('keyword', keyword)
+    const initQuery: QueryModel = {
+      page: 1,
+      limit: 10,
+      search: keyword,
+      location: location.replaceAll('_', ' '),
+      type: null,
+      experience: null,
+      time: null,
+      workingMode: null,
+      industry: null,
+      isLoaded: false,
+    }
+    dispatch(setQuery(initQuery));
+    navigate('/jobs');
   };
 
   return (
@@ -42,17 +55,24 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ onSlideChange }) => {
             <S.SearchForm>
               <S.HeroSlideSearchbarContent>
                 <S.HeroSlideInput
-                  value={query.keyword}
-                  onChange={handleSearchbarChange}
+                  value={keyword} 
+                  onChange={ e => setKeyword(e.target.value)}
                   placeholder="Keywords"
-                  name="keyword"
+                  className="keyword"
                 />
-                <S.HeroSlideInput
-                  value={query.location}
-                  onChange={handleSearchbarChange}
+                <Select
+                  showSearch
+                  style={{ width: 200 }}
+                  onChange={ e => setLocation(e)}
+                  className = "location"
                   placeholder="Location"
-                  name="location"
-                />
+          optionFilterProp="children"
+          filterOption={(input, option) => (option?.label ?? '').includes(input)}
+          filterSort={(optionA, optionB) =>
+            (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+          }
+          options={locationFilter.map((location, i) => ({ value: location, label: location.replaceAll('_', ' ') }))}
+        />
                 <S.HeroSlideButton type="primary" onClick={handleOnSearch}>
                   Search
                 </S.HeroSlideButton>

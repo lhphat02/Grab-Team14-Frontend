@@ -15,9 +15,11 @@ import { useResponsive } from '@app/hooks/useResponsive';
 import { useAppSelector } from '@app/hooks/reduxHooks';
 import { BaseRow } from '../common/BaseRow/BaseRow';
 import { BaseCol } from '../common/BaseCol/BaseCol';
+import { readUser } from '@app/services/localStorage.service';
 
 const ProfileLayout: React.FC = () => {
-  const user = useAppSelector((state) => state.user.user);
+  let user = readUser();
+
 
   const { t } = useTranslation();
   const { isTablet: isTabletOrHigher, mobileOnly } = useResponsive();
@@ -30,6 +32,7 @@ const ProfileLayout: React.FC = () => {
   const isMenuShown = isTabletOrHigher || (mobileOnly && location.pathname !== '/profile');
 
   useEffect(() => {
+
     isTablet && location.pathname === '/profile' && navigate('personal-info');
   }, [isTablet, location.pathname, navigate]);
 

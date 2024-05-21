@@ -13,6 +13,7 @@ import NewPasswordPage from '@app/pages/NewPasswordPage';
 import LockPage from '@app/pages/LockPage';
 
 import MainLayout from '@app/components/layouts/main/MainLayout/MainLayout';
+
 import ProfileLayout from '@app/components/profile/ProfileLayout';
 import RequireAuth from '@app/components/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
@@ -61,16 +62,16 @@ export const AppRouter: React.FC = () => {
     <BrowserRouter>
       <Routes>
         {/* Landing Page Route */}
-        <Route path={HOME_PATH} element={<Landing />} />
+        <Route path={HOME_PATH} element = {<MainLayout />}>
+           <Route index element={<LandingPage />} />
+           <Route path="jobs" element={<JobsFeedPage />} />
+        </Route>
 
         <Route path={HOME_PATH} element={protectedLayout}>
-          <Route path="jobs" index element={<JobsFeedPage />} />
+
+
           <Route path="history" element={<HistoryJobsFeedPage />} />
-          {/* HomePage Router */}
-          {/* <Route path="apps">
-            <Route path="feed" element={<NewsFeed />} />
-          </Route> */}
-          {/* Products Router */}
+ 
           <Route path="server-error" element={<ServerError />} />
           <Route path="404" element={<Error404 />} />
           <Route path="profile" element={<ProfileLayout />}>

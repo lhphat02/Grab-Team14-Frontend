@@ -24,6 +24,7 @@ import { notificationController } from '@app/controllers/notificationController'
 import { PaymentCard } from '@app/interfaces/interfaces';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
+import { readUser } from '@app/services/localStorage.service';
 
 interface PersonalInfoFormValues {
   birthday?: string;
@@ -58,7 +59,7 @@ const initialPersonalInfoValues: PersonalInfoFormValues = {
 };
 
 export const PersonalInfo: React.FC = () => {
-  const user = useAppSelector((state) => state.user.user);
+  let user = readUser();
 
   const [isFieldsChanged, setFieldsChanged] = useState(false);
   const [isLoading, setLoading] = useState(false);

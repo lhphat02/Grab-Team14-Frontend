@@ -8,7 +8,7 @@ import { AppDate, Dates } from '@app/constants/Dates';
 import { JobListResponse } from '@app/api/jobs.api';
 import * as S from './JobsFilter.styles';
 import { BaseDropdown } from '@app/components/common/BaseDropdown/Dropdown';
-import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '@app/hooks/reduxHooks';
 import { getIndustryFilterAPI } from '@app/api/filter.api';
 import { filter, workingModeFilter } from '@app/constants/enums/filters';
 import { BaseRadio } from '@app/components/common/BaseRadio/BaseRadio';
@@ -183,6 +183,7 @@ const Filter: React.FC<Filter> = ({
 
       <S.AddTagWrapper>
         <Select
+          value={selectedLocation}
           showSearch
           style={{ width: 200 }}
           onChange={(value) => {
@@ -244,6 +245,8 @@ const Filter: React.FC<Filter> = ({
 };
 
 export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children }) => {
+  let query = useAppSelector((state) => state.query.query);
+
   const [filterFields, setFilterFields] = useState<{
     search: string;
     selectedIndustry: string;
@@ -262,6 +265,7 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
     selectedTime: '',
   });
 
+  
   const {
     search,
     selectedIndustry,
@@ -272,6 +276,21 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
     selectedTime,
   } = filterFields;
 
+  console.log('query', query);  
+
+  if (query) {
+    const { search, industry, location, experience, workingMode, type, time } = query;
+
+    if (search != filterFields.search && search != null ) setFilterFields({ ...filterFields, search });
+    if (industry != filterFields.selectedIndustry && industry != null) setFilterFields({ ...filterFields, selectedIndustry: industry });
+    if (location != filterFields.selectedLocation  && location != null ) setFilterFields({ ...filterFields, selectedLocation: location });
+    if (experience != filterFields.selectedExperience && experience != null ) setFilterFields({ ...filterFields, selectedExperience: experience });
+    if (workingMode != filterFields.selectedWorkingMode && workingMode != null ) setFilterFields({ ...filterFields, selectedWorkingMode: workingMode });
+    if (type != filterFields.selectedType && type != null) setFilterFields({ ...filterFields, selectedType: type });
+    if (time != filterFields.selectedTime  && time != null) setFilterFields({ ...filterFields, selectedTime: time });
+  }
+
+
   const [filteredJobs, setFilteredJobs] = useState<JobListResponse[]>(jobs);
   const [overlayOpen, setOverlayOpen] = useState<boolean>(false);
   const { mobileOnly } = useResponsive();
@@ -280,6 +299,7 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
 
   useEffect(() => {
     setFilteredJobs(jobs);
+
   }, [jobs]);
 
   const onClick = useCallback(

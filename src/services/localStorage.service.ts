@@ -1,5 +1,6 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
+import { QueryModel } from '@app/domain/QueryModel';
 import { UserModel } from '@app/domain/UserModel';
 const avatarImg = process.env.REACT_APP_ASSETS_BUCKET + '/avatars/avatar5.webp';
 
@@ -35,6 +36,15 @@ import Cookies from 'js-cookie';
 
 export const persistToken = (token: string): void => {
   localStorage.setItem('accessToken', token);
+};
+
+export const persistQuery = (query: QueryModel): void => {
+  localStorage.setItem('query', JSON.stringify(query));
+};
+
+export const readQuery = (): QueryModel | null => {
+  const queryStr = localStorage.getItem('query');
+  return queryStr ? JSON.parse(queryStr) : null;
 };
 
 export const readToken = (): string | null => {

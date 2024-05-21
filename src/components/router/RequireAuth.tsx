@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 
 const RequireAuth: React.FC<WithChildrenProps> = ({ children }) => {
   const token = Cookies.get('access_token');
+  console.log('children', children);
   return token ? <>{children}</> : <Navigate to="/auth/login" replace />;
 };
 

@@ -43,7 +43,6 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
   };
 
   // Log jobData to verify the structure
-  console.log('Job Data:', jobData);
 
   return (
     <>

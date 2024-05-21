@@ -1,14 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { UpOutlined } from '@ant-design/icons';
 import * as S from './LandingMain.styles';
 import HeroSlide from '../HeroSlide/HeroSlide';
 import CategorySlide from '../CategorySlide/CategorySlide';
 import SignupPromptSlide from '../SignupPromptSlide/SignupPromptSlide';
-
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 const LandingMain: React.FC = (): React.ReactElement => {
   const slideTwo = useRef<HTMLDivElement | null>(null);
   const slideThree = useRef<HTMLDivElement | null>(null);
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = Cookies.get('access_token');
+    if (token != null) {
+      navigate('/jobs');
+    }
+  }, [navigate]);
   const scrollToSlide = (slide: React.RefObject<HTMLDivElement>) => {
     slide.current?.scrollIntoView({
       behavior: 'smooth',
