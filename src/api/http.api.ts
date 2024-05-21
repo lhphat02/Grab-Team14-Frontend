@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import axios from 'axios';
 import { AxiosError } from 'axios';
 import { ApiError } from '@app/api/ApiError';
@@ -10,7 +10,7 @@ export const httpApi = axios.create({
 });
 
 httpApi.interceptors.request.use((config) => {
-  config.headers = { ...config.headers, Authorization: `Bearer ${readToken()}` };
+  config.headers = { ...config.headers, Authorization: `Bearer ${readToken()}`, 'Access-Control-Allow-Origin': '*' };
 
   return config;
 });

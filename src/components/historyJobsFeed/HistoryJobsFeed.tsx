@@ -13,6 +13,8 @@ import { HistoryJobsFilter } from './HistoryJobsFilter/HistoryJobsFilter';
 export const HistoryJobsFeed: React.FC = () => {
   const [jobs, setJobs] = useState<HistoryJobListResponse>([]);
 const dispatch = useAppDispatch();
+const [loaded, setLoaded] = useState<boolean>(false);
+
 
   useEffect(() => {
     dispatch(getHistoryJobList())
@@ -20,12 +22,13 @@ const dispatch = useAppDispatch();
       .then((data) => {
         setJobs(data);
       })
+      .finally(() => setLoaded(true));
   }, []);
 
   return (
     <HistoryJobsFilter jobs={jobs}>
       {({ filteredJobs }) =>
-        filteredJobs?.length ? (
+        filteredJobs?.length || !loaded ? (
           <BaseJobList >
             {filteredJobs.map((job, index) => (
               <BaseHistoryJob

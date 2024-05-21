@@ -8,50 +8,76 @@ import * as S from './BaseHistoryJob.styles';
 import { useTranslation } from 'react-i18next';
 import { BaseButton } from '../BaseButton/BaseButton';
 import { HistoryJobListResponse } from '@app/api/jobs.api';
+import { BaseModal } from '../BaseModal/BaseModal';
+import { formatDate } from '@app/utils/utils';
+import { JobDetail } from '@app/components/jobDetail/JobDetail';
 
 export interface BaseHistoryJobProps {
   job: HistoryJobListResponse;
 }
 
-export const BaseHistoryJob: React.FC<BaseHistoryJobProps> = ({
-  job
-}) => {
+export const BaseHistoryJob: React.FC<BaseHistoryJobProps> = ({ job }) => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
+
+  const handleOnCardClick = () => {
+    setModalOpen(true);
+    console.log('Data: ', job);
+  };
+
+  // Log job to verify the structure
+  console.log('Job Data:', job);
+
   return (
-      <S.HistoryJobCard onClick={() => setModalOpen(true)}>
-      <S.Wrapper>
-        <S.ImgWrapper>
-          <img src={job.companyImageUrl} alt={job.title} width={84} height={84} />
-        </S.ImgWrapper>
+    <>
+      <S.HistoryJobCard onClick={handleOnCardClick}>
+        <S.Wrapper>
+          <S.ImgWrapper>
+            <img
+              src={job.companyImageUrl}
+              alt={job.company}
+              width={84}
+              height={84}
+              onError={(e) => (e.currentTarget.src = 'path/to/placeholder.png')}
+            />
+          </S.ImgWrapper>
 
-        <S.InfoWrapper>
-          <S.InfoHeaderWrapper>
-            <S.TitleWrapper>
-              <S.Title level={5}>{job.title}</S.Title>
-            </S.TitleWrapper>
+          <S.InfoWrapper>
+            <S.InfoHeaderWrapper>
+              <S.TitleWrapper>
+                <S.Title level={5}>{job.title}</S.Title>
+              </S.TitleWrapper>
+              <S.LabelWrapper>
+                {job.type && job.type !== 'ANY' ? <S.Label>{job.type}</S.Label> : null}
 
-            <S.Text>
-              {job.companyName} - {job.companyLocation}
-            </S.Text>
-          </S.InfoHeaderWrapper>
+                {job.experience && <S.Label>{job.experience}</S.Label>}
+              </S.LabelWrapper>
+            </S.InfoHeaderWrapper>
 
-          <S.InfoBottomWrapper>
-            <S.DateText>{job.date.toLocaleString()}</S.DateText>
-          </S.InfoBottomWrapper>
-        </S.InfoWrapper>
-        {/* <BaseModal
-            centered
-            open={isModalOpen}
-            onOk={ e => {e.stopPropagation(); setModalOpen(false)}}
-            onCancel={e => {e.stopPropagation(); setModalOpen(false)}}
-            okButtonProps={{ hidden: true }}
-            cancelButtonProps={{ hidden: true }}
-            width={'100%'}
-          >
-            <HistoryJobDetail id={id} />
-          </BaseModal> */}
-      </S.Wrapper>
-    </S.HistoryJobCard>
+            <S.InfoBottomWrapper>
+              <S.Text>{job.location ? job.location : 'Location provided'}</S.Text>
+              <S.DateText>{job.date ? formatDate(job.date) : 'No Date'}</S.DateText>
+            </S.InfoBottomWrapper>
+          </S.InfoWrapper>
+        </S.Wrapper>
+      </S.HistoryJobCard>
+      <BaseModal
+        centered
+        open={isModalOpen}
+        onOk={(e) => {
+          e.stopPropagation();
+          setModalOpen(false);
+        }}
+        onCancel={(e) => {
+          e.stopPropagation();
+          setModalOpen(false);
+        }}
+        okButtonProps={{ hidden: true }}
+        cancelButtonProps={{ hidden: true }}
+        // width={'100%'}
+      >
+        <JobDetail id={job.id} />
+      </BaseModal>
+    </>
   );
 };

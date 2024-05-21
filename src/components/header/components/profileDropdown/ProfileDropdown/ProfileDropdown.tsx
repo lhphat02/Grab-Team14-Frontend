@@ -1,6 +1,6 @@
 // @ts-nocheck
 // @ts-ignore
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ProfileOverlay } from '../ProfileOverlay/ProfileOverlay';
 import { useAppSelector } from '@app/hooks/reduxHooks';
 import { useResponsive } from '@app/hooks/useResponsive';
@@ -9,11 +9,16 @@ import { BasePopover } from '@app/components/common/BasePopover/BasePopover';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseAvatar } from '@app/components/common/BaseAvatar/BaseAvatar';
+import { readUser } from '@app/services/localStorage.service';
 
 export const ProfileDropdown: React.FC = () => {
   const { isTablet } = useResponsive();
 
-  const user = useAppSelector((state) => state.user.user);
+  let user = useAppSelector((state) => state.user.user);
+
+  useEffect(() => {
+    user = readUser();
+  } , [user]);
 
   return user ? (
     <BasePopover content={<ProfileOverlay />} trigger="click">

@@ -42,7 +42,7 @@ export interface HistoryJobListResponse {
   title: string;
   date: Date;
   status: string;
-  companyName: string;
+  company: string;
   companyLink: string;
   companyImageUrl: string;
   location?: string;

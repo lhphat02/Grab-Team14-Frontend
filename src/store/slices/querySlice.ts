@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import { createAction, createSlice, PrepareAction } from '@reduxjs/toolkit';
 import { QueryModel } from '@app/domain/QueryModel';
 
