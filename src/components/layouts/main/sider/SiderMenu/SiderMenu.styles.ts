@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import styled from 'styled-components';
 import { FONT_SIZE } from '@app/styles/themes/constants';
 import { BaseMenu } from '@app/components/common/BaseMenu/BaseMenu';

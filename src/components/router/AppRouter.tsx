@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -62,6 +62,7 @@ const LeafletMaps = React.lazy(() => import('@app/pages/maps/LeafletMapsPage/Lea
 const ReactSimpleMaps = React.lazy(() => import('@app/pages/maps/ReactSimpleMapsPage/ReactSimpleMapsPage'));
 const PigeonsMaps = React.lazy(() => import('@app/pages/maps/PigeonsMapsPage/PigeonsMapsPage'));
 const Logout = React.lazy(() => import('./Logout'));
+const LandingPage = React.lazy(() => import('@app/components/landing/LandingMain/LandingMain'));
 
 export const NFT_DASHBOARD_PATH = '/';
 export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
@@ -70,6 +71,7 @@ const MedicalDashboard = withLoading(MedicalDashboardPage);
 const NftDashboard = withLoading(NftDashboardPage);
 const NewsFeed = withLoading(NewsFeedPage);
 const AdvancedForm = withLoading(AdvancedFormsPage);
+const Landing = withLoading(LandingPage);
 
 // UI Components
 const Buttons = withLoading(ButtonsPage);
@@ -115,7 +117,7 @@ const Error404 = withLoading(Error404Page);
 // Profile
 const PersonalInfo = withLoading(PersonalInfoPage);
 const SecuritySettings = withLoading(SecuritySettingsPage);
-const UploadCV = withLoading(UploadCVPage)
+const UploadCV = withLoading(UploadCVPage);
 const Payments = withLoading(PaymentsPage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
@@ -129,57 +131,25 @@ export const AppRouter: React.FC = () => {
     </RequireAuth>
   );
 
-
-
   return (
     <BrowserRouter>
       <Routes>
+        {/* Landing Page Route */}
+        <Route path={HOME_PATH} element={<Landing />} />
+
         <Route path={HOME_PATH} element={protectedLayout}>
           {/* HomePage Router */}
-          <Route path = "jobs" index element={<JobsFeed />} />
+          <Route path="jobs" index element={<JobsFeed />} />
           <Route path="apps">
             <Route path="feed" element={<NewsFeed />} />
           </Route>
           {/* Products Router */}
-          <Route path="forms">
-            <Route path="advanced-forms" element={<AdvancedForm />} />
-          </Route>  
-          <Route path="charts" element={<Charts />} />
           <Route path="server-error" element={<ServerError />} />
           <Route path="404" element={<Error404 />} />
           <Route path="profile" element={<ProfileLayout />}>
             <Route path="personal-info" element={<PersonalInfo />} />
             <Route path="security-settings" element={<SecuritySettings />} />
             <Route path="cv" element={<UploadCV />} />
-          </Route>
-          <Route path="ui-components">
-            <Route path="button" element={<Buttons />} />
-            <Route path="spinner" element={<Spinners />} />
-            <Route path="input" element={<Inputs />} />
-            <Route path="checkbox" element={<Checkboxes />} />
-            <Route path="radio" element={<Radios />} />
-            <Route path="select" element={<Selects />} />
-            <Route path="switch" element={<Switches />} />
-            <Route path="upload" element={<Uploads />} />
-            <Route path="rate" element={<Rates />} />
-            <Route path="auto-complete" element={<AutoCompletes />} />
-            <Route path="steps" element={<Steps />} />
-            <Route path="date-time-picker" element={<DateTimePickers />} />
-            <Route path="dropdown" element={<Dropdowns />} />
-            <Route path="breadcrumbs" element={<Breadcrumbs />} />
-            <Route path="tabs" element={<Tabs />} />
-            <Route path="avatar" element={<Avatars />} />
-            <Route path="badge" element={<Badges />} />
-            <Route path="collapse" element={<Collapse />} />
-            <Route path="pagination" element={<Pagination />} />
-            <Route path="modal" element={<Modals />} />
-            <Route path="popover" element={<Popovers />} />
-            <Route path="popconfirm" element={<Popconfirms />} />
-            <Route path="progress" element={<Progress />} />
-            <Route path="result" element={<Results />} />
-            <Route path="alert" element={<Alerts />} />
-            <Route path="notification" element={<NotificationsUI />} />
-            <Route path="skeleton" element={<Skeletons />} />
           </Route>
         </Route>
         <Route path="/auth" element={<AuthLayoutFallback />}>

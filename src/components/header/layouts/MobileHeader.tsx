@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React from 'react';
 import { NotificationsDropdown } from '../components/notificationsDropdown/NotificationsDropdown';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
@@ -23,10 +23,6 @@ export const MobileHeader: React.FC<MobileHeaderProps> = ({ toggleSider, isSider
 
       <BaseCol>
         <BaseRow align="middle">
-          <BaseCol>
-            <NotificationsDropdown />
-          </BaseCol>
-
           <BaseCol>
             <HeaderSearch />
           </BaseCol>

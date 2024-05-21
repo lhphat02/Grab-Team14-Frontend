@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { media } from '@app/styles/themes/constants';
@@ -17,6 +17,11 @@ export const Sider = styled(BaseLayout.Sider)`
 
   color: var(--text-secondary-color);
 
+  // background-color: #00607a !important;
+  .ant-layout-sider-children {
+    background-color: #00607a;
+  }
+
   @media only screen and ${media.md} {
     right: unset;
     left: 0;
@@ -28,7 +33,7 @@ export const Sider = styled(BaseLayout.Sider)`
 `;
 
 export const CollapseButton = styled(BaseButton)<{ $isCollapsed: boolean }>`
-  background: var(--collapse-background-color);
+  background: var(--white);
 
   border: 1px solid var(--border-color);
   transition: all 0.2s ease;
@@ -59,6 +64,7 @@ export const CollapseButton = styled(BaseButton)<{ $isCollapsed: boolean }>`
 export const SiderContent = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
+  // background-color: var(--white);
   max-height: calc(100vh - ${LAYOUT.mobile.headerHeight});
 
   @media only screen and ${media.md} {
