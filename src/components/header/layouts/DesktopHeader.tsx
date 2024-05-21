@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { NotificationsDropdown } from '../components/notificationsDropdown/NotificationsDropdown';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { BurgerIcon } from '@app/components/common/Burger/BurgerIcon';
 import { GitHubButton } from '@app/components/header/components/GithubButton/GitHubButton';

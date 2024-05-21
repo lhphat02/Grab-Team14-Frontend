@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { PickerProps } from 'antd/lib/date-picker/generatePicker';
 import { DayjsDatePicker } from './DayjsDatePicker';

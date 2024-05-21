@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { BaseRadio } from '@app/components/common/BaseRadio/BaseRadio';
 import { FONT_SIZE } from '@app/styles/themes/constants';

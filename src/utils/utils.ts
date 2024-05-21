@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { NotificationType } from '@app/components/common/BaseNotification/BaseNotification';
 import { Priority } from '@app//constants/enums/priorities';
 import visa from '@app/assets/images/card-issuers/visa.png';

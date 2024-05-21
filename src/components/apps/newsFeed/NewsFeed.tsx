@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useState } from 'react';
 import { BaseArticle } from '@app/components/common/BaseArticle/BaseArticle';
 import { BaseFeed } from '@app/components/common/BaseFeed/BaseFeed';

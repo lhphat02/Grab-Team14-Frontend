@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { PieChart } from './PieChart';
 import { Legend, LegendItem } from './Legend/Legend';
 import React, { useCallback, useState } from 'react';

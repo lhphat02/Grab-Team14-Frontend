@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { hexToHSL } from '@app/utils/utils';

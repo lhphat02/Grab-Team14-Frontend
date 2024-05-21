@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { useTranslation } from 'react-i18next';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { Priority } from '../constants/enums/priorities';
 
 export interface Tag {

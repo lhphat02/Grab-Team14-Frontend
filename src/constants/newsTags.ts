@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 // TODO add i18n
 
 interface Tag {

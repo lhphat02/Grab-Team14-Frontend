@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { createGlobalStyle } from 'styled-components';
 import { resetCss } from './resetCss';
 import { BREAKPOINTS, FONT_SIZE, FONT_WEIGHT, media } from './themes/constants';

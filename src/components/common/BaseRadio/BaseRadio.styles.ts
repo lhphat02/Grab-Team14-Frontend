@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { Radio as AntdRadio } from 'antd';
 

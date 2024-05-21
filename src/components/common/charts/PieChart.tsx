@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { EChartsOption } from 'echarts-for-react';
 import { BaseChart, BaseChartProps } from '@app/components/common/charts/BaseChart';

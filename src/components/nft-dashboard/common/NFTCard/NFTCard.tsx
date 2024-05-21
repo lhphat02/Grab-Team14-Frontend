@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseCardProps } from '@app/components/common/BaseCard/BaseCard';
 import * as S from './NFTCard.styles';

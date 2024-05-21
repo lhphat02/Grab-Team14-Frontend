@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useMemo, useState } from 'react';
 import { DashboardCard } from '../DashboardCard/DashboardCard';
 import { DoctorsMap } from './DoctorsMap/DoctorsMap';

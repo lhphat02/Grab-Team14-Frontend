@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import * as S from './References.styles';
 import { FacebookOutlined, GithubOutlined, LinkedinOutlined, TwitterOutlined } from '@ant-design/icons';

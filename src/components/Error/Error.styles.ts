@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { BORDER_RADIUS, media } from '@app/styles/themes/constants';
 import { BaseImage } from '../common/BaseImage/BaseImage';

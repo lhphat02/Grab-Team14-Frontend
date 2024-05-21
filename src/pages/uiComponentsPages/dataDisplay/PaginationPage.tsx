@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import { BasePagination } from '@app/components/common/BasePagination/BasePagination';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';

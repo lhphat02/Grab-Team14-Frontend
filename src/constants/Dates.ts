@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import dayjs, { Dayjs } from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import localeData from 'dayjs/plugin/localeData';

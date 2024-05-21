@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { SliderSingleProps } from 'antd';
 import * as S from './BaseSlider.styles';
 

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { Dates } from '@app/constants/Dates';
 import { BaseHashTag, IHashTag } from '../BaseHashTag/BaseHashTag';

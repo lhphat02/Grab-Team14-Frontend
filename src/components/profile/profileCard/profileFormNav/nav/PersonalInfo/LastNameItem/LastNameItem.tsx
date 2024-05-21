@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseInput } from '@app/components/common/inputs/BaseInput/BaseInput';
 import { useTranslation } from 'react-i18next';

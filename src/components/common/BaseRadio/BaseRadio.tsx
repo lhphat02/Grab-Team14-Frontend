@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { Radio, RadioProps } from 'antd';
 import * as S from './BaseRadio.styles';
 

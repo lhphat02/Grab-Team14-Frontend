@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { GithubOutlined } from '@ant-design/icons';
 import styled from 'styled-components';

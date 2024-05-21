@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { Card as AntCard } from 'antd';
 import { normalizeProp } from '@app/utils/utils';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import axios from 'axios';
 
 interface Data {

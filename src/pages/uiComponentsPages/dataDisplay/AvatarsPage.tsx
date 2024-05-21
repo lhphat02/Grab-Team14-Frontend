@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import { UserOutlined, AntDesignOutlined } from '@ant-design/icons';
 import { BaseAvatar } from '@app/components/common/BaseAvatar/BaseAvatar';

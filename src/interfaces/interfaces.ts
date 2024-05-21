@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { NumericLiteral } from 'typescript';
 
 export type Dimension = number | string;

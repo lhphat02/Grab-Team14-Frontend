@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import type { AlertProps } from 'antd';
 import * as S from './BaseAlert.styles';

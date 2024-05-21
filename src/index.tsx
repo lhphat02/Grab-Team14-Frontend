@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';

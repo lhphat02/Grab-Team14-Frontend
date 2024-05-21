@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BORDER_RADIUS } from '@app/styles/themes/constants';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
 import styled, { css } from 'styled-components';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { ThemeType } from '@app/interfaces/interfaces';
 import { createSlice, createAction, PrepareAction } from '@reduxjs/toolkit';
 

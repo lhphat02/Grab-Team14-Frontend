@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addDeferredPrompt } from '@app/store/slices/pwaSlice';

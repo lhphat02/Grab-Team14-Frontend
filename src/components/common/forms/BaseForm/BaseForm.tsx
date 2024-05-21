@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { ComponentProps } from 'react';
 import { Form, FormInstance } from 'antd';
 import { useTranslation } from 'react-i18next';

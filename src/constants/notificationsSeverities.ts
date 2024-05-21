@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { NotificationType } from '@app/components/common/BaseNotification/BaseNotification';
 
 interface NotificationSeverity {

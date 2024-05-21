@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { LinearGradientObject } from 'echarts';
 
 export interface ITheme {

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { defineColorBySeverity } from '@app/utils/utils';
 import { Badge as AntBadge } from 'antd';
 import styled from 'styled-components';

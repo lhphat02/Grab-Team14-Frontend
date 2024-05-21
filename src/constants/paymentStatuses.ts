@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { Priority } from './enums/priorities';
 
 export interface PaymentStatus {

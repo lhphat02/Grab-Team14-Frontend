@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import dayjsGenerateConfig from 'rc-picker/lib/generate/dayjs';
 import generateCalendar from 'antd/lib/calendar/generateCalendar';

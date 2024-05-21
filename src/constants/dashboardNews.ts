@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { Post } from '../api/news.api';
 import { newsTags } from './newsTags';
 

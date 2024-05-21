@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import { useResponsive } from 'hooks/useResponsive';

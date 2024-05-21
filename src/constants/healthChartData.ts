@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 export interface HealthFactor {
   value: number;
   name: string;

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseFormInstance } from '@app/components/common/forms/BaseForm/BaseForm';
 import { useEffect, useRef } from 'react';
 

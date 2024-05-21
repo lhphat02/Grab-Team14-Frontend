@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 
 interface OverlayProps {

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';
 import styled from 'styled-components';

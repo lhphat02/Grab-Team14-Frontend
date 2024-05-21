@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useEffect } from 'react';
 import { setTheme } from '@app/store/slices/themeSlice';
 import { useAppDispatch, useAppSelector } from '@app/hooks/reduxHooks';

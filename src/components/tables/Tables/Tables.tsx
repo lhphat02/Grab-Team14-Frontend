@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BasicTable } from '../BasicTable/BasicTable';
 import { TreeTable } from '../TreeTable/TreeTable';

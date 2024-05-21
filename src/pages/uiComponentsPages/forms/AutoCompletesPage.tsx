@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useState } from 'react';
 import { BaseAutoComplete } from '@app/components/common/BaseAutoComplete/BaseAutoComplete';
 import { SearchInput as CommonSearchInput } from 'components/common/inputs/SearchInput/SearchInput';

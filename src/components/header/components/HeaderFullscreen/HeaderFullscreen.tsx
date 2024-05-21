@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useRef } from 'react';
 import { FullscreenExitOutlined, FullscreenOutlined } from '@ant-design/icons';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';

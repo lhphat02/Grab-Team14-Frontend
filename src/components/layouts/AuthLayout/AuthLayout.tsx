@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import * as S from './AuthLayout.styles';

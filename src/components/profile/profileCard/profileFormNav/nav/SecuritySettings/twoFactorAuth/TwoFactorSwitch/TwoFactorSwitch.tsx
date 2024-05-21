@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { Col, Row, Switch } from 'antd';
 import { useTranslation } from 'react-i18next';

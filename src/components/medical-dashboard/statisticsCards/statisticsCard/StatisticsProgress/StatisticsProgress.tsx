@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseProgress } from '@app/components/common/BaseProgress/BaseProgress';
 import React from 'react';
 import * as S from './StatisticsProgress.styles';

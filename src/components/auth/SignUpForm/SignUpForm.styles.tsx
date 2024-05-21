@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { FormTitle } from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 

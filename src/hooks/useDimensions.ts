@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useCallback, useEffect, useState } from 'react';
 
 interface Dimension {

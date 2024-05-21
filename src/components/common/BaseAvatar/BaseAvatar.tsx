@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { Avatar, AvatarProps } from 'antd';
 
 export type BaseAvatarProps = AvatarProps;

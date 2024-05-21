@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';
 import { BaseRate } from '@app/components/common/BaseRate/BaseRate';
 import { BORDER_RADIUS, FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';

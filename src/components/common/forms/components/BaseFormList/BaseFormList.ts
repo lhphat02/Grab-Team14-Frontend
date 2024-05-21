@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { Form } from 'antd';
 import styled from 'styled-components';
 

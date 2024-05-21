@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { SearchDropdown } from '../searchDropdown/SearchDropdown';

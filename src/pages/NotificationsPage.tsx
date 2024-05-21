@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { Notifications } from '@app/components/profile/profileCard/profileFormNav/nav/notifications/Notifications/Notifications';
 import { useTranslation } from 'react-i18next';

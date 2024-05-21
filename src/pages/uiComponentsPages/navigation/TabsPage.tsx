@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';

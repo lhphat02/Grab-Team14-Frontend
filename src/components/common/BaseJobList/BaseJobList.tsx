@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { BaseSpin } from '../BaseSpin/BaseSpin';

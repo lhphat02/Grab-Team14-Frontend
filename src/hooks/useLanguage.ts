@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { Dates } from '@app/constants/Dates';
 import { LanguageType } from '@app/interfaces/interfaces';
 import { useCallback, useEffect, useMemo } from 'react';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';

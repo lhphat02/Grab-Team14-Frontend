@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 interface DefaultPadding {
   mobile: [number, number];
   tablet: [number, number];

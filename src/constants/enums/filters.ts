@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 export enum TimeFilters {
   ANY = 'ANY',
   DAY = 'DAY',

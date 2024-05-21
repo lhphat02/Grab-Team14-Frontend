@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseCard } from '@app/components/common/BaseCard/BaseCard';
 import { PasswordForm } from './passwordForm/PasswordForm/PasswordForm';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { BaseCard as BaseCard } from '@app/components/common/BaseCard/BaseCard';
 

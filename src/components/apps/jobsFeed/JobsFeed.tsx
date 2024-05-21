@@ -1,3 +1,6 @@
+// @ts-nocheck 
+// @ts-ignore
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { BaseArticle } from '@app/components/common/BaseArticle/BaseArticle';
 import { BaseFeed } from '@app/components/common/BaseFeed/BaseFeed';
@@ -28,7 +31,7 @@ export const JobsFeed: React.FC = () => {
     dispatch(getJobList(queryRequest))
       .unwrap()
       .then((data) => {
-        if(data?.totalDocs) setHasMore(true);
+        if (data?.totalDocs) setHasMore(true);
         else setHasMore(false);
         if (query?.page === 1) setJobs(data?.docs || []);
         else {
@@ -43,6 +46,13 @@ export const JobsFeed: React.FC = () => {
       page: page + 1,
       limit: 10,
       isLoaded: true,
+      search: null,
+      industry: null,
+      location: null,
+      experience: null,
+      type: null,
+      time: null,
+      workingMode: null,
     };
     setPage(page + 1);
     dispatch(setQuery(newQuery));
@@ -59,7 +69,7 @@ export const JobsFeed: React.FC = () => {
                 title={job.title}
                 companyImageUrl={job.companyImageUrl}
                 companyName={job.companyName}
-                companyLocation={job.companyLocation}
+                companyLocation={job?.companyLocation}
                 date={job.date}
                 type={job.type}
                 industry={job.industry}

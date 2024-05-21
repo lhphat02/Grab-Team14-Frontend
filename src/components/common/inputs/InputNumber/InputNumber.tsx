@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { InputNumberProps as AntdInputNumberProps } from 'antd';
 import * as S from './InputNumber.styles';

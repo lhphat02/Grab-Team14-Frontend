@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';

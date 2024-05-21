@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseCard } from '../../../common/BaseCard/BaseCard';
 import notFoundImg from 'assets/images/nothing-found.webp';

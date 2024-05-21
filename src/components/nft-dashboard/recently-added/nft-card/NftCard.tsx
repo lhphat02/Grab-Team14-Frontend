@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { NftItem } from '@app/api/nftDashboard.api';

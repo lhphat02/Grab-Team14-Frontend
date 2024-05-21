@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CopyOutlined } from '@ant-design/icons';

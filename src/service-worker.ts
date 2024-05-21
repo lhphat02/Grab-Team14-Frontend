@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
 

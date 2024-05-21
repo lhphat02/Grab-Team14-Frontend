@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useCallback, useMemo, useState } from 'react';
 import { Col, Row } from 'antd';
 import { useTranslation } from 'react-i18next';

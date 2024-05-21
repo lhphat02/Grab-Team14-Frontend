@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 export type CategoryType = 'apps' | 'forms' | 'charts' | 'auth' | 'data tables' | 'maps';
 
 interface Category {

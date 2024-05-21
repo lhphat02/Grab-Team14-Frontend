@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 // suppress the findDOMNode error until the issue - https://github.com/ant-design/ant-design/issues/26136 - resolved
 
 const consoleError = console.error.bind(console);

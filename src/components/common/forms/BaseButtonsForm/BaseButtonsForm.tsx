@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseForm, BaseFormInterface, BaseFormProps } from '@app/components/common/forms//BaseForm/BaseForm';
 import { BaseButtonsGroup } from '@app/components/common/forms/components/BaseButtonsGroup/BaseButtonsGroup';

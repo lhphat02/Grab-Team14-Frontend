@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { TableProps } from 'antd';

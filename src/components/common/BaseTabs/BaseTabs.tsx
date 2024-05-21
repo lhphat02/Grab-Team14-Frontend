@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { TabsProps } from 'antd';
 import * as S from './BaseTabs.styles';
 

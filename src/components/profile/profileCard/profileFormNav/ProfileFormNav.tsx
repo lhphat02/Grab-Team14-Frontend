@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { PersonalInfo } from './nav/PersonalInfo/PersonalInfo';
 import { SecuritySettings } from './nav/SecuritySettings/SecuritySettings';

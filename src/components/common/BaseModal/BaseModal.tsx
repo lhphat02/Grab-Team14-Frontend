@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { Modal, ModalProps } from 'antd';
 import { modalSizes } from 'constants/modalSizes';

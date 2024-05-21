@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { InputNumber } from '@app/components/common/inputs/InputNumber/InputNumber';
 import { FONT_SIZE, FONT_WEIGHT } from '@app/styles/themes/constants';

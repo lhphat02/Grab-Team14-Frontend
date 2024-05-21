@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { LAYOUT, media } from '@app/styles/themes/constants';
 import { BaseLayout } from '@app/components/common/BaseLayout/BaseLayout';

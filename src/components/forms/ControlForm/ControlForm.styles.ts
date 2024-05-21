@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';

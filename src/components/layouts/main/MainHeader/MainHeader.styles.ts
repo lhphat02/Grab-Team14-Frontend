@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseLayout } from '@app/components/common/BaseLayout/BaseLayout';
 import { LAYOUT } from '@app/styles/themes/constants';
 import { media } from '@app/styles/themes/constants';

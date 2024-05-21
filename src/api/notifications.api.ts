@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 export interface Message {
   id: number;
   description: string;

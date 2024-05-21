@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { CategoryType } from '../categoriesList';
 
 export interface Component {

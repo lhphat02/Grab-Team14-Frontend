@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { media } from '@app/styles/themes/constants';

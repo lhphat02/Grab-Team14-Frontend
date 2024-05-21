@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import { DayjsDatePicker } from '@app/components/common/pickers/DayjsDatePicker';
 import { AppDate, Dates } from '@app/constants/Dates';

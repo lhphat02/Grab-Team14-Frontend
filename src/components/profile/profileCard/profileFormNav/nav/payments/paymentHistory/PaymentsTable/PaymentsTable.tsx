@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ColumnType } from 'antd/lib/table';

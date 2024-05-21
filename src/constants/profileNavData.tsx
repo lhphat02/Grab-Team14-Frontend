@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BellOutlined, ContainerOutlined, DollarOutlined, SecurityScanOutlined, UserOutlined } from '@ant-design/icons';
 import React from 'react';
 

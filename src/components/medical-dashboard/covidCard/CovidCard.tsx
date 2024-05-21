@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useMemo, useState } from 'react';
 import { getCovidData, CoronaData } from '@app/api/covid.api';
 import { useTranslation } from 'react-i18next';

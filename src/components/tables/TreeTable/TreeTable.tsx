@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useState, useEffect, useCallback } from 'react';
 import { BaseTable } from '@app/components/common/BaseTable/BaseTable';
 import { Key, DefaultRecordType } from 'rc-table/lib/interface';

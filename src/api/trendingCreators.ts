@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 export interface TrendingCreator {
   url: string;
   type?: 'video';

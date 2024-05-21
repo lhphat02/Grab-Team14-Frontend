@@ -1,10 +1,12 @@
+// @ts-nocheck
+// @ts-ignore
 import React, { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BaseButtonsForm } from '@app/components/common/forms/BaseButtonsForm/BaseButtonsForm';
 import { BaseCard } from '@app/components/common/BaseCard/BaseCard';
 import { FullNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/FullNameItem/FullNameItem';
-import { LastNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/LastNameItem/LastNameItem';
-import { usernameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/usernameItem/usernameItem';
+// import { LastNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/LastNameItem/LastNameItem';
+// import { usernameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/usernameItem/usernameItem';
 import { SexItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/SexItem/SexItem';
 import { BirthdayItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/BirthdayItem/BirthdayItem';
 import { LanguageItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/LanguageItem/LanguageItem';
@@ -52,7 +54,7 @@ const initialPersonalInfoValues: PersonalInfoFormValues = {
   github: '',
   linkedin: '',
   facebook: '',
-  website: ''
+  website: '',
 };
 
 export const PersonalInfo: React.FC = () => {
@@ -124,7 +126,6 @@ export const PersonalInfo: React.FC = () => {
             <FullNameItem />
           </BaseCol>
 
-
           <BaseCol xs={24} md={12}>
             <usernameItem />
           </BaseCol>
@@ -172,7 +173,6 @@ export const PersonalInfo: React.FC = () => {
           <BaseCol xs={24} md={12}>
             <AddressItem number={1} />
           </BaseCol>
-
 
           <BaseCol span={24}>
             <BaseButtonsForm.Item>

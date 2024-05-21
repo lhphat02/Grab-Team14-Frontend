@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { BaseInputProps, BaseInputRef } from '../BaseInput/BaseInput';

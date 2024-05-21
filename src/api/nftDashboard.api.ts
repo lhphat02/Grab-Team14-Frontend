@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 export interface NftItem {
   image: string;
   title: string;

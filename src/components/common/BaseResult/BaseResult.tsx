@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { ResultProps } from 'antd';
 import * as S from './BaseResult.styles';

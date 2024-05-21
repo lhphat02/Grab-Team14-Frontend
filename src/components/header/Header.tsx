@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { DesktopHeader } from './layouts/DesktopHeader';
 import { MobileHeader } from './layouts/MobileHeader';

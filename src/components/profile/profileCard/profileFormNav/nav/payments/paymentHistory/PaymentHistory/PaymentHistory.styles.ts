@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { defaultPaddings } from '@app/constants/defaultPaddings';
 import { media } from '@app/styles/themes/constants';

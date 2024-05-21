@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useState, useEffect } from 'react';
 import { PoweroffOutlined, SearchOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';

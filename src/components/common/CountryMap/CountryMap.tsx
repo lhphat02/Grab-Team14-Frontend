@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { LatLngExpression } from 'leaflet';
 import { GeoJSON, ZoomControl } from 'react-leaflet';

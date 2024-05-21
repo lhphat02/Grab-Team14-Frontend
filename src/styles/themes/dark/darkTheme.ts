@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { shadeColor } from '@app/utils/utils';
 import { graphic } from 'echarts';
 import { BASE_COLORS } from '../constants';

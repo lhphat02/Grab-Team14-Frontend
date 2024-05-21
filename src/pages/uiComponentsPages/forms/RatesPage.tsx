@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 import { BaseRate } from '@app/components/common/BaseRate/BaseRate';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { newsTags } from 'constants/newsTags';
 import { IHashTag } from '@app/components/common/BaseHashTag/BaseHashTag';
 

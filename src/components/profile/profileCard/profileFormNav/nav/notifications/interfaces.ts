@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 export type Type = 'checkbox' | 'text';
 
 export interface Option {

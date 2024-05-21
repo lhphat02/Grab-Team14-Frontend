@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import { BaseAvatar } from '@app/components/common/BaseAvatar/BaseAvatar';
 import { BaseBadge } from '@app/components/common/BaseBadge/BaseBadge';

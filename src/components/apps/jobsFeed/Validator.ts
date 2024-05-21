@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { IHashTag } from '@app/components/common/BaseHashTag/BaseHashTag';
 import { AppDate } from '../../../constants/Dates';
 

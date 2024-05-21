@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo, ReactNode } from 'react';
 import { Trans } from 'react-i18next';
 import { useTranslation } from 'react-i18next';

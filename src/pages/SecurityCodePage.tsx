@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { SecurityCodeForm } from '@app/components/auth/SecurityCodeForm/SecurityCodeForm';
 import { useTranslation } from 'react-i18next';

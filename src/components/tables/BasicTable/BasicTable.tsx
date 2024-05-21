@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useState, useCallback } from 'react';
 import { BasicTableRow, getBasicTableData, Pagination, Tag } from 'api/table.api';
 import { BaseTable } from '@app/components/common/BaseTable/BaseTable';

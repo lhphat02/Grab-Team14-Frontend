@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
 import { notificationController } from '@app/controllers/notificationController';

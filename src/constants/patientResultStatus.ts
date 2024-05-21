@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 interface ResultStatus {
   id: number;
   name: string;

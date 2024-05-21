@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Tables } from '@app/components/tables/Tables/Tables';

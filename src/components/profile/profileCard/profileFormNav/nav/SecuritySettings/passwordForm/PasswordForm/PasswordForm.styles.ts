@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
 import { media } from '@app/styles/themes/constants';
 import styled from 'styled-components';

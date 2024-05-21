@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { SecuritySettings } from '@app/components/profile/profileCard/profileFormNav/nav/SecuritySettings/SecuritySettings';

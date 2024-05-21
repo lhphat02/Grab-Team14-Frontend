@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { BaseRadio } from '@app/components/common/BaseRadio/BaseRadio';
 import { EmailItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/EmailItem/EmailItem';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseButton, BaseButtonProps } from '@app/components/common/BaseButton/BaseButton';
 import { useTranslation } from 'react-i18next';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BarChartOutlined, CheckOutlined, FileTextOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';

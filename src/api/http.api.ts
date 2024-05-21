@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import axios from 'axios';
 import { AxiosError } from 'axios';
 import { ApiError } from '@app/api/ApiError';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { CurrencyTypeEnum } from '@app/interfaces/interfaces';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */

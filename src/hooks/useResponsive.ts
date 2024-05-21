@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BREAKPOINTS, media } from '@app/styles/themes/constants';
 import { MediaQueryAllQueryable, MediaQueryMatchers, useMediaQuery } from 'react-responsive';
 

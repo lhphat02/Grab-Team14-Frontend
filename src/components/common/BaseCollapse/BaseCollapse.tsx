@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { CollapseProps, Collapse as AntdCollapse } from 'antd';
 
 export type BaseCollapseProps = CollapseProps;

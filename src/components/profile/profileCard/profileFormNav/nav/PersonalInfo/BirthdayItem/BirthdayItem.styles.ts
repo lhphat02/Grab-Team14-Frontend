@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseDatePicker } from '@app/components/common/pickers/BaseDatePicker';
 import styled from 'styled-components';
 

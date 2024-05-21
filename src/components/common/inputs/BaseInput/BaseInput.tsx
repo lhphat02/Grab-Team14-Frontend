@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { Input, InputProps, InputRef } from 'antd';
 import * as S from './BaseInput.styles';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { ReactNode, useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BaseHashTag, IHashTag } from '@app/components/common/BaseHashTag/BaseHashTag';

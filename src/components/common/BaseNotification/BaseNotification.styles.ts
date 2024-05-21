@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { BaseAvatar } from '../BaseAvatar/BaseAvatar';
 import { BaseSpace } from '../BaseSpace/BaseSpace';

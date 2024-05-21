@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 

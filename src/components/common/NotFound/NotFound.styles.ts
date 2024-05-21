@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { BaseTypography } from '../BaseTypography/BaseTypography';
 

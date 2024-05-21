@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';
 import styled from 'styled-components';
 

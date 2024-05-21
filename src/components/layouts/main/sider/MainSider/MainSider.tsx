@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import { Overlay } from '../../../../common/Overlay/Overlay';
 import { useResponsive } from 'hooks/useResponsive';

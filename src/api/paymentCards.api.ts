@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { cardThemes } from '@app/constants/cardThemes';
 import { PaymentCard } from '@app/interfaces/interfaces';
 

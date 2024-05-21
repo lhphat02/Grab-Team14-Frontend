@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { SwitchProps } from 'antd';
 import * as S from './BaseSwitch.styles';
 

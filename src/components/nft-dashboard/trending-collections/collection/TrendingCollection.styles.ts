@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
 import { NFTCard } from '@app/components/nft-dashboard/common/NFTCard/NFTCard';

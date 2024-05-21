@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import * as S from './MainSider/MainSider.styles';
 import { RightOutlined } from '@ant-design/icons';

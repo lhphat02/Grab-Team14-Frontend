@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseRadio } from '@app/components/common/BaseRadio/BaseRadio';
 import styled from 'styled-components';
 

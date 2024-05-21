@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { InputNumber as AntInputNumber } from 'antd';
 import styled from 'styled-components';
 

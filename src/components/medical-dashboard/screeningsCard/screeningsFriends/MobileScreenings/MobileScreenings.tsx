@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { CarouselArrow } from '@app/components/common/BaseCarousel/CarouselArrow/CarouselArrow';

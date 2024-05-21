@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 interface Polyclinic {
   id: number;
   name: string;

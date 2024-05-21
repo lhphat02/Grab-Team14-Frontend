@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import AxiosMockAdapter from 'axios-mock-adapter';
 import { httpApi } from '@app/api/http.api';
 

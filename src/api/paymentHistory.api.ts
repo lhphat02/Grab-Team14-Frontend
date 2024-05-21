@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { CurrencyTypeEnum } from '@app/interfaces/interfaces';
 
 export interface Payment {

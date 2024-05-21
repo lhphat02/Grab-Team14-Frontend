@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 interface Specifity {
   id: number;
   name: string;

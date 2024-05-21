@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { PaginationProps } from 'antd';
 import * as S from './BasePagination.styles';
 

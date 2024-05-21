@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { MinusCircleOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 

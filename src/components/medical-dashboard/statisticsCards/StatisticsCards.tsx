@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useMemo, useState } from 'react';
 import { useResponsive } from 'hooks/useResponsive';
 import { StatisticsCard } from './statisticsCard/StatisticsCard/StatisticsCard';

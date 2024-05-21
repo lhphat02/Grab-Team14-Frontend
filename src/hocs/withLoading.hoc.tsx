@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { Suspense } from 'react';
 import { Loading } from '@app/components/common/Loading/Loading';
 

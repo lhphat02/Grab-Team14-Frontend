@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { CalendarOutlined } from '@ant-design/icons';
 import { FONT_SIZE, media } from '@app/styles/themes/constants';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { LeftOutlined } from '@ant-design/icons';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';

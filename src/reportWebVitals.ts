@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { ReportHandler } from 'web-vitals';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

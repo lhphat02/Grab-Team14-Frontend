@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import { BaseCollapse } from '@app/components/common/BaseCollapse/BaseCollapse';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';

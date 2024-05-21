@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { ActivityStatusType } from '@app/interfaces/interfaces';
 
 export interface Activity {

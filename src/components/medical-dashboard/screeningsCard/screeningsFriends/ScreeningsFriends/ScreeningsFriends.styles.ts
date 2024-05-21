@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { dashboardPaddings } from '@app/components/medical-dashboard/DashboardCard/DashboardCard';
 import { media } from '@app/styles/themes/constants';

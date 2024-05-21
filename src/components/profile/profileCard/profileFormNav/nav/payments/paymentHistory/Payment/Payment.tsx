@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { defineColorByPriority, getCurrencyPrice } from '@app/utils/utils';

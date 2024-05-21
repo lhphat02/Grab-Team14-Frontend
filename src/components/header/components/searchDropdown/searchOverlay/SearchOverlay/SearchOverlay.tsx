@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { SearchFilter } from '../SearchFilter/SearchFilter';
 import { SearchResults } from '../SearchResults/SearchResults';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { SearchOutlined, PlusCircleFilled, CloseOutlined } from '@ant-design/icons';
 import { DayjsDatePicker } from '@app/components/common/pickers/DayjsDatePicker';

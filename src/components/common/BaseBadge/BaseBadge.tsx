@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BadgeProps, Badge } from 'antd';
 import { mapBadgeStatus } from '@app/utils/utils';

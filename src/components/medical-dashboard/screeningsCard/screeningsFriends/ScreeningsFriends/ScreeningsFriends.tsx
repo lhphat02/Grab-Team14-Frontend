@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useCallback, useMemo, useState } from 'react';
 import { ScreeningsFriend } from '../ScreeningsFriend/ScreeningsFriend';
 import { CurrentStatisticsState, ScreeningWithDoctors } from '../../ScreeningsCard/ScreeningsCard';

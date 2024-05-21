@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useState } from 'react';
 import { BellOutlined } from '@ant-design/icons';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';

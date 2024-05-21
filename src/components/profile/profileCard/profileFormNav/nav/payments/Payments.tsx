@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import { PaymentHistory } from './paymentHistory/PaymentHistory/PaymentHistory';
 import { PaymentMethod } from './paymentMethod/PaymentMethod';

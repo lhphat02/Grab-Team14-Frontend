@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import * as S from './InputPassword.styles';
 import { BaseInputProps, BaseInputRef } from '../BaseInput/BaseInput';

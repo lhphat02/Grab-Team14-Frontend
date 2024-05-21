@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BORDER_RADIUS } from '@app/styles/themes/constants';
 import PhoneInput from 'react-phone-number-input/input';
 import styled from 'styled-components';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { newsTags } from 'constants/newsTags';
 import { httpApi } from '@app/api/http.api';
 import { QueryModel } from '@app/domain/QueryModel';

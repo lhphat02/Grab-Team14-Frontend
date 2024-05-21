@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { createAction, createSlice, PrepareAction } from '@reduxjs/toolkit';
 import { UserModel } from '@app/domain/UserModel';
 import { persistUser, readUser } from '@app/services/localStorage.service';

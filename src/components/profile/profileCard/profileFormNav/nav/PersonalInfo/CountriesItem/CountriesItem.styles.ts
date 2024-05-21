@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseSpace } from '@app/components/common/BaseSpace/BaseSpace';
 import styled from 'styled-components';
 

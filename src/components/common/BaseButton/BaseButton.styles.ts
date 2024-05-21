@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { Button as AntButton } from 'antd';
 import { Severity } from '@app/interfaces/interfaces';

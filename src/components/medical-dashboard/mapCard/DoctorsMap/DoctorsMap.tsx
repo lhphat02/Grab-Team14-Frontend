@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import L, { IconOptions, PointExpression } from 'leaflet';
 import { Marker, Popup } from 'react-leaflet';

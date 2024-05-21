@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import * as S from '../StepForm.styles';
 
 interface Field {

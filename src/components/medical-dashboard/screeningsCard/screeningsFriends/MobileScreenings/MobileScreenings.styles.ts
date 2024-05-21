@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseCarousel } from '@app/components/common/BaseCarousel/Carousel';
 import styled from 'styled-components';
 

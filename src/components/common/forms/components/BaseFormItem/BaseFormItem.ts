@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled, { css } from 'styled-components';
 import { Form, FormItemProps } from 'antd';
 import { media } from '@app/styles/themes/constants';

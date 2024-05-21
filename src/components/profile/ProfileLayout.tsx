@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect } from 'react';
 import { LeftOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';

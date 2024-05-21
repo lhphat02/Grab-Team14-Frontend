@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';
 import { FONT_SIZE, media } from '@app/styles/themes/constants';

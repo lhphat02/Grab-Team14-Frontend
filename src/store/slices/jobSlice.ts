@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable prefer-const */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';

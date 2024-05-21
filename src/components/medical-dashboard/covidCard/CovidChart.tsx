@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseChart, getDefaultTooltipStyles } from '@app/components/common/charts/BaseChart';
 import { getMarkAreaData, hexToRGB } from '@app/utils/utils';

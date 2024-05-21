@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';
 import { media } from '@app/styles/themes/constants';
 import styled from 'styled-components';

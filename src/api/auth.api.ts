@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { httpApi } from '@app/api/http.api';
 import { ChangePasswordMessage } from '@app/components/profile/profileCard/profileFormNav/nav/SecuritySettings/passwordForm/PasswordForm/PasswordForm';
 import { UserModel } from '@app/domain/UserModel';

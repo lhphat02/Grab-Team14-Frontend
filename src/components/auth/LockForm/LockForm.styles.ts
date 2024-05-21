@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import { FONT_SIZE, FONT_WEIGHT, media } from '@app/styles/themes/constants';

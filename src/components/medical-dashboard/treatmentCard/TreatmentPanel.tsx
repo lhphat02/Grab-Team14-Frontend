@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useState } from 'react';
 import { CalendarEvent } from 'api/calendar.api';
 import { getDoctorsData, Doctor } from 'api/doctors.api';

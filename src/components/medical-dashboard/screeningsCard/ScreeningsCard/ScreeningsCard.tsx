@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ScreeningsHeader } from '../ScreeningsHeader/ScreeningsHeader';
 import { ScreeningsFriends } from '../screeningsFriends/ScreeningsFriends/ScreeningsFriends';

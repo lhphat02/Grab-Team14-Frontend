@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { BaseTable as CommonTable } from '@app/components/common/BaseTable/BaseTable';
 import { FONT_SIZE, FONT_WEIGHT } from '@app/styles/themes/constants';

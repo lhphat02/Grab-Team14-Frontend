@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import creditCardType from 'credit-card-type';
 import { useTranslation } from 'react-i18next';

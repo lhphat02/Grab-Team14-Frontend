@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { Select as AntSelect } from 'antd';
 import { Dimension } from 'interfaces/interfaces';

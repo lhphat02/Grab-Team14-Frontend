@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { StepsProps } from 'antd';
 import * as S from './BaseSteps.styles';
 

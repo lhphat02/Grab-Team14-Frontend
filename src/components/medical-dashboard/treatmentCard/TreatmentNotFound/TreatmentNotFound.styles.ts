@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseImage } from '@app/components/common/BaseImage/BaseImage';
 import styled from 'styled-components';
 

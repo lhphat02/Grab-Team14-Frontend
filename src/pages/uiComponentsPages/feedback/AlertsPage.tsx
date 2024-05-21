@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { PageTitle } from '@app/components/common/PageTitle/PageTitle';

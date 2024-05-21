@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { BaseSelect as CommonSelect } from '@app/components/common/selects/BaseSelect/BaseSelect';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';

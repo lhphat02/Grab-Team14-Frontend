@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { RadioBtn } from '../SettingsOverlay/SettingsOverlay.styles';

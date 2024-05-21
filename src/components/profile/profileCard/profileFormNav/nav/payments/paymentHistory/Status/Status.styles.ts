@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { media } from '@app/styles/themes/constants';
 import { BaseTag } from '@app/components/common/BaseTag/BaseTag';

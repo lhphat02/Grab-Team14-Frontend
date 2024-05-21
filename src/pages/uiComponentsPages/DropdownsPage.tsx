@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { DownOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';

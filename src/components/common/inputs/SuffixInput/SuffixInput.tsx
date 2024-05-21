@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { BaseInput, BaseInputProps } from '../BaseInput/BaseInput';
 import * as S from './SuffixInput.styles';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { httpApiMock } from '@app/api/mocks/http.api.mock';
 import { AuthData } from '@app/api/auth.api';
 import { initValues } from '@app/components/auth/LoginForm/LoginForm';

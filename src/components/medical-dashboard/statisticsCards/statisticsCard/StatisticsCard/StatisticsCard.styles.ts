@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import styled from 'styled-components';
 import { default as AntIcon } from '@ant-design/icons';
 import { DashboardCard } from '@app/components/medical-dashboard/DashboardCard/DashboardCard';

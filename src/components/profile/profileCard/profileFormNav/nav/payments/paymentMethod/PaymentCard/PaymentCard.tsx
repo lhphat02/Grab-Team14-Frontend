@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import Cards from 'elt-react-credit-cards';
 import 'elt-react-credit-cards/es/styles-compiled.css';

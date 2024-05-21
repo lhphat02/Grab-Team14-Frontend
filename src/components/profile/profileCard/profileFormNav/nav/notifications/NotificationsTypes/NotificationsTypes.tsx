@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';

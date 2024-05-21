@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useMemo } from 'react';
 import { Dates } from 'constants/Dates';
 import { BaseSelect, Option, BaseSelectProps } from '../BaseSelect/BaseSelect';

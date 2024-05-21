@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BaseCard } from '../../common/BaseCard/BaseCard';

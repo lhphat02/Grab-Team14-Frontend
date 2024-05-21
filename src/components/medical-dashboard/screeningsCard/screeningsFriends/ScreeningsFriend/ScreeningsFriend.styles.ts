@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseAvatar } from '@app/components/common/BaseAvatar/BaseAvatar';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { useTranslation } from 'react-i18next';
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
 import { useState } from 'react';

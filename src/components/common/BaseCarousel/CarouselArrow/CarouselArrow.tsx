@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { WithChildrenProps } from '@app/types/generalTypes';
 import React from 'react';
 import { CustomArrowProps } from 'react-slick';

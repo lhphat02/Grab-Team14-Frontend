@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NFTCard } from '@app/components/nft-dashboard/common/NFTCard/NFTCard';

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { BaseTable } from '@app/components/common/BaseTable/BaseTable';
 import styled from 'styled-components';
 

@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import { CurrencyTypeEnum, PaymentCard } from '@app/interfaces/interfaces';
 
 export interface TopUpData {

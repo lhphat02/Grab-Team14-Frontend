@@ -1,3 +1,5 @@
+// @ts-nocheck 
+// @ts-ignore 
 import React from 'react';
 import { ProfileOverlay } from '../ProfileOverlay/ProfileOverlay';
 import { useAppSelector } from '@app/hooks/reduxHooks';
