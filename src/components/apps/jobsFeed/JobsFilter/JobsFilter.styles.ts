@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import styled from 'styled-components';
 import { SearchOutlined, PlusCircleFilled, CloseOutlined } from '@ant-design/icons';
 import { DayjsDatePicker } from '@app/components/common/pickers/DayjsDatePicker';
@@ -155,7 +155,7 @@ export const FilterWrapper = styled.div`
     position: sticky;
     top: 1.875rem;
     padding: 1.25rem 1rem;
-    filter: drop-shadow(0 4px 40px rgba(0, 0, 0, 0.07));
+    // filter: drop-shadow(0 4px 40px rgba(0, 0, 0, 0.07));
     background: var(--background-color);
     border-radius: ${BORDER_RADIUS};
   }

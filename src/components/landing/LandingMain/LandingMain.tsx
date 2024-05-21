@@ -1,7 +1,4 @@
 import React, { useRef } from 'react';
-// import HeroSlide from '../components/features/landing/HeroSlide';
-// import CategorySlide from '@app/components/features/landing/CategorySlide';
-// import SignUpSuggestionSlide from '@app/components/features/landing/SignUpSuggestionSlide';
 import { UpOutlined } from '@ant-design/icons';
 import * as S from './LandingMain.styles';
 import HeroSlide from '../HeroSlide/HeroSlide';
