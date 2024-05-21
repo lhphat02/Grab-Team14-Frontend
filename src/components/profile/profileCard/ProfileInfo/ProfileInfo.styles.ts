@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import styled from 'styled-components';
 import { media } from '@app/styles/themes/constants';
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';
@@ -23,11 +23,11 @@ export const ImgWrapper = styled.div`
 
   background: conic-gradient(
     from -35.18deg at 50% 50%,
-    #006ccf -154.36deg,
-    #ff5252 24.13deg,
-    #ffb155 118.76deg,
-    #006ccf 205.64deg,
-    #ff5252 384.13deg
+    #00607a -154.36deg,
+    #005066 24.13deg,
+    #004052 118.76deg,
+    #00303d 205.64deg,
+    #002029 384.13deg
   );
 
   @media only screen and ${media.xl} {

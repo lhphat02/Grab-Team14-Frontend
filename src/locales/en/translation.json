@@ -583,7 +583,7 @@
   },
   "newsFeed": {
     "apply": "Apply",
-    "Search": "Job title, keywords, or company name",
+    "Search": "Job titles, keyword...",
     "filter": "Filter",
     "from": "From",
     "reset": "Reset",
@@ -593,7 +593,7 @@
   },
   "jobsFeed": {
     "apply": "Apply",
-    "Search": "Job title, keywords, or company name",
+    "Search": "Job titles, keyword...",
     "filter": "Filter",
     "from": "From",
     "reset": "Reset",
@@ -601,10 +601,10 @@
     "titleSearch": "Title",
     "to": "To",
     "type": "Job Type",
-    "workingMode": "Working Mode",
+    "workingMode": "Arrangement",
     "experienceLevel": "Experience Level",
     "industry": "Industry",
-    "time": "Time"
+    "time": "Sort by Time"
   },
   "notifications": {
     "basic": "Basic notification",

@@ -8,7 +8,7 @@ export interface JobListResponse {
   id: string;
   title: string;
   date: Date;
-  companyName: string;
+  company: string;
   companyLink: string;
   companyImageUrl: string;
   location?: string;
@@ -24,7 +24,7 @@ export interface JobDetailResponse {
   id: string;
   title: string;
   date: Date;
-  companyName: string;
+  company: string;
   companyLink: string;
   companyImageUrl: string;
   location?: string;

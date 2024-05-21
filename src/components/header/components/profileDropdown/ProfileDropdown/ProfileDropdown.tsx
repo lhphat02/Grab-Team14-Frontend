@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React from 'react';
 import { ProfileOverlay } from '../ProfileOverlay/ProfileOverlay';
 import { useAppSelector } from '@app/hooks/reduxHooks';
@@ -19,7 +19,12 @@ export const ProfileDropdown: React.FC = () => {
     <BasePopover content={<ProfileOverlay />} trigger="click">
       <S.ProfileDropdownHeader as={BaseRow} gutter={[10, 10]} align="middle">
         <BaseCol>
-          <BaseAvatar src={user.imgUrl} alt="User" shape="circle" size={40} />
+          <BaseAvatar
+            src="https://seeklogo.com/images/G/grab-logo-7020E74857-seeklogo.com.png"
+            alt="User"
+            shape="circle"
+            size={40}
+          />
         </BaseCol>
         {isTablet && (
           <BaseCol>

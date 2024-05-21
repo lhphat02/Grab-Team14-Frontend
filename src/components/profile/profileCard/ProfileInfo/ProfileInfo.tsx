@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { UserModel } from '@app/domain/UserModel';
@@ -18,14 +18,18 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({ profileData }) => {
   return profileData ? (
     <S.Wrapper>
       <S.ImgWrapper>
-        <BaseAvatar shape="circle" src={profileData?.imgUrl} alt="Profile" />
+        <BaseAvatar
+          shape="circle"
+          src="https://seeklogo.com/images/G/grab-logo-7020E74857-seeklogo.com.png"
+          alt="Profile"
+        />
       </S.ImgWrapper>
       <S.Title>{`${profileData?.fullName || profileData?.username}`}</S.Title>
       <S.Subtitle>{profileData?.username}</S.Subtitle>
-      <S.FullnessWrapper>
+      {/* <S.FullnessWrapper>
         <S.FullnessLine width={fullness}>{fullness}%</S.FullnessLine>
-      </S.FullnessWrapper>
-      <S.Text>{t('profile.fullness')}</S.Text>
+      </S.FullnessWrapper> */}
+      {/* <S.Text>{t('profile.fullness')}</S.Text> */}
     </S.Wrapper>
   ) : null;
 };

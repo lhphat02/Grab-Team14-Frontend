@@ -7,6 +7,13 @@ import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypogr
 
 export const JobCard = styled(NFTCard)`
   box-shadow: var(--box-shadow-nft-secondary-color);
+  border-radius: 0.625rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -16,6 +23,15 @@ export const Wrapper = styled.div`
 
 export const ImgWrapper = styled.div`
   position: relative;
+  width: 84px;
+  height: 84px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const IconWrapper = styled.div`
@@ -48,7 +64,8 @@ export const InfoHeaderWrapper = styled.div`
 
 export const InfoBottomWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const TitleWrapper = styled.div`
@@ -59,6 +76,8 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled(BaseTypography.Title)`
   &.ant-typography {
+    color: var(--primary-color);
+
     margin-bottom: 0;
 
     font-size: ${FONT_SIZE.xs};
@@ -87,4 +106,19 @@ export const DateText = styled(Text)`
   font-style: italic;
 
   font-family: ${FONT_FAMILY.main};
+`;
+
+export const Label = styled(BaseTypography.Text)`
+  font-size: ${FONT_SIZE.xxs};
+  font-weight: 500;
+  color: var(--text-nft-light-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  color: white;
+  background-color: var(--primary-color);
+`;
+
+export const LabelWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
 `;

@@ -68,7 +68,7 @@ export const BtnWrapper = styled.div`
 `;
 
 export const PlusIcon = styled(PlusCircleFilled)`
-  color: var(--lightgrey);
+  color: var(--primary-color);
   font-size: 1.5625rem;
   margin-right: 1rem;
 `;
@@ -109,11 +109,10 @@ export const Input = styled(BaseInput)`
   height: 3.125rem;
   border: none;
   background: var(--secondary-background-color);
-  border-radius: 3.125rem;
   padding-left: 3rem;
   color: var(--text-main-color);
-  font-size: ${FONT_SIZE.md};
-  font-weight: ${FONT_WEIGHT.semibold};
+  font-size: ${FONT_SIZE.xs};
+  font-weight: ${FONT_WEIGHT.regular};
   line-height: 1.375rem;
 `;
 
@@ -154,10 +153,10 @@ export const FilterWrapper = styled.div`
     margin-left: 1.875rem;
     position: sticky;
     top: 1.875rem;
-    padding: 1.25rem 1rem;
-    // filter: drop-shadow(0 4px 40px rgba(0, 0, 0, 0.07));
+    padding: 2rem 2rem;
     background: var(--background-color);
     border-radius: ${BORDER_RADIUS};
+    gap: 0.625rem;
   }
 `;
 

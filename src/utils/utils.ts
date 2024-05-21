@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import { NotificationType } from '@app/components/common/BaseNotification/BaseNotification';
 import { Priority } from '@app//constants/enums/priorities';
 import visa from '@app/assets/images/card-issuers/visa.png';
@@ -189,4 +189,12 @@ export const mapBadgeStatus = (status: BaseBadgeProps['status']): Severity => {
   }
 
   return status;
+};
+
+export const formatDate = (date: Date | string, region = 'en-US'): string => {
+  return new Date(date).toLocaleDateString(region, {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
 };

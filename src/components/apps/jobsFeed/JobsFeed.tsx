@@ -1,4 +1,4 @@
-// @ts-nocheck 
+// @ts-nocheck
 // @ts-ignore
 // @ts-nocheck
 import React, { useEffect, useState } from 'react';
@@ -64,18 +64,7 @@ export const JobsFeed: React.FC = () => {
         filteredJobs?.length || !loaded ? (
           <BaseJobList next={next} hasMore={hasMore}>
             {filteredJobs.map((job, index) => (
-              <BaseJob
-                id = {job.id}
-                key={index}
-                title={job.title}
-                companyImageUrl={job.companyImageUrl}
-                companyName={job.companyName}
-                companyLocation={job?.companyLocation}
-                date={job.date}
-                type={job.type}
-                industry={job.industry}
-                experience={job.experience}
-              />
+              <BaseJob jobData={job} key={index} />
             ))}
           </BaseJobList>
         ) : (

@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React, { useEffect, useState } from 'react';
 import { Header } from '../../../header/Header';
 import MainSider from '../sider/MainSider/MainSider';

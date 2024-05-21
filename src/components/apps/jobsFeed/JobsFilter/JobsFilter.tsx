@@ -1,5 +1,3 @@
-// @ts-nocheck
-// @ts-ignore
 import React, { ReactNode, useState, useEffect, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BaseHashTag, IHashTag } from '@app/components/common/BaseHashTag/BaseHashTag';
@@ -87,7 +85,7 @@ const Filter: React.FC<Filter> = ({
           </S.TagPopoverLine>
         ),
       })),
-    [industriesFilter, selectedIndustry, onClick],
+    [selectedIndustry, updateFilteredField, onclick],
   );
 
   const workingModeItems = useMemo(
@@ -107,7 +105,7 @@ const Filter: React.FC<Filter> = ({
           </S.TagPopoverLine>
         ),
       })),
-    [selectedWorkingMode, onClick],
+    [selectedWorkingMode, updateFilteredField, onclick],
   );
 
   const typeItems = useMemo(
@@ -127,7 +125,7 @@ const Filter: React.FC<Filter> = ({
           </S.TagPopoverLine>
         ),
       })),
-    [typesFilter, selectedType, onClick],
+    [selectedType, updateFilteredField, onclick],
   );
 
   const experienceItems = useMemo(
@@ -172,7 +170,7 @@ const Filter: React.FC<Filter> = ({
 
   return (
     <S.FilterWrapper>
-      {!mobileOnly && <S.FilterTitle>{t('jobsFeed.filter')}</S.FilterTitle>}
+      {/* {!mobileOnly && <S.FilterTitle>{t('jobsFeed.filter')}</S.FilterTitle>} */}
 
       <S.InputWrapper>
         <S.SearchIcon />
@@ -183,15 +181,7 @@ const Filter: React.FC<Filter> = ({
         />
       </S.InputWrapper>
 
-      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: industryItems }}>
-        <S.AddTagWrapper>
-          <S.PlusIcon />
-          <S.AddTagText>{t('jobsFeed.industry')}</S.AddTagText>
-        </S.AddTagWrapper>
-      </BaseDropdown>
-
       <S.AddTagWrapper>
-        <S.PlusIcon />
         <Select
           showSearch
           style={{ width: 200 }}
@@ -208,16 +198,10 @@ const Filter: React.FC<Filter> = ({
         />
       </S.AddTagWrapper>
 
-      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: industryItems }}>
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: timeItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
-          <S.AddTagText>{t('jobsFeed.type')}</S.AddTagText>
-        </S.AddTagWrapper>
-      </BaseDropdown>
-      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: workingModeItems }}>
-        <S.AddTagWrapper>
-          <S.PlusIcon />
-          <S.AddTagText>{t('jobsFeed.workingMode')}</S.AddTagText>
+          <S.AddTagText>{t('jobsFeed.time')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
 
@@ -228,6 +212,13 @@ const Filter: React.FC<Filter> = ({
         </S.AddTagWrapper>
       </BaseDropdown>
 
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: workingModeItems }}>
+        <S.AddTagWrapper>
+          <S.PlusIcon />
+          <S.AddTagText>{t('jobsFeed.workingMode')}</S.AddTagText>
+        </S.AddTagWrapper>
+      </BaseDropdown>
+
       <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: experienceItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
@@ -235,10 +226,10 @@ const Filter: React.FC<Filter> = ({
         </S.AddTagWrapper>
       </BaseDropdown>
 
-      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: timeItems }}>
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: industryItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
-          <S.AddTagText>{t('jobsFeed.time')}</S.AddTagText>
+          <S.AddTagText>{t('jobsFeed.industry')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
 
@@ -377,6 +368,9 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
                 onApply={handleClickApply}
                 onReset={handleClickReset}
                 updateFilteredField={updateFilteredField}
+                jobsTagData={[]}
+                selectedTagsIds={[]}
+                selectedTags={[]}
               />
             }
           >
@@ -401,6 +395,9 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
             onApply={handleClickApply}
             onReset={handleClickReset}
             updateFilteredField={updateFilteredField}
+            jobsTagData={[]}
+            selectedTagsIds={[]}
+            selectedTags={[]}
           />
         )}
       </S.ContentWrapper>
