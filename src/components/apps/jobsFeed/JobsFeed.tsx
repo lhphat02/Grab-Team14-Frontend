@@ -65,6 +65,7 @@ export const JobsFeed: React.FC = () => {
           <BaseJobList next={next} hasMore={hasMore}>
             {filteredJobs.map((job, index) => (
               <BaseJob
+                id = {job.id}
                 key={index}
                 title={job.title}
                 companyImageUrl={job.companyImageUrl}
