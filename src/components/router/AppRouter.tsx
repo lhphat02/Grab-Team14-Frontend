@@ -19,6 +19,7 @@ import { withLoading } from '@app/hocs/withLoading.hoc';
 import NftDashboardPage from '@app/pages/DashboardPages/NftDashboardPage';
 import MedicalDashboardPage from '@app/pages/DashboardPages/MedicalDashboardPage';
 import { JobsFeed } from '../apps/jobsFeed/JobsFeed';
+import { HistoryJobsFeed } from '../historyJobsFeed/HistoryJobsFeed';
 
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
 const ServerErrorPage = React.lazy(() => import('@app/pages/ServerErrorPage'));
@@ -34,6 +35,7 @@ export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
 
 // const NewsFeed = withLoading(NewsFeedPage);
 const JobsFeedPage = withLoading(JobsFeed);
+const HistoryJobsFeedPage = withLoading(HistoryJobsFeed);
 const Landing = withLoading(LandingPage);
 
 const ServerError = withLoading(ServerErrorPage);
@@ -63,6 +65,7 @@ export const AppRouter: React.FC = () => {
 
         <Route path={HOME_PATH} element={protectedLayout}>
           <Route path="jobs" index element={<JobsFeedPage />} />
+          <Route path="history" element={<HistoryJobsFeedPage />} />
           {/* HomePage Router */}
           {/* <Route path="apps">
             <Route path="feed" element={<NewsFeed />} />

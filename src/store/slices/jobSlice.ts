@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable prefer-const */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { PaginationResponse, getJobDetailAPI, getJobListAPI } from '@app/api/jobs.api';
+import { PaginationResponse, getHistoryJobListAPI, getJobDetailAPI, getJobListAPI } from '@app/api/jobs.api';
 import { useAppSelector } from '@app/hooks/reduxHooks';
 import { setQuery } from './querySlice';
 import { QueryModel } from '@app/domain/QueryModel';
@@ -52,6 +52,12 @@ export const getJobList = createAsyncThunk('job/getJobList', async (queryRequest
 
 export const getJobDetail = createAsyncThunk('job/getJobDetail', async (id: string) => {
   return getJobDetailAPI(id).then((res) => {
+    return res;
+  });
+});
+
+export const getHistoryJobList = createAsyncThunk('job/getUserJobList', async () => {
+  return getHistoryJobListAPI().then((res) => {
     return res;
   });
 });
