@@ -21,95 +21,20 @@ import MedicalDashboardPage from '@app/pages/DashboardPages/MedicalDashboardPage
 import { JobsFeed } from '../apps/jobsFeed/JobsFeed';
 
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
-const DataTablesPage = React.lazy(() => import('@app/pages/DataTablesPage'));
-const ChartsPage = React.lazy(() => import('@app/pages/ChartsPage'));
 const ServerErrorPage = React.lazy(() => import('@app/pages/ServerErrorPage'));
 const Error404Page = React.lazy(() => import('@app/pages/Error404Page'));
-const AdvancedFormsPage = React.lazy(() => import('@app/pages/AdvancedFormsPage'));
 const PersonalInfoPage = React.lazy(() => import('@app/pages/PersonalInfoPage'));
 const SecuritySettingsPage = React.lazy(() => import('@app/pages/SecuritySettingsPage'));
 const UploadCVPage = React.lazy(() => import('@app/pages/UploadCVPage'));
-const PaymentsPage = React.lazy(() => import('@app/pages/PaymentsPage'));
-const ButtonsPage = React.lazy(() => import('@app/pages/uiComponentsPages/ButtonsPage'));
-const SpinnersPage = React.lazy(() => import('@app/pages/uiComponentsPages/SpinnersPage'));
-const AvatarsPage = React.lazy(() => import('@app/pages/uiComponentsPages/dataDisplay/AvatarsPage'));
-const BadgesPage = React.lazy(() => import('@app/pages/uiComponentsPages/dataDisplay/BadgesPage'));
-const CollapsePage = React.lazy(() => import('@app/pages/uiComponentsPages/dataDisplay/CollapsePage'));
-const PaginationPage = React.lazy(() => import('@app/pages/uiComponentsPages/dataDisplay/PaginationPage'));
-const ModalsPage = React.lazy(() => import('@app/pages/uiComponentsPages/modals/ModalsPage'));
-const PopoversPage = React.lazy(() => import('@app/pages/uiComponentsPages/modals/PopoversPage'));
-const PopconfirmsPage = React.lazy(() => import('@app/pages/uiComponentsPages/modals/PopconfirmsPage'));
-const ProgressPage = React.lazy(() => import('@app/pages/uiComponentsPages/feedback/ProgressPage'));
-const ResultsPage = React.lazy(() => import('@app/pages/uiComponentsPages/feedback/ResultsPage'));
-const AlertsPage = React.lazy(() => import('@app/pages/uiComponentsPages/feedback/AlertsPage'));
-const SkeletonsPage = React.lazy(() => import('@app/pages/uiComponentsPages/feedback/SkeletonsPage'));
-const InputsPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/InputsPage'));
-const CheckboxesPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/CheckboxesPage'));
-const RadiosPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/RadiosPage'));
-const SelectsPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/SelectsPage'));
-const SwitchesPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/SwitchesPage'));
-const UploadsPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/UploadsPage'));
-const RatesPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/RatesPage'));
-const AutoCompletesPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/AutoCompletesPage'));
-const StepsPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/StepsPage'));
-const DateTimePickersPage = React.lazy(() => import('@app/pages/uiComponentsPages/forms/DateTimePickersPage'));
-const DropdownsPage = React.lazy(() => import('@app/pages/uiComponentsPages/DropdownsPage'));
-const BreadcrumbsPage = React.lazy(() => import('@app/pages/uiComponentsPages/navigation/BreadcrumbsPage'));
-const TabsPage = React.lazy(() => import('@app/pages/uiComponentsPages/navigation/TabsPage'));
-const NotificationsUIPage = React.lazy(() => import('@app/pages/uiComponentsPages/feedback/NotificationsPage'));
-const GoogleMaps = React.lazy(() => import('@app/pages/maps/GoogleMapsPage/GoogleMapsPage'));
-const LeafletMaps = React.lazy(() => import('@app/pages/maps/LeafletMapsPage/LeafletMapsPage'));
-const ReactSimpleMaps = React.lazy(() => import('@app/pages/maps/ReactSimpleMapsPage/ReactSimpleMapsPage'));
-const PigeonsMaps = React.lazy(() => import('@app/pages/maps/PigeonsMapsPage/PigeonsMapsPage'));
 const Logout = React.lazy(() => import('./Logout'));
 const LandingPage = React.lazy(() => import('@app/components/landing/LandingMain/LandingMain'));
 
 export const NFT_DASHBOARD_PATH = '/';
 export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
 
-const MedicalDashboard = withLoading(MedicalDashboardPage);
-const NftDashboard = withLoading(NftDashboardPage);
-const NewsFeed = withLoading(NewsFeedPage);
-const AdvancedForm = withLoading(AdvancedFormsPage);
+// const NewsFeed = withLoading(NewsFeedPage);
+const JobsFeedPage = withLoading(JobsFeed);
 const Landing = withLoading(LandingPage);
-
-// UI Components
-const Buttons = withLoading(ButtonsPage);
-const Spinners = withLoading(SpinnersPage);
-const Inputs = withLoading(InputsPage);
-const Checkboxes = withLoading(CheckboxesPage);
-const Radios = withLoading(RadiosPage);
-const Selects = withLoading(SelectsPage);
-const Switches = withLoading(SwitchesPage);
-const Uploads = withLoading(UploadsPage);
-const Rates = withLoading(RatesPage);
-const AutoCompletes = withLoading(AutoCompletesPage);
-const Steps = withLoading(StepsPage);
-const DateTimePickers = withLoading(DateTimePickersPage);
-const Dropdowns = withLoading(DropdownsPage);
-const Breadcrumbs = withLoading(BreadcrumbsPage);
-const Tabs = withLoading(TabsPage);
-const Avatars = withLoading(AvatarsPage);
-const Badges = withLoading(BadgesPage);
-const Collapse = withLoading(CollapsePage);
-const Pagination = withLoading(PaginationPage);
-const Modals = withLoading(ModalsPage);
-const Popovers = withLoading(PopoversPage);
-const Popconfirms = withLoading(PopconfirmsPage);
-const Progress = withLoading(ProgressPage);
-const Results = withLoading(ResultsPage);
-const Alerts = withLoading(AlertsPage);
-const NotificationsUI = withLoading(NotificationsUIPage);
-const Skeletons = withLoading(SkeletonsPage);
-
-const DataTables = withLoading(DataTablesPage);
-const Charts = withLoading(ChartsPage);
-
-// Maps
-const Google = withLoading(GoogleMaps);
-const Leaflet = withLoading(LeafletMaps);
-const ReactSimple = withLoading(ReactSimpleMaps);
-const Pigeons = withLoading(PigeonsMaps);
 
 const ServerError = withLoading(ServerErrorPage);
 const Error404 = withLoading(Error404Page);
@@ -118,7 +43,6 @@ const Error404 = withLoading(Error404Page);
 const PersonalInfo = withLoading(PersonalInfoPage);
 const SecuritySettings = withLoading(SecuritySettingsPage);
 const UploadCV = withLoading(UploadCVPage);
-const Payments = withLoading(PaymentsPage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
 const LogoutFallback = withLoading(Logout);
@@ -138,11 +62,11 @@ export const AppRouter: React.FC = () => {
         <Route path={HOME_PATH} element={<Landing />} />
 
         <Route path={HOME_PATH} element={protectedLayout}>
+          <Route path="jobs" index element={<JobsFeedPage />} />
           {/* HomePage Router */}
-          <Route path="jobs" index element={<JobsFeed />} />
-          <Route path="apps">
+          {/* <Route path="apps">
             <Route path="feed" element={<NewsFeed />} />
-          </Route>
+          </Route> */}
           {/* Products Router */}
           <Route path="server-error" element={<ServerError />} />
           <Route path="404" element={<Error404 />} />

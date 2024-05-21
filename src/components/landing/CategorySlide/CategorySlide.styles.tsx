@@ -19,7 +19,7 @@ export const Title = styled.h2`
   text-align: center;
 
   @media (min-width: 768px) {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 `;
 

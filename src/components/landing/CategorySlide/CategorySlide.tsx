@@ -18,7 +18,7 @@ import {
 const industries = [
   { name: 'IT & Media', icon: <DesktopOutlined />, value: 'TECHNOLOGY_INFORMATION_AND_MEDIA' },
   { name: 'Administration', icon: <ApartmentOutlined />, value: 'ADMINISTRATIVE_AND_SUPPOR_SERVICES' },
-  { name: 'Agriculture', icon: <FireOutlined />, value: 'FARMING_RANCHING_FORESTRY' },
+  //   { name: 'Agriculture', icon: <FireOutlined />, value: 'FARMING_RANCHING_FORESTRY' },
   { name: 'Financial', icon: <DollarOutlined />, value: 'FINANCIAL_SERVICES' },
   { name: 'Construction', icon: <ToolOutlined />, value: 'CONSTRUCTION' },
   { name: 'Accommodation', icon: <HomeOutlined />, value: 'ACCOMMODATION_SERVICES' },

@@ -6,6 +6,7 @@ import { UpOutlined } from '@ant-design/icons';
 import * as S from './LandingMain.styles';
 import HeroSlide from '../HeroSlide/HeroSlide';
 import CategorySlide from '../CategorySlide/CategorySlide';
+import SignupPromptSlide from '../SignupPromptSlide/SignupPromptSlide';
 
 const LandingMain: React.FC = (): React.ReactElement => {
   const slideTwo = useRef<HTMLDivElement | null>(null);
@@ -39,7 +40,9 @@ const LandingMain: React.FC = (): React.ReactElement => {
         <CategorySlide onSlideChange={() => scrollToSlide(slideThree)} />
       </S.SlideContainer>
 
-      <S.SlideContainer ref={slideThree}>{/* <SignUpSuggestionSlide /> */}</S.SlideContainer>
+      <S.SlideContainer ref={slideThree}>
+        <SignupPromptSlide />
+      </S.SlideContainer>
     </S.Container>
   );
 };

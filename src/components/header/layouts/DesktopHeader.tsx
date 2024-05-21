@@ -19,14 +19,14 @@ export const DesktopHeader: React.FC<DesktopHeaderProps> = ({ isTwoColumnsLayout
     <S.SearchColumn xl={16} xxl={17}>
       <BaseRow justify="space-between">
         <BaseCol xl={15} xxl={12}>
-          <HeaderSearch />
+          {/* <HeaderSearch /> */}
         </BaseCol>
       </BaseRow>
     </S.SearchColumn>
   ) : (
     <>
       <BaseCol lg={10} xxl={8}>
-        <HeaderSearch />
+        {/* <HeaderSearch /> */}
       </BaseCol>
     </>
   );
