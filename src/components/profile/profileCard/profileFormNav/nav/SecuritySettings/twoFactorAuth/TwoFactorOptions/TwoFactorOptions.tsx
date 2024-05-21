@@ -31,19 +31,19 @@ export const TwoFactorOptions: React.FC<TwoFactorOptionsProps> = ({ selectedOpti
   );
 
   useEffect(() => {
-    if (user?.email.verified && user?.phone.verified) {
+    if (true) {
       setSelectedOption(null);
     }
-  }, [setSelectedOption, user?.email.verified, user?.phone.verified]);
+  }, [setSelectedOption]);
 
   return (
     <>
       <BaseRadio.Group value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
-        <S.RadioBtn value="phone" $isActive={isPhoneActive} disabled={user?.phone.verified}>
-          <PhoneItem required={isPhoneActive} onClick={onClickInput('phone')} verified={user?.phone.verified} />
+        <S.RadioBtn value="phone" $isActive={isPhoneActive} disabled={true}>
+          <PhoneItem required={isPhoneActive} onClick={onClickInput('phone')} verified={true} />
         </S.RadioBtn>
-        <S.RadioBtn value="email" $isActive={isEmailActive} disabled={user?.email.verified}>
-          <EmailItem required={isEmailActive} onClick={onClickInput('email')} verified={user?.email.verified} />
+        <S.RadioBtn value="email" $isActive={isEmailActive} disabled={true}>
+          <EmailItem required={isEmailActive} onClick={onClickInput('email')} verified={true} />
         </S.RadioBtn>
       </BaseRadio.Group>
     </>

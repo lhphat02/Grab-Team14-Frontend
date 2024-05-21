@@ -26,7 +26,7 @@ const Error404Page = React.lazy(() => import('@app/pages/Error404Page'));
 const AdvancedFormsPage = React.lazy(() => import('@app/pages/AdvancedFormsPage'));
 const PersonalInfoPage = React.lazy(() => import('@app/pages/PersonalInfoPage'));
 const SecuritySettingsPage = React.lazy(() => import('@app/pages/SecuritySettingsPage'));
-const NotificationsPage = React.lazy(() => import('@app/pages/NotificationsPage'));
+const UploadCVPage = React.lazy(() => import('@app/pages/UploadCVPage'));
 const PaymentsPage = React.lazy(() => import('@app/pages/PaymentsPage'));
 const ButtonsPage = React.lazy(() => import('@app/pages/uiComponentsPages/ButtonsPage'));
 const SpinnersPage = React.lazy(() => import('@app/pages/uiComponentsPages/SpinnersPage'));
@@ -113,7 +113,7 @@ const Error404 = withLoading(Error404Page);
 // Profile
 const PersonalInfo = withLoading(PersonalInfoPage);
 const SecuritySettings = withLoading(SecuritySettingsPage);
-const Notifications = withLoading(NotificationsPage);
+const UploadCV = withLoading(UploadCVPage)
 const Payments = withLoading(PaymentsPage);
 
 const AuthLayoutFallback = withLoading(AuthLayout);
@@ -148,8 +148,7 @@ export const AppRouter: React.FC = () => {
           <Route path="profile" element={<ProfileLayout />}>
             <Route path="personal-info" element={<PersonalInfo />} />
             <Route path="security-settings" element={<SecuritySettings />} />
-            <Route path="notifications" element={<Notifications />} />
-            <Route path="payments" element={<Payments />} />
+            <Route path="cv" element={<UploadCV />} />
           </Route>
           <Route path="ui-components">
             <Route path="button" element={<Buttons />} />

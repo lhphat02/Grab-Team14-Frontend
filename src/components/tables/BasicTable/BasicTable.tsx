@@ -66,8 +66,8 @@ export const BasicTable: React.FC = () => {
       filterSearch: true,
       filters: [
         {
-          text: t('common.firstName'),
-          value: 'firstName',
+          text: t('common.fullName'),
+          value: 'fullName',
           children: [
             {
               text: 'Joe',

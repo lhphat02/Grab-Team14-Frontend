@@ -6,6 +6,7 @@ import { BasePopover } from '@app/components/common/BasePopover/BasePopover';
 import { BaseInput } from '@app/components/common/inputs/BaseInput/BaseInput';
 import { BaseButton } from '@app/components/common/BaseButton/BaseButton';
 import { BaseCheckbox } from '@app/components/common/BaseCheckbox/BaseCheckbox';
+import { BaseCollapse } from '@app/components/common/BaseCollapse/BaseCollapse';
 
 export const AddTagText = styled.span`
   color: var(--text-main-color);
@@ -199,4 +200,9 @@ export const FilterPopover = styled(BasePopover)`
   & .ant-popover-inner-content {
     padding: 0;
   }
+`;
+
+export const CollapseWrapper = styled(BaseCollapse)`
+  width: 100%;
+  align-items: center;
 `;

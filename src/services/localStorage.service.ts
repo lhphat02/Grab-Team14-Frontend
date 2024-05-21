@@ -3,10 +3,10 @@ const avatarImg = process.env.REACT_APP_ASSETS_BUCKET + '/avatars/avatar5.webp';
 
 const testUser = {
   id: 1,
-  firstName: 'Chris',
+  fullName: 'Chris',
   lastName: 'Johnson',
   imgUrl: avatarImg,
-  userName: '@john1989',
+  username: '@john1989',
   email: {
     name: 'chris.johnson@altence.com',
     verified: true,
@@ -36,6 +36,7 @@ export const persistToken = (token: string): void => {
 };
 
 export const readToken = (): string | null => {
+  console.log('Cookies.get(access_token)', Cookies.get('access_token'));
   return Cookies.get('access_token') || null;
 };
 
@@ -45,11 +46,11 @@ export const persistUser = (user: UserModel): void => {
 
 export const readUser = (): UserModel | null => {
   const userStr = localStorage.getItem('user');
-  return testUser;
   return userStr ? JSON.parse(userStr) : testUser;
 };
 
 export const deleteToken = (): void => {
   Cookies.remove('access_token');
+  Cookies.remove('refresh_token');
 };
 export const deleteUser = (): void => localStorage.removeItem('user');

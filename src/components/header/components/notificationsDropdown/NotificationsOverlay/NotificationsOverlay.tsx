@@ -36,7 +36,7 @@ export const NotificationsOverlay: React.FC<NotificationsOverlayProps> = ({
             description={t(notification.description)}
             {...(type === 'mention' && {
               mentionIconSrc: (notification as Mention).userIcon,
-              title: (notification as Mention).userName,
+              title: (notification as Mention).username,
               description: (
                 <Trans i18nKey={(notification as Mention).description}>
                   <S.LinkBtn type="link" href={(notification as Mention).href}>

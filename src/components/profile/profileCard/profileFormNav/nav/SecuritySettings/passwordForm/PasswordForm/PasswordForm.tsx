@@ -8,20 +8,36 @@ import { notificationController } from '@app/controllers/notificationController'
 import * as S from './PasswordForm.styles';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { doSetNewPassword } from '@app/store/slices/authSlice';
 
+export interface ChangePasswordMessage {
+  message: string;
+
+}
 export const PasswordForm: React.FC = () => {
   const [isFieldsChanged, setFieldsChanged] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
-  const onFinish = (values: []) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setFieldsChanged(false);
-      notificationController.success({ message: t('common.success') });
-      console.log(values);
-    }, 1000);
+  const onFinish = (values:any) => {
+    dispatch(doSetNewPassword(values))
+    .unwrap()
+    .then((data: ChangePasswordMessage) => {
+      console.log(data);
+      if(data.message == 'Password changed')
+      notificationController.success({
+        message: 'Password changed',
+        description: 'Change password successfully',
+      });
+    }
+    )
+    .catch((err) => {
+      notificationController.error(err.message);
+    })
+    
+    
   };
 
   return (

@@ -1,10 +1,12 @@
 export interface QueryModel {
+  isLoaded: boolean;
   page: number;
   limit: number;
-  search?: string;
-  industry?: string;
-  location?: string;
-  experience?: string;
-  type?: string;
-  workingMode?: string;
+  search: string | null;
+  industry: string | null;
+  location: string | null;
+  experience: string | null;
+  type: string | null;
+  time: string | null;
+  workingMode: string | null;
 }

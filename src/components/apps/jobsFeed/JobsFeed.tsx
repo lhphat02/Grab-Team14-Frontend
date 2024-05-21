@@ -14,7 +14,7 @@ import { setQuery } from '@app/store/slices/querySlice';
 
 export const JobsFeed: React.FC = () => {
   const [jobs, setJobs] = useState<JobListResponse[]>([]);
-  const [hasMore] = useState<boolean>(true);
+  const [hasMore, setHasMore] = useState<boolean>(true);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const dispatch = useAppDispatch();
@@ -28,7 +28,12 @@ export const JobsFeed: React.FC = () => {
     dispatch(getJobList(queryRequest))
       .unwrap()
       .then((data) => {
-        setJobs(jobs.concat(data?.docs || []));
+        if(data?.totalDocs) setHasMore(true);
+        else setHasMore(false);
+        if (query?.page === 1) setJobs(data?.docs || []);
+        else {
+          setJobs(jobs.concat(data?.docs || []));
+        }
       })
       .finally(() => setLoaded(true));
   }, [query]);
@@ -37,6 +42,7 @@ export const JobsFeed: React.FC = () => {
     const newQuery: QueryModel = {
       page: page + 1,
       limit: 10,
+      isLoaded: true,
     };
     setPage(page + 1);
     dispatch(setQuery(newQuery));

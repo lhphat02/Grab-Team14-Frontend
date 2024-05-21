@@ -9,6 +9,13 @@ import { JobListResponse,} from '@app/api/jobs.api';
 import * as S from './JobsFilter.styles';
 import { BaseDropdown } from '@app/components/common/BaseDropdown/Dropdown';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { getIndustryFilterAPI } from '@app/api/filter.api';
+import {  filter, workingModeFilter } from '@app/constants/enums/filters';
+import { BaseRadio } from '@app/components/common/BaseRadio/BaseRadio';
+import { setQuery } from '@app/store/slices/querySlice';
+import { QueryModel } from '@app/domain/QueryModel';
+import { Select, Space} from 'antd';
+import { BaseCollapse } from '@app/components/common/BaseCollapse/BaseCollapse';
 
 interface JobsFilterProps {
   jobs: JobListResponse[];
@@ -23,12 +30,12 @@ interface Filter {
   selectedExperience: string;
   selectedWorkingMode: string;
   selectedType: string;
+  selectedTime: string;
   jobsTagData: IHashTag[];
-  onTagClick: (tag: IHashTag) => void;
+  onClick: (key: string, value: string | [string]) => void;
   selectedTagsIds: Array<string>;
   selectedTags: IHashTag[];
-  dates: [AppDate | null, AppDate | null];
-  updateFilteredField: (field: string, value: [AppDate | null, AppDate | null] | string) => void;
+  updateFilteredField: (field: string, value: [string] | string) => void;
   onApply: () => void;
   onReset: () => void;
 }
@@ -41,11 +48,7 @@ const Filter: React.FC<Filter> = ({
   selectedWorkingMode,
   selectedType,
   selectedTime,
-  jobsTagData,
-  onTagClick,
-  selectedTagsIds,
-  selectedTags,
-  dates,
+  onClick,
   onApply,
   onReset,
   updateFilteredField,
@@ -54,7 +57,7 @@ const Filter: React.FC<Filter> = ({
   const { mobileOnly } = useResponsive();
   const dispatch = useAppDispatch();
 
-
+  const { industriesFilter , typesFilter, experienceLevelsFilter, workingModesFilter , locationFilter, timeFilter } = filter;
 
   const applyFilter = () => {
     onApply();
@@ -64,25 +67,109 @@ const Filter: React.FC<Filter> = ({
     onReset();
   };
 
-  const items = useMemo(
+
+  const industryItems = useMemo(
     () =>
-      jobsTagData.map((tag, i) => ({
+      industriesFilter.map((industry, i) => ({
         key: `${i + 1}`,
         label: (
           <S.TagPopoverLine
-            key={tag.id}
+            key={i}
             onClick={(e) => {
-              onTagClick(tag);
+              onClick('selectedIndustry', industry);
               e.stopPropagation();
             }}
           >
-            <S.PopoverCheckbox checked={selectedTagsIds.includes(tag.id)} />
-            <BaseHashTag title={tag.title} bgColor={tag.bgColor} />
+            <S.PopoverCheckbox checked={selectedIndustry == industry} />
+            <BaseHashTag title={ industry.replace("_", " ")} />
           </S.TagPopoverLine>
         ),
       })),
-    [jobsTagData, onTagClick, selectedTagsIds],
+    [selectedIndustry, updateFilteredField, onclick],
   );
+
+  const workingModeItems = useMemo(
+    () =>
+    workingModeFilter.map((workingMode, i) => ({
+        key: `${i + 1}`,
+        label: (
+          <S.TagPopoverLine
+            key={i}
+            onClick={(e) => {
+              onClick('selectedWorkingMode', workingMode);
+              e.stopPropagation();
+            }}
+          >
+            <S.PopoverCheckbox checked={selectedWorkingMode == workingMode} />
+            <BaseHashTag title={ workingMode.replace("_", " ")} />
+          </S.TagPopoverLine>
+        ),
+      })),
+    [selectedWorkingMode, updateFilteredField, onclick],
+  );
+
+  const typeItems = useMemo(
+    () =>
+    typesFilter.map((type, i) => ({
+        key: `${i + 1}`,
+        label: (
+          <S.TagPopoverLine
+            key={i}
+            onClick={(e) => {
+              onClick('selectedType', type);
+              e.stopPropagation();
+            }}
+          >
+            <S.PopoverCheckbox checked={selectedType == type} />
+            <BaseHashTag title={ type.replace("_", " ")} />
+          </S.TagPopoverLine>
+        ),
+      })),
+    [selectedType, updateFilteredField, onclick],
+  );
+
+  const experienceItems = useMemo(
+    () =>
+    experienceLevelsFilter.map((experience, i) => ({
+        key: `${i + 1}`,
+        label: (
+          <S.TagPopoverLine
+            key={i}
+            onClick={(e) => {
+              onClick('selectedExperience', experience);
+              e.stopPropagation();
+            }}
+          >
+            <S.PopoverCheckbox checked={selectedExperience == experience} />
+            <BaseHashTag title={ experience.replace("_", " ")} />
+          </S.TagPopoverLine>
+        ),
+      })),
+    [selectedExperience, updateFilteredField, onclick],
+  );
+
+  const timeItems = useMemo(
+    () =>
+    timeFilter.map((time, i) => ({
+        key: `${i + 1}`,
+        label: (
+          <S.TagPopoverLine
+            key={i}
+            onClick={(e) => {
+              onClick('selectedTime', time);
+              e.stopPropagation();
+            }}
+          >
+            <S.PopoverCheckbox checked={selectedTime == time} />
+            <BaseHashTag title={ time.replace("_", " ")} />
+          </S.TagPopoverLine>
+        ),
+      })),
+    [selectedTime, updateFilteredField, onclick],
+  );
+
+
+
 
   return (
     <S.FilterWrapper>
@@ -97,66 +184,68 @@ const Filter: React.FC<Filter> = ({
         />
       </S.InputWrapper>
 
-      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: industryItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
           <S.AddTagText>{t('jobsFeed.industry')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
 
-      {!!selectedTags.length && (
-        <S.TagsWrapper>
-          {selectedTags.map((tag) => (
-            <BaseHashTag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
-          ))}
-        </S.TagsWrapper>
-      )}
+        <S.AddTagWrapper>
+          <S.PlusIcon />
+          <Select
+    showSearch
+    style={{ width: 200 }}
+    onChange={(value) => {
+      onClick('selectedLocation', value.replaceAll("_", " "));
+    }} 
+    placeholder="Location"
+    optionFilterProp="children"
+    filterOption={(input, option) => (option?.label ?? '').includes(input)}
+    filterSort={(optionA, optionB) =>
+      (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+    }
+    options={locationFilter.map((location, i) => ({value: location, label: location.replaceAll("_", " ")}))}
+  />
+        </S.AddTagWrapper>
+      
+        
 
-<BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: industryItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
           <S.AddTagText>{t('jobsFeed.type')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
-
-      {!!selectedTags.length && (
-        <S.TagsWrapper>
-          {selectedTags.map((tag) => (
-            <BaseHashTag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
-          ))}
-        </S.TagsWrapper>
-      )}
-
-
-<BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: workingModeItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
           <S.AddTagText>{t('jobsFeed.workingMode')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
 
-      {!!selectedTags.length && (
-        <S.TagsWrapper>
-          {selectedTags.map((tag) => (
-            <BaseHashTag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
-          ))}
-        </S.TagsWrapper>
-      )}
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: typeItems }}>
+        <S.AddTagWrapper>
+          <S.PlusIcon />
+          <S.AddTagText>{t('jobsFeed.type')}</S.AddTagText>
+        </S.AddTagWrapper>
 
-<BaseDropdown placement="bottom" trigger={['click']} menu={{ items }}>
+      </BaseDropdown>
+
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: experienceItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
           <S.AddTagText>{t('jobsFeed.experienceLevel')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
 
-      {!!selectedTags.length && (
-        <S.TagsWrapper>
-          {selectedTags.map((tag) => (
-            <BaseHashTag key={tag.id} title={tag.title} bgColor={tag.bgColor} removeTag={() => onTagClick(tag)} />
-          ))}
-        </S.TagsWrapper>
-      )}
+      <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: timeItems }}>
+        <S.AddTagWrapper>
+          <S.PlusIcon />
+          <S.AddTagText>{t('jobsFeed.time')}</S.AddTagText>
+        </S.AddTagWrapper>
+      </BaseDropdown>
+
 
 
       <S.BtnWrapper>
@@ -177,101 +266,73 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
     selectedExperience: string;
     selectedWorkingMode: string;
     selectedType: string;
-    
-    author: string;
-    title: string;
-    selectedTags: IHashTag[];
-    dates: [AppDate | null, AppDate | null];
+    selectedTime: string;
   }>({
-    author: '',
-    title: '',
-    selectedTags: [],
-    dates: [null, null],
+    search: '',
+    selectedIndustry: '',
+    selectedLocation: '',
+    selectedExperience: '',
+    selectedWorkingMode: '',
+    selectedType: '',
+    selectedTime: '',
   });
-  const { author, title, selectedTags, dates } = filterFields;
-  const [filteredJobs, setFilteredJobs] = useState<Post[]>(jobs);
+
+  const { search, selectedIndustry, selectedLocation, selectedExperience, selectedWorkingMode, selectedType , selectedTime} = filterFields;
+
+  const [filteredJobs, setFilteredJobs] = useState<JobListResponse[]>(jobs);
   const [overlayOpen, setOverlayOpen] = useState<boolean>(false);
   const { mobileOnly } = useResponsive();
   const { t } = useTranslation();
-
-  const jobsTagData = Object.values(jobsTags || defaultTags);
-  const selectedTagsIds = useMemo(() => selectedTags.map((item) => item.id), [selectedTags]);
-
-  const onTagClick = useCallback(
-    (tag: IHashTag) => {
-      const isExist = selectedTagsIds.includes(tag.id);
-
-      if (isExist) {
-        setFilterFields({
-          ...filterFields,
-          selectedTags: selectedTags.filter((item) => item.id !== tag.id),
-        });
-      } else {
-        setFilterFields({
-          ...filterFields,
-          selectedTags: [...selectedTags, tag],
-        });
-      }
-    },
-    [selectedTags, selectedTagsIds, filterFields],
-  );
-
-  const filterJobs = useCallback(
-    (isReset = false) => {
-      let updatedJobs = [...jobs];
-      if ((author || title || dates[0] || selectedTags.length) && !isReset) {
-        updatedJobs = jobs.filter((post) => {
-          const postAuthor = post.author.toLowerCase();
-          const enteredAuthor = author.toLowerCase();
-          const postTitle = post.title.toLowerCase();
-          const enteredTitle = title.toLowerCase();
-          const postTags = post.tags;
-          const postDate = Dates.getDate(post.date);
-
-          const fieldsValidators = [
-            new AuthorValidator(postAuthor, enteredAuthor),
-            new TitleValidator(postTitle, enteredTitle),
-            new DatesValidator(postDate, dates),
-            new TagsValidator(postTags, selectedTags),
-          ];
-
-          return fieldsValidators.map((validator) => validator.validate()).every((i) => i);
-        });
-      }
-      setFilteredJobs(
-        updatedJobs.sort((a, b) => {
-          return b.date - a.date;
-        }),
-      );
-    },
-    [jobs, author, title, dates, selectedTags],
-  );
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setFilteredJobs(jobs);
-    filterJobs(false);
-    // TODO AT-183
-    // eslint-disable-next-line
   }, [jobs]);
 
-  const handleClickApply = useCallback(() => {
-    filterJobs(false);
+  const onClick = useCallback((key: string, value: string | [string]) => {
+    setFilterFields({ ...filterFields, [key]: value });
 
-    if (mobileOnly) {
-      setOverlayOpen(false);
-    }
-  }, [mobileOnly, filterJobs]);
+  }, [selectedExperience, selectedIndustry, selectedLocation, selectedType, selectedWorkingMode])
+
+
+  const handleClickApply = useCallback(() => {
+    console.log(selectedIndustry)
+    const newQuery: QueryModel = {
+      page: 1,
+      limit: 10,
+      isLoaded: false,
+      search: search != '' ? search : null,
+      industry: selectedIndustry != '' ? selectedIndustry : null,
+      location: selectedLocation != '' ? selectedLocation : null,
+      experience: selectedExperience != '' ? selectedExperience : null,
+      workingMode: selectedWorkingMode != '' ? selectedWorkingMode : null,
+      type: selectedType != '' ? selectedType : null,
+      time: selectedTime != '' ? selectedTime : null,
+    };
+    dispatch(setQuery(newQuery));
+  }, [mobileOnly, search,selectedExperience, selectedIndustry, selectedLocation, selectedType, selectedWorkingMode, selectedTime]);
 
   const handleClickReset = useCallback(() => {
-    setFilterFields({ author: '', title: '', dates: [null, null], selectedTags: [] });
-    filterJobs(true);
-
+    setFilterFields({ search: '', selectedIndustry: '', selectedLocation: '', selectedExperience: '', selectedWorkingMode: '', selectedType: '', selectedTime: '' });
+    const newQuery: QueryModel = {
+      page: 1,
+      limit: 10,
+      isLoaded: false,
+      search: null,
+      industry: null,
+      location: null,
+      experience: null,
+      workingMode: null,
+      type: null,
+      time: null,
+    };
+    dispatch(setQuery(newQuery));
     if (mobileOnly) {
       setOverlayOpen(false);
     }
-  }, [filterJobs, setFilterFields, mobileOnly]);
+  }, [setFilterFields, mobileOnly]);
 
-  const updateFilteredField = (field: string, value: string | [AppDate | null, AppDate | null]) => {
+  const updateFilteredField = (field: string, value: string | [string]) => {
     setFilterFields({ ...filterFields, [field]: value });
   };
 
@@ -285,15 +346,17 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
             onOpenChange={(open) => setOverlayOpen(open)}
             content={
               <Filter
-                title={title}
-                jobsTagData={jobsTagData}
-                onTagClick={onTagClick}
-                selectedTagsIds={selectedTagsIds}
-                selectedTags={selectedTags}
-                dates={dates}
-                onApply={handleClickApply}
-                onReset={handleClickReset}
-                updateFilteredField={updateFilteredField}
+              search={search}
+              selectedIndustry={selectedIndustry}
+              selectedLocation={selectedLocation}
+              selectedExperience={selectedExperience}
+              selectedWorkingMode={selectedWorkingMode}
+              selectedType={selectedType}
+              selectedTime= {selectedTime}
+              onClick={onClick}
+              onApply={handleClickApply}
+              onReset={handleClickReset}
+              updateFilteredField={updateFilteredField}
               />
             }
           >
@@ -307,12 +370,14 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
 
         {!mobileOnly && (
           <Filter
-            title={title}
-            jobsTagData={ jobsTagData}
-            onTagClick={onTagClick}
-            selectedTagsIds={selectedTagsIds}
-            selectedTags={selectedTags}
-            dates={dates}
+            search={search}
+            selectedIndustry={selectedIndustry}
+            selectedLocation={selectedLocation}
+            selectedExperience={selectedExperience}
+            selectedWorkingMode={selectedWorkingMode}
+            selectedType={selectedType}
+            selectedTime= {selectedTime}
+            onClick={onClick}
             onApply={handleClickApply}
             onReset={handleClickReset}
             updateFilteredField={updateFilteredField}

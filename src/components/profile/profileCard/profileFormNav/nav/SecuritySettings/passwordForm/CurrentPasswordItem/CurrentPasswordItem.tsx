@@ -8,7 +8,7 @@ export const CurrentPasswordItem: React.FC = () => {
 
   return (
     <BaseButtonsForm.Item
-      name="password"
+      name="oldPassword"
       label={t('profile.nav.securitySettings.currentPassword')}
       rules={[
         {

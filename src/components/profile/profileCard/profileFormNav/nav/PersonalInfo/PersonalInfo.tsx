@@ -2,9 +2,9 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BaseButtonsForm } from '@app/components/common/forms/BaseButtonsForm/BaseButtonsForm';
 import { BaseCard } from '@app/components/common/BaseCard/BaseCard';
-import { FirstNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/FirstNameItem/FirstNameItem';
+import { FullNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/FullNameItem/FullNameItem';
 import { LastNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/LastNameItem/LastNameItem';
-import { NicknameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/NicknameItem/NicknameItem';
+import { usernameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/usernameItem/usernameItem';
 import { SexItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/SexItem/SexItem';
 import { BirthdayItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/BirthdayItem/BirthdayItem';
 import { LanguageItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/LanguageItem/LanguageItem';
@@ -25,42 +25,34 @@ import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 
 interface PersonalInfoFormValues {
   birthday?: string;
-  lastName: string;
   country?: string;
-  website: string;
   city?: string;
-  address2: string;
-  nickName: string;
-  address1: string;
+  username: string;
+  address: string;
   sex?: string;
   facebook: string;
-  language?: string;
   linkedin: string;
-  zipcode: string;
-  firstName: string;
-  twitter: string;
+  fullName: string;
+  github: string;
   phone: string;
   email: string;
+  website: string;
 }
 
 const initialPersonalInfoValues: PersonalInfoFormValues = {
-  firstName: '',
-  lastName: '',
-  nickName: '',
+  fullName: '',
+  username: '',
   sex: undefined,
   birthday: undefined,
-  language: undefined,
   phone: '',
   email: '',
   country: undefined,
   city: undefined,
-  address1: '',
-  address2: '',
-  zipcode: '',
-  website: '',
-  twitter: '',
+  address: '',
+  github: '',
   linkedin: '',
   facebook: '',
+  website: ''
 };
 
 export const PersonalInfo: React.FC = () => {
@@ -73,23 +65,19 @@ export const PersonalInfo: React.FC = () => {
     () =>
       user
         ? {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email.name,
-            phone: user.phone.number,
-            nickname: user.userName,
+            fullName: user.fullName,
+            email: user.email,
+            phone: user.phone,
+            username: user.username,
             sex: user.sex,
-            birthday: Dates.getDate(user.birthday),
-            language: user.lang,
+            birthday: user.birthday,
             country: user.country,
             city: user.city,
-            address1: user.address1,
-            address2: user?.address2,
-            zipcode: user.zipcode,
-            website: user?.website,
-            twitter: user?.socials?.twitter,
-            linkedin: user?.socials?.linkedin,
-            facebook: user?.socials?.facebook,
+            address: user.address,
+            github: user.github,
+            linkedin: user.linkedin,
+            facebook: user.facebook,
+            website: user.website,
           }
         : initialPersonalInfoValues,
     [user],
@@ -133,24 +121,21 @@ export const PersonalInfo: React.FC = () => {
           </BaseCol>
 
           <BaseCol xs={24} md={12}>
-            <FirstNameItem />
+            <FullNameItem />
           </BaseCol>
 
-          <BaseCol xs={24} md={12}>
-            <LastNameItem />
-          </BaseCol>
 
           <BaseCol xs={24} md={12}>
-            <NicknameItem />
+            <usernameItem />
           </BaseCol>
 
           <BaseCol xs={24} md={12}>
             <SexItem />
           </BaseCol>
 
-          <BaseCol xs={24} md={12}>
+          {/* <BaseCol xs={24} md={12}>
             <BirthdayItem />
-          </BaseCol>
+          </BaseCol> */}
 
           <BaseCol xs={24} md={12}>
             <LanguageItem />
@@ -163,11 +148,11 @@ export const PersonalInfo: React.FC = () => {
           </BaseCol>
 
           <BaseCol xs={24} md={12}>
-            <PhoneItem verified={user?.phone.verified} />
+            <PhoneItem verified={false} />
           </BaseCol>
 
           <BaseCol xs={24} md={12}>
-            <EmailItem verified={user?.email.verified} />
+            <EmailItem verified={false} />
           </BaseCol>
 
           <BaseCol span={24}>
@@ -188,13 +173,6 @@ export const PersonalInfo: React.FC = () => {
             <AddressItem number={1} />
           </BaseCol>
 
-          <BaseCol xs={24} md={12}>
-            <AddressItem number={2} />
-          </BaseCol>
-
-          <BaseCol xs={24} md={12}>
-            <ZipcodeItem />
-          </BaseCol>
 
           <BaseCol span={24}>
             <BaseButtonsForm.Item>

@@ -42,8 +42,6 @@ export const getJobList = createAsyncThunk('job/getJobList', async (queryRequest
   console.log('queryRequest', queryRequest);
   let query: QueryModel;
   query = queryRequest.initialQuery;
-  console.log('queryRequest', queryRequest);
-  let getJobListReq = queryRequest.nowQuery;
 
   return getJobListAPI(query!).then((res) => {
     return res;

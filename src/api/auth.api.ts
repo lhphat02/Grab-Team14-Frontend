@@ -1,4 +1,5 @@
 import { httpApi } from '@app/api/http.api';
+import { ChangePasswordMessage } from '@app/components/profile/profileCard/profileFormNav/nav/SecuritySettings/passwordForm/PasswordForm/PasswordForm';
 import { UserModel } from '@app/domain/UserModel';
 
 export interface AuthData {
@@ -7,8 +8,7 @@ export interface AuthData {
 }
 
 export interface SignUpRequest {
-  firstName: string;
-  lastName: string;
+  username: string;
   email: string;
   password: string;
 }
@@ -22,6 +22,7 @@ export interface SecurityCodePayload {
 }
 
 export interface NewPasswordData {
+  oldPassword: string;
   newPassword: string;
 }
 
@@ -31,7 +32,8 @@ export interface LoginRequest {
 }
 
 export interface LoginResponse {
-  token: string;
+  access_token: string;
+  refresh_token: string;
   user: UserModel;
 }
 
@@ -47,5 +49,11 @@ export const resetPassword = (resetPasswordPayload: ResetPasswordRequest): Promi
 export const verifySecurityCode = (securityCodePayload: SecurityCodePayload): Promise<undefined> =>
   httpApi.post<undefined>('verifySecurityCode', { ...securityCodePayload }).then(({ data }) => data);
 
-export const setNewPassword = (newPasswordData: NewPasswordData): Promise<undefined> =>
-  httpApi.post<undefined>('setNewPassword', { ...newPasswordData }).then(({ data }) => data);
+export const setNewPassword = (newPasswordData: NewPasswordData): Promise<ChangePasswordMessage> =>
+  httpApi
+    .post<ChangePasswordMessage>(
+      '/auth/change-password',
+      { ...newPasswordData },
+      { headers: { 'Content-Type': 'application/json' }, withCredentials: true },
+    )
+    .then(({ data }) => data);
