@@ -13,6 +13,7 @@ import { doLogin } from '@app/store/slices/authSlice';
 import * as Auth from '@app/components/layouts/AuthLayout/AuthLayout.styles';
 import * as S from './LockForm.styles';
 import { BaseAvatar } from '@app/components/common/BaseAvatar/BaseAvatar';
+import { readUser } from '@app/services/localStorage.service';
 
 interface LockFormData {
   password: string;
@@ -30,7 +31,7 @@ export const LockForm: React.FC = () => {
 
   const [isLoading, setLoading] = useState(false);
   const [dateState, setDateState] = useState(new Date());
-  const user = useAppSelector((state) => state.user.user);
+  let user = readUser();
   const fullName = `${user?.fullName} ${user?.lastName}`;
 
   const currentDateInUTC = dateState.toUTCString();

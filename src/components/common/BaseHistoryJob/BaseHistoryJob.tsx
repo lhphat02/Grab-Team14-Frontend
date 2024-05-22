@@ -26,7 +26,6 @@ export const BaseHistoryJob: React.FC<BaseHistoryJobProps> = ({ job }) => {
   };
 
   // Log job to verify the structure
-  console.log('Job Data:', job);
 
   return (
     <>

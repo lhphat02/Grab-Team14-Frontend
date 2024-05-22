@@ -2,6 +2,7 @@
 // @ts-ignore
 import { createAction, createSlice, PrepareAction } from '@reduxjs/toolkit';
 import { QueryModel } from '@app/domain/QueryModel';
+import { persistQuery } from '@app/services/localStorage.service';
 
 export interface QueryState {
   query: QueryModel | null;
@@ -16,6 +17,7 @@ const initialState: QueryState = {
 };
 
 export const setQuery = createAction<PrepareAction<QueryModel>>('user/setUser', (newQuery) => {
+  persistQuery(newQuery);
   return {
     payload: newQuery,
   };

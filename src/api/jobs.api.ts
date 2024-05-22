@@ -28,6 +28,7 @@ export interface JobDetailResponse {
   company: string;
   companyLink: string;
   companyImageUrl: string;
+  link;
   location?: string;
   companyLocation?: string;
   experience?: string;

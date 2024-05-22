@@ -14,11 +14,7 @@ import { readUser } from '@app/services/localStorage.service';
 export const ProfileDropdown: React.FC = () => {
   const { isTablet } = useResponsive();
 
-  let user = useAppSelector((state) => state.user.user);
-
-  useEffect(() => {
-    user = readUser();
-  } , [user]);
+  let user = readUser();
 
   return user ? (
     <BasePopover content={<ProfileOverlay />} trigger="click">

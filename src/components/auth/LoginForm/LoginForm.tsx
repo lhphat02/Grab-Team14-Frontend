@@ -35,7 +35,7 @@ export const LoginForm: React.FC = () => {
         console.log('data', data);
         return data;
       })
-      .then(() => navigate('/'))
+      .then(() => navigate('/jobs'))
       .catch((err) => {
         notificationController.error({ message: err.message });
         setLoading(false);

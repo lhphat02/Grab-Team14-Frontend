@@ -10,12 +10,15 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { MEDICAL_DASHBOARD_PATH, NFT_DASHBOARD_PATH } from '@app/components/router/AppRouter';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { References } from '@app/components/common/References/References';
+import Cookies from 'js-cookie';
+import { UnauthHeader } from '@app/components/header/UnauthHeader';
 
-const MainLayout: React.FC = () => {
+const AuthMainLayout: React.FC = () => {
   const [isTwoColumnsLayout, setIsTwoColumnsLayout] = useState(true);
   const [siderCollapsed, setSiderCollapsed] = useState(true);
   const { isDesktop } = useResponsive();
   const location = useLocation();
+  const token = Cookies.get('access_token'); // Retrieve token once
 
   const toggleSider = () => setSiderCollapsed(!siderCollapsed);
 
@@ -25,11 +28,19 @@ const MainLayout: React.FC = () => {
 
   return (
     <S.LayoutMaster>
+      {token != null && (
       <MainSider isCollapsed={siderCollapsed} setCollapsed={setSiderCollapsed} />
+      )}
       <S.LayoutMain>
-        <MainHeader isTwoColumnsLayout={isTwoColumnsLayout}>
+        {token != null ?  (
+          <MainHeader isTwoColumnsLayout={isTwoColumnsLayout}>
           <Header toggleSider={toggleSider} isSiderOpened={!siderCollapsed} isTwoColumnsLayout={isTwoColumnsLayout} />
+        </MainHeader>) : ( 
+        <MainHeader isTwoColumnsLayout={isTwoColumnsLayout}> 
+          <UnauthHeader toggleSider={toggleSider} />
         </MainHeader>
+        )
+        }
         <MainContent id="main-content" $isTwoColumnsLayout={isTwoColumnsLayout}>
           <div>
             <Outlet />
@@ -41,4 +52,4 @@ const MainLayout: React.FC = () => {
   );
 };
 
-export default MainLayout;
+export default AuthMainLayout;

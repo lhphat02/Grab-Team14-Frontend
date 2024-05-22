@@ -14,6 +14,9 @@ import {
   ReadOutlined,
   FireOutlined,
 } from '@ant-design/icons';
+import { setQuery } from '@app/store/slices/querySlice';
+import { QueryModel } from '@app/domain/QueryModel';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
 
 const industries = [
   { name: 'IT & Media', icon: <DesktopOutlined />, value: 'TECHNOLOGY_INFORMATION_AND_MEDIA' },
@@ -34,12 +37,24 @@ interface CategorySlideProps {
 
 const CategorySlide: React.FC<CategorySlideProps> = ({ onSlideChange }) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleCategoryClick = (industry: { value: string }) => {
-    const searchParams = new URLSearchParams({
+    const initQuery: QueryModel = {
+      page: 1,
+      limit: 10,
+      search: null,
+      location: null,
+      type: null,
+      experience: null,
+      time: null,
+      workingMode: null,
       industry: industry.value,
-    }).toString();
-    navigate(`/jobs?${searchParams}`);
+      isLoaded: false,
+    };
+
+    dispatch(setQuery(initQuery));
+    navigate(`/jobs`);
   };
 
   return (
