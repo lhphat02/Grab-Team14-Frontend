@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ArrowDownOutlined } from '@ant-design/icons';
-import { Input, Button } from 'antd';
+import { Input, Button, Select } from 'antd';
 
 export const HeroSlideContainer = styled.div`
   display: flex;
@@ -115,6 +115,7 @@ export const SearchForm = styled.div`
   background-color: #ffffff;
 
   @media (min-width: 768px) {
+    width: 800px;
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
@@ -134,7 +135,6 @@ export const HeroSlideInput = styled(Input)`
 `;
 
 export const HeroSlideButton = styled(Button)`
-  width: 100%;
   height: 2.5rem;
   font-size: 1rem;
   line-height: 1rem;
@@ -150,6 +150,7 @@ export const HeroSlideSearchbarContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
 
   @media (min-width: 768px) {
     flex-direction: row;

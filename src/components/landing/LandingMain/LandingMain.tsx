@@ -12,15 +12,13 @@ const LandingMain: React.FC = (): React.ReactElement => {
 
   const navigate = useNavigate();
 
-  console.log(Cookies.get('access_token'));
   useEffect(() => {
-
     const token = Cookies.get('access_token');
-    console.log(token);
     if (token != null) {
       navigate('/jobs');
     }
   }, [navigate]);
+
   const scrollToSlide = (slide: React.RefObject<HTMLDivElement>) => {
     slide.current?.scrollIntoView({
       behavior: 'smooth',

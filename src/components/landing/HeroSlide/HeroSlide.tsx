@@ -17,8 +17,8 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ onSlideChange }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleOnSearch = () => {
-    console.log('location', location)
-    console.log('keyword', keyword)
+    console.log('location', location);
+    console.log('keyword', keyword);
     const initQuery: QueryModel = {
       page: 1,
       limit: 10,
@@ -30,7 +30,7 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ onSlideChange }) => {
       workingMode: null,
       industry: null,
       isLoaded: false,
-    }
+    };
     dispatch(setQuery(initQuery));
     navigate('/jobs');
   };
@@ -55,24 +55,31 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ onSlideChange }) => {
             <S.SearchForm>
               <S.HeroSlideSearchbarContent>
                 <S.HeroSlideInput
-                  value={keyword} 
-                  onChange={ e => setKeyword(e.target.value)}
-                  placeholder="Keywords"
+                  value={keyword}
+                  onChange={(e) => setKeyword(e.target.value)}
+                  placeholder="Job title, keyword or company names..."
                   className="keyword"
                 />
                 <Select
                   showSearch
-                  style={{ width: 200 }}
-                  onChange={ e => setLocation(e)}
-                  className = "location"
-                  placeholder="Location"
-          optionFilterProp="children"
-          filterOption={(input, option) => (option?.label ?? '').includes(input)}
-          filterSort={(optionA, optionB) =>
-            (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-          }
-          options={locationFilter.map((location, i) => ({ value: location, label: location.replaceAll('_', ' ') }))}
-        />
+                  style={{
+                    width: '100%',
+                    fontSize: 1 + 'rem',
+                    fontWeight: 400,
+                  }}
+                  onChange={(e) => setLocation(e)}
+                  className="location"
+                  placeholder="Location (VN)"
+                  optionFilterProp="children"
+                  filterOption={(input, option) => (option?.label ?? '').includes(input)}
+                  filterSort={(optionA, optionB) =>
+                    (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
+                  }
+                  options={locationFilter.map((location, i) => ({
+                    value: location,
+                    label: location.replaceAll('_', ' '),
+                  }))}
+                />
                 <S.HeroSlideButton type="primary" onClick={handleOnSearch}>
                   Search
                 </S.HeroSlideButton>
