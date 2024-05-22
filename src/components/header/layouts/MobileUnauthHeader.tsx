@@ -21,13 +21,9 @@ export const MobileUnauthHeader: React.FC<MobileUnauthHeaderProps> = ({ toggleSi
 
       <BaseCol>
         <BaseRow align="middle">
-          <BaseCol>
-            <UnauthHeaderSearch />
-          </BaseCol>
+          <BaseCol>{/* <UnauthHeaderSearch /> */}</BaseCol>
 
-          <BaseCol>
-            <SettingsDropdown />
-          </BaseCol>
+          <BaseCol>{/* <SettingsDropdown /> */}</BaseCol>
         </BaseRow>
       </BaseCol>
 

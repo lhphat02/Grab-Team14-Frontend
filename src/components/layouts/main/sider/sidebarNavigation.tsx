@@ -1,7 +1,7 @@
 // @ts-nocheck
 // @ts-ignore
 import React from 'react';
-import { DashboardOutlined, HomeOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { ClockCircleOutlined, DashboardOutlined, HomeOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import { ReactComponent as NftIcon } from '@app/assets/icons/nft-icon.svg';
 
 export interface SidebarNavigationItem {
@@ -14,15 +14,15 @@ export interface SidebarNavigationItem {
 
 export const sidebarNavigation: SidebarNavigationItem[] = [
   {
-    title: 'common.job',
+    title: 'common.joblist',
     key: 'job',
     url: '/jobs',
-    icon: <UnorderedListOutlined />,
+    icon: <HomeOutlined />,
   },
   {
     title: 'common.history',
     key: 'history',
     url: '/history',
-    icon: <UnorderedListOutlined />,
-  }
+    icon: <ClockCircleOutlined />,
+  },
 ];

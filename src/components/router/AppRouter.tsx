@@ -62,10 +62,9 @@ export const AppRouter: React.FC = () => {
     <BrowserRouter>
       <Routes>
         {/* Landing Page Route */}
+        <Route index element={<Landing />} />
         <Route path={HOME_PATH} element={<MainLayout />}>
           <Route path="jobs" element={<JobsFeed />} />
-          <Route index element={<Landing />} />
-
         </Route>
 
         <Route path={HOME_PATH} element={protectedLayout}>
@@ -83,6 +82,7 @@ export const AppRouter: React.FC = () => {
             <Route path="cv" element={<UploadCV />} />
           </Route>
         </Route>
+
         <Route path="/auth" element={<AuthLayoutFallback />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="sign-up" element={<SignUpPage />} />
