@@ -1,12 +1,12 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 export interface UserModel {
   username: string;
   fullName?: string;
   email: string;
   imgUrl?: string;
   sex?: string;
-  birthday?: Date;
+  birthday?: string;
   city?: string;
   address?: string;
   country?: string;
@@ -17,4 +17,5 @@ export interface UserModel {
   cvURL?: string;
   coverLetter?: string;
   website?: string;
+  skills?: string[];
 }

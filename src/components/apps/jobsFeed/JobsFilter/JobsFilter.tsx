@@ -176,14 +176,12 @@ const Filter: React.FC<Filter> = ({
         <S.SearchIcon />
         <S.Input
           placeholder={t('jobsFeed.Search')}
-          value={search}
-          onChange={(event) => updateFilteredField('search', event.target.value)}
+          onChange={(event) => onClick('search', event.target.value)}
         />
       </S.InputWrapper>
 
       <S.AddTagWrapper>
         <Select
-          value={selectedLocation}
           showSearch
           style={{ width: 200 }}
           onChange={(value) => {
@@ -224,7 +222,7 @@ const Filter: React.FC<Filter> = ({
       {!!selectedType.length && ( 
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedType} bgColor={'success'} removeTag={() => onClick('selectedType', '')} />
+            <BaseHashTag key={'2'} title={selectedType} bgColor={'success'} removeTag={() => onClick('selectedType', '')} />
           }
         </S.TagsWrapper>
       )}
@@ -239,7 +237,7 @@ const Filter: React.FC<Filter> = ({
       {!!selectedWorkingMode.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedWorkingMode} bgColor={'success'} removeTag={() => onClick('selectedWorkingMode', '')} />
+            <BaseHashTag key={'3'} title={selectedWorkingMode} bgColor={'success'} removeTag={() => onClick('selectedWorkingMode', '')} />
           }
         </S.TagsWrapper>
       )}
@@ -254,7 +252,7 @@ const Filter: React.FC<Filter> = ({
       {!!selectedExperience.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedExperience} bgColor={'success'} removeTag={() => onClick('selectedExperience', '')} />
+            <BaseHashTag key={'4'} title={selectedExperience} bgColor={'success'} removeTag={() => onClick('selectedExperience', '')} />
           }
         </S.TagsWrapper>
       )}
@@ -269,7 +267,7 @@ const Filter: React.FC<Filter> = ({
       {!!selectedIndustry.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedIndustry} bgColor={'success'} removeTag={() => onClick('selectedIndustry', '')} />
+            <BaseHashTag key={'5'} title={selectedIndustry} bgColor={'success'} removeTag={() => onClick('selectedIndustry', '')} />
           }
         </S.TagsWrapper>
       )}
@@ -345,12 +343,12 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
   const onClick = useCallback(
     (key: string, value: string | [string]) => {
       setFilterFields({ ...filterFields, [key]: value });
+      console.log(selectedLocation);
     },
     [selectedExperience, selectedIndustry, selectedLocation, selectedType, selectedWorkingMode],
   );
 
   const handleClickApply = useCallback(() => {
-    console.log(selectedIndustry);
     const newQuery: QueryModel = {
       page: 1,
       limit: 10,
