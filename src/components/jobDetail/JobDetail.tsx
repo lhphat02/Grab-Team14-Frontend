@@ -9,14 +9,9 @@ import { formatDate, formatOptionString } from '../../utils/utils';
 import DOMPurify from 'dompurify';
 import logo from 'assets/logo_svg.svg';
 import { BaseButton } from '../common/BaseButton/BaseButton';
-<<<<<<< HEAD
 import { readToken } from '@app/services/localStorage.service';
 import { notificationController } from '@app/controllers/notificationController';
 import { useLocation } from 'react-router-dom';
-=======
-import { notificationController } from '@app/controllers/notificationController';
-
->>>>>>> dc0113635dca62ae30ab7988c6b940e61fe31ae2
 
 export interface JobDetailProps {
   id: string;
@@ -52,20 +47,18 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
   const generateCoverLetter = async () => {
     setLoading(true);
     await generateCoverLetterAPI(job.id)
-    .then((data) => {
-      setCoverLetter(data);
-      notificationController.success(
-        { message: 'Cover letter generated', description: 'Your cover letter has been generated successfully'}
-      );
-    }
-    )
-    .catch((error) => {
-      notificationController.error(error.message);
-    })
-    .finally(() => setLoading(false));
-
-
-  }
+      .then((data) => {
+        setCoverLetter(data);
+        notificationController.success({
+          message: 'Cover letter generated',
+          description: 'Your cover letter has been generated successfully',
+        });
+      })
+      .catch((error) => {
+        notificationController.error(error.message);
+      })
+      .finally(() => setLoading(false));
+  };
 
   const handleOnCompanyClick = () => {
     if (job?.companyLink) {
@@ -169,12 +162,14 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
         </S.JobTabs.TabPane>
         <S.JobTabs.TabPane tab="Cover Letter" key="3">
           <S.JobDetailContent>
-            <S.JobInfoText> { coverLetter == '' ? <BaseButton type="primary" icon={<BookOutlined />} onClick={generateCoverLetter} loading = {isLoading} >
-                Generate Cover Letter
-              </BaseButton> : null}
-              
+            <S.JobInfoText>
+              {' '}
+              {coverLetter == '' ? (
+                <BaseButton type="primary" icon={<BookOutlined />} onClick={generateCoverLetter} loading={isLoading}>
+                  Generate Cover Letter
+                </BaseButton>
+              ) : null}
               {coverLetter}
-
             </S.JobInfoText>
           </S.JobDetailContent>
         </S.JobTabs.TabPane>
