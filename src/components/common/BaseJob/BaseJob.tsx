@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { BaseButton } from '../BaseButton/BaseButton';
 import logo from 'assets/logo_svg.svg';
 import { JobDetail } from '@app/components/jobDetail/JobDetail';
-import { calculateDateDifference, formatDate } from '@app/utils/utils';
+import { calculateDateDifference, formatDate, formatOptionString } from '@app/utils/utils';
 
 export interface IJobData {
   applyLink?: string;
@@ -62,9 +62,9 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
           <S.InfoWrapper>
             <S.InfoHeaderWrapper>
               <S.LabelWrapper>
-                {jobData.type && jobData.type !== 'ANY' ? <S.Label>{jobData.type}</S.Label> : null}
+                {jobData.type && jobData.type !== 'ANY' ? <S.Label>{formatOptionString(jobData.type)}</S.Label> : null}
 
-                {jobData.experience && <S.Label>{jobData.experience}</S.Label>}
+                {jobData.experience && <S.Label>{formatOptionString(jobData.experience)}</S.Label>}
               </S.LabelWrapper>
               <S.TitleWrapper>
                 <S.Title level={5}>{jobData.title}</S.Title>
