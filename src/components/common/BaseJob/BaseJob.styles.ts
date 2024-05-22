@@ -7,7 +7,7 @@ import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypogr
 
 export const JobCard = styled(NFTCard)`
   box-shadow: var(--box-shadow-nft-secondary-color);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   border-radius: 0.625rem;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 
@@ -19,14 +19,25 @@ export const JobCard = styled(NFTCard)`
 
 export const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 1.625rem;
+
+  @media only screen and ${media.xl} {
+    flex-direction: row;
+    gap: 1rem;
+  }
 `;
 
 export const ImgWrapper = styled.div`
   position: relative;
-  width: 84px;
   height: 84px;
+  width: 100%;
   overflow: hidden;
+
+  @media only screen and ${media.xl} {
+    width: 84px;
+    height: 84px;
+  }
 
   img {
     width: 100%;
@@ -55,6 +66,15 @@ export const InfoWrapper = styled.div`
   flex-direction: column;
   gap: 0.75rem;
   flex: 1;
+  border-top: 1px solid var(--primary-color);
+  padding-top: 1rem;
+
+  @media only screen and ${media.xl} {
+    border-left: 1px solid var(--primary-color);
+    padding-left: 1rem;
+    border-top: none;
+    padding-top: 0;
+  }
 `;
 
 export const InfoHeaderWrapper = styled.div`
@@ -80,6 +100,8 @@ export const Title = styled(BaseTypography.Title)`
     color: var(--primary-color);
 
     margin-bottom: 0;
+
+    font-weight: 700;
 
     font-size: ${FONT_SIZE.md};
 
