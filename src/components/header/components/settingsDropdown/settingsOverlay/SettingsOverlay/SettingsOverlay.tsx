@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React from 'react';
 import { DropdownCollapse } from '@app/components/header/Header.styles';
 import { useTranslation } from 'react-i18next';
@@ -24,17 +24,17 @@ export const SettingsOverlay: React.FC = ({ ...props }) => {
         <DropdownCollapse.Panel header={t('header.changeTheme')} key="themePicker">
           <ThemePicker />
         </DropdownCollapse.Panel>
-        <DropdownCollapse.Panel header={t('header.nightMode.title')} key="nightMode">
+        {/* <DropdownCollapse.Panel header={t('header.nightMode.title')} key="nightMode">
           <NightModeSettings />
-        </DropdownCollapse.Panel>
+        </DropdownCollapse.Panel> */}
       </DropdownCollapse>
-      {isPWASupported && (
+      {/* {isPWASupported && (
         <S.PwaInstallWrapper>
           <BaseButton block type="primary" onClick={() => event && (event as BeforeInstallPromptEvent).prompt()}>
             {t('common.pwa')}
           </BaseButton>
         </S.PwaInstallWrapper>
-      )}
+      )} */}
     </S.SettingsOverlayMenu>
   );
 };
