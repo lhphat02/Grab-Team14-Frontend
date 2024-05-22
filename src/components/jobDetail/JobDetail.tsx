@@ -3,13 +3,15 @@ import { JobDetailResponse } from '@app/api/jobs.api';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { getJobDetail } from '@app/store/slices/jobSlice';
 import { useEffect, useState } from 'react';
-import { BookOutlined, HeartFilled, LoadingOutlined } from '@ant-design/icons';
+import { BookOutlined, HeartFilled, LoadingOutlined, SwapOutlined } from '@ant-design/icons';
 import * as S from './JobDetail.styles';
-import { formatDate } from '../../utils/utils';
+import { formatDate, formatOptionString } from '../../utils/utils';
 import DOMPurify from 'dompurify';
 import logo from 'assets/logo_svg.svg';
 import { BaseButton } from '../common/BaseButton/BaseButton';
-
+import { readToken } from '@app/services/localStorage.service';
+import { notificationController } from '@app/controllers/notificationController';
+import { useLocation } from 'react-router-dom';
 
 export interface JobDetailProps {
   id: string;
@@ -18,6 +20,11 @@ export interface JobDetailProps {
 export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
   const dispatch = useAppDispatch();
   const [job, setJob] = useState<JobDetailResponse | null>(null);
+  const token = readToken();
+
+  const location = useLocation();
+  const path = location.pathname;
+  const isOnJobHistoryPage = path.includes('history');
 
   useEffect(() => {
     dispatch(getJobDetail(id))
@@ -41,6 +48,18 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     }
   };
 
+  const handleOnApplyClick = () => {
+    window.open(job.jobLink, '_blank');
+  };
+
+  const handleOnSaveClick = () => {
+    if (!token) {
+      notificationController.error({ message: 'Please login to save job' });
+    }
+
+    //Save job logic
+  };
+
   const santizedDescription = DOMPurify.sanitize(job.description);
   const sanitizedRequirements = job.requirements?.map((req: string | Node) => DOMPurify.sanitize(req)).join('') || '';
 
@@ -61,10 +80,22 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
           <S.JobTitle>{job.title}</S.JobTitle>
 
           <S.ButtonGroupContainer>
-            <S.ApplyButton onClick={() => window.open(job.companyLink, '_blank')}>Apply Now</S.ApplyButton>
-            <S.SaveButton type="primary" icon={<HeartFilled />}>
-              Save
-            </S.SaveButton>
+            <S.ApplyButton onClick={handleOnApplyClick}>Apply Now</S.ApplyButton>
+
+            {isOnJobHistoryPage ? (
+              <BaseButton
+                icon={<SwapOutlined />}
+                onClick={() => {
+                  //Add to history logic
+                }}
+              >
+                Change Status
+              </BaseButton>
+            ) : (
+              <S.SaveButton type="primary" icon={<HeartFilled />} onClick={handleOnSaveClick}>
+                Save
+              </S.SaveButton>
+            )}
           </S.ButtonGroupContainer>
         </S.TitleWrapper>
       </S.JobDetailHeader>
@@ -76,9 +107,9 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
               <S.JobInfoWrapper>
                 <S.InfoIcon />
                 <S.LabelWrapper>
-                  {job.type && job.type !== 'ANY' ? <S.InfoLabel>{job.type}</S.InfoLabel> : null}
-                  {job.workingMode && <S.InfoLabel>{job.workingMode} MODE</S.InfoLabel>}
-                  {job.experience && <S.InfoLabel>{job.experience} LEVEL</S.InfoLabel>}
+                  {job.type && job.type !== 'ANY' ? <S.InfoLabel>{formatOptionString(job.type)}</S.InfoLabel> : null}
+                  {job.workingMode && <S.InfoLabel>{formatOptionString(job.workingMode)} MODE</S.InfoLabel>}
+                  {job.experience && <S.InfoLabel>{formatOptionString(job.experience)}</S.InfoLabel>}
                 </S.LabelWrapper>
               </S.JobInfoWrapper>
 
