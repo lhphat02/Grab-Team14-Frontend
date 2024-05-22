@@ -21,14 +21,14 @@ export interface JobListResponse {
 }
 
 export interface JobDetailResponse {
-  requirements: any;
+  requirements: [string];
   id: string;
   title: string;
   date: Date;
   company: string;
   companyLink: string;
   companyImageUrl: string;
-  link;
+  jobLink: string;
   location?: string;
   companyLocation?: string;
   experience?: string;
