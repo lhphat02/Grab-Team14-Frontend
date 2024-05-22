@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import { ThemeType } from '@app/interfaces/interfaces';
 import { createSlice, createAction, PrepareAction } from '@reduxjs/toolkit';
 
@@ -11,7 +11,7 @@ const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 export const defaultTheme = (localStorage.getItem('theme') as ThemeType) || preferredTheme;
 
-localStorage.setItem('theme', defaultTheme);
+localStorage.setItem('theme', 'light');
 
 const initialState: ThemeState = {
   theme: defaultTheme,
