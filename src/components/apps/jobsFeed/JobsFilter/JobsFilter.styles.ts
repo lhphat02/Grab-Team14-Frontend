@@ -155,6 +155,8 @@ export const FilterWrapper = styled.div`
     top: 1.875rem;
     padding: 2rem 2rem;
     background: var(--background-color);
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.07);
+
     border-radius: ${BORDER_RADIUS};
     gap: 0.625rem;
   }
