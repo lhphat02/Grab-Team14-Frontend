@@ -117,7 +117,6 @@ export const UploadForm: React.FC = () => {
     await updateUserAPI({
       skills: skills,
       phone: phone,
-      email: email,
       fullName: fullName
     })
       .then((data: any) => { console.log(data) ,  notificationController.success({ message: 'Update your profile succesfully' }) })

@@ -7,6 +7,7 @@ import { PaginationResponse, getHistoryJobListAPI, getJobDetailAPI, getJobListAP
 import { useAppSelector } from '@app/hooks/reduxHooks';
 import { setQuery } from './querySlice';
 import { QueryModel } from '@app/domain/QueryModel';
+import { getJobStatusAPI } from '@app/api/history.api';
 
 export interface JobSlice {
   page: 1;
@@ -35,17 +36,8 @@ const initModel: QueryModel = {
   limit: 10,
 };
 
-export interface QueryRequest {
-  initialQuery: QueryModel;
-  nowQuery: QueryModel | null;
-}
-
-export const getJobList = createAsyncThunk('job/getJobList', async (queryRequest: QueryRequest, { dispatch }) => {
-  console.log('queryRequest', queryRequest);
-  let query: QueryModel;
-  query = queryRequest.initialQuery;
-
-  return getJobListAPI(query!).then((res) => {
+export const getJobList = createAsyncThunk('job/getJobList', async (query: QueryModel, { dispatch }) => {
+  return getJobListAPI(query).then((res) => {
     return res;
   });
 });
@@ -58,6 +50,12 @@ export const getJobDetail = createAsyncThunk('job/getJobDetail', async (id: stri
 
 export const getHistoryJobList = createAsyncThunk('job/getUserJobList', async () => {
   return getHistoryJobListAPI().then((res) => {
+    return res;
+  });
+});
+
+export const getJobStatus = createAsyncThunk('job/getJobStatus', async (id: string) => {
+  return getJobStatusAPI(id).then((res) => {
     return res;
   });
 });

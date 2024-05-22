@@ -1,7 +1,6 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 export interface QueryModel {
-  isLoaded: boolean;
   page: number;
   limit: number;
   search: string | null;

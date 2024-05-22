@@ -2,8 +2,6 @@
 // @ts-ignore
 // @ts-nocheck
 import React, { useEffect, useState } from 'react';
-import { BaseArticle } from '@app/components/common/BaseArticle/BaseArticle';
-import { BaseFeed } from '@app/components/common/BaseFeed/BaseFeed';
 import { JobsFilter } from '@app/components/apps/jobsFeed/JobsFilter/JobsFilter';
 import { BaseEmpty } from '@app/components/common/BaseEmpty/BaseEmpty';
 import { BaseJobList } from '@app/components/common/BaseJobList/BaseJobList';
@@ -12,60 +10,56 @@ import { QueryRequest, getJobList } from '@app/store/slices/jobSlice';
 import { JobListResponse } from '@app/api/jobs.api';
 import { BaseJob } from '@app/components/common/BaseJob/BaseJob';
 import { QueryModel } from '@app/domain/QueryModel';
-import { useSelector } from 'react-redux';
 import { setQuery } from '@app/store/slices/querySlice';
+import type { PaginationProps } from 'antd';
+import { Pagination } from 'antd';
 
 const JobsFeed: React.FC = () => {
   const [jobs, setJobs] = useState<JobListResponse[]>([]);
-  const [hasMore, setHasMore] = useState<boolean>(true);
   const [loaded, setLoaded] = useState<boolean>(false);
+  const [limit , setLimit] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
   const dispatch = useAppDispatch();
   let query = useAppSelector((state) => state.query.query);
+  let [totalDocs , setTotalDocs] = useState<number>(0);
+
+  const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
+    if (type === 'prev') {
+      return <a>Previous</a>;
+    }
+    if (type === 'next') {
+      return <a>Next</a>;
+    }
+    return originalElement;
+  };
 
   useEffect(() => {
-    const queryRequest: QueryRequest = {
-      initialQuery: query!,
-      nowQuery: null,
-    };
-    dispatch(getJobList(queryRequest))
+    console.log('query job bbb', query);
+    dispatch(getJobList(query))
       .unwrap()
       .then((data) => {
-        if (data?.totalDocs) setHasMore(true);
-        else setHasMore(false);
-        if (query?.page === 1) setJobs(data?.docs || []);
-        else {
-          setJobs(jobs.concat(data?.docs || []));
-        }
+        setTotalDocs(data.totalDocs);
+        setJobs(data.docs);
       })
       .finally(() => setLoaded(true));
   }, [query]);
 
-  const next = () => {
-    const newQuery: QueryModel = {
-      page: page + 1,
-      limit: 10,
-      isLoaded: true,
-      search: null,
-      industry: null,
-      location: null,
-      experience: null,
-      type: null,
-      time: null,
-      workingMode: null,
-    };
-    setPage(page + 1);
-    dispatch(setQuery(newQuery));
-  };
+  const handlePageChange = (page: number, pageSize: number) => {
+    setPage(page);
+    setLimit(pageSize);
+    dispatch(setQuery({ ...query, page: page, limit: pageSize }));
+  }
 
   return (
     <JobsFilter jobs={jobs}>
-      {({ filteredJobs }) =>
-        filteredJobs?.length || !loaded ? (
-          <BaseJobList next={next} hasMore={hasMore}>
-            {filteredJobs.map((job, index) => (
+      {({ jobs }) =>
+        jobs?.length ? (
+          <BaseJobList next={false} hasMore={false}>
+            {jobs.map((job, index) => (
               <BaseJob jobData={job} key={index} />
             ))}
+
+          <Pagination total={totalDocs} itemRender={itemRender} onChange={handlePageChange} />;
           </BaseJobList>
         ) : (
           <BaseEmpty />

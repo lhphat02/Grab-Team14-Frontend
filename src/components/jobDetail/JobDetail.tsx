@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { JobDetailResponse, generateCoverLetterAPI } from '@app/api/jobs.api';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
-import { getJobDetail } from '@app/store/slices/jobSlice';
+import { getJobDetail, getJobStatus } from '@app/store/slices/jobSlice';
 import { useEffect, useState } from 'react';
 import { BookOutlined, HeartFilled, LoadingOutlined, SwapOutlined } from '@ant-design/icons';
 import * as S from './JobDetail.styles';
@@ -12,6 +12,9 @@ import { BaseButton } from '../common/BaseButton/BaseButton';
 import { readToken } from '@app/services/localStorage.service';
 import { notificationController } from '@app/controllers/notificationController';
 import { useLocation } from 'react-router-dom';
+import { updateJobStatus } from '@app/api/history.api';
+import { Button, Dropdown, Space } from 'antd';
+import { BaseMenuProps } from '../common/BaseMenu/BaseMenu';
 
 export interface JobDetailProps {
   id: string;
@@ -24,6 +27,8 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
   const [job, setJob] = useState<JobDetailResponse | null>(null);
   const token = readToken();
 
+  let [status , setStatus] = useState(job?.status);
+  let [isLoaded , setIsLoaded] = useState(false);
   const location = useLocation();
   const path = location.pathname;
   const isOnJobHistoryPage = path.includes('history');
@@ -34,7 +39,17 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
       .then((data) => {
         setJob(data!);
       });
-  }, [dispatch, id]);
+
+      if (token != null && !isLoaded) {
+        setIsLoaded(true);
+        console.log('Getting job status');
+        dispatch(getJobStatus(id))
+        .unwrap()
+        .then((data : any) => {
+          setStatus(data.status);
+        });
+      }
+  }, [ id, status]);
 
   if (!job) {
     return (
@@ -49,6 +64,7 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     await generateCoverLetterAPI(job.id)
       .then((data) => {
         setCoverLetter(data);
+        console.log('Cover letter generated', data);
         notificationController.success({
           message: 'Cover letter generated',
           description: 'Your cover letter has been generated successfully',
@@ -70,13 +86,53 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     window.open(job.jobLink, '_blank');
   };
 
-  const handleOnSaveClick = () => {
+  const handleOnSaveClick = async (newStatus = 'SAVED') => {
+    console.log('Changing job status to ' + newStatus, status);
+    if ( status === newStatus ) {
+      return;
+    }
     if (!token) {
       notificationController.error({ message: 'Please login to save job' });
     }
 
-    //Save job logic
+    await updateJobStatus(job.id, { status: newStatus })
+    .then(() => {
+      setStatus(newStatus);
+      notificationController.success({ message: 'Job changed status to ' + newStatus });
+    }
+    )
+    .catch((error) => {
+      notificationController.error({ message: error.message });
+    });
+
   };
+
+  const items: BaseMenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <a target="_blank" onClick={() => handleOnSaveClick('APPLIED')}>
+          APPLIED
+        </a>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <a target="_blank" onClick={ () => handleOnSaveClick('INTERVIEWED') }>
+          INTERVIEWED
+        </a>
+      ),
+    },
+    {
+      key: '3',
+      label: (
+        <a target="_blank" onClick={() => handleOnSaveClick('REJECTED')}>
+          REJECTED
+        </a>
+      ),
+    },
+  ];
 
   const santizedDescription = DOMPurify.sanitize(job.description);
   const sanitizedRequirements = job.requirements?.map((req: string | Node) => DOMPurify.sanitize(req)).join('') || '';
@@ -101,17 +157,16 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
             <S.ApplyButton onClick={handleOnApplyClick}>Apply Now</S.ApplyButton>
 
             {isOnJobHistoryPage ? (
-              <BaseButton
-                icon={<SwapOutlined />}
-                onClick={() => {
-                  //Add to history logic
-                }}
-              >
-                Change Status
-              </BaseButton>
+                <Dropdown menu={{items }} placement="bottomLeft" arrow={{ pointAtCenter: true }}>
+                <Button>
+                  <SwapOutlined />
+                  {status}
+
+                </Button>
+                 </Dropdown>
             ) : (
-              <S.SaveButton type="primary" icon={<HeartFilled />} onClick={handleOnSaveClick}>
-                Save
+              <S.SaveButton type="primary" icon={ (status === 'SAVED' ?  <HeartFilled/> : null) } onClick={() => handleOnSaveClick('SAVED')} disabled = {status === 'SAVED'}>
+                {status === 'SAVED' ? 'Saved' : 'Save'}
               </S.SaveButton>
             )}
           </S.ButtonGroupContainer>
@@ -162,15 +217,15 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
         </S.JobTabs.TabPane>
         <S.JobTabs.TabPane tab="Cover Letter" key="3">
           <S.JobDetailContent>
-            <S.JobInfoText>
+            <S.JobSantizedDescription>
               {' '}
               {coverLetter == '' ? (
                 <BaseButton type="primary" icon={<BookOutlined />} onClick={generateCoverLetter} loading={isLoading}>
                   Generate Cover Letter
                 </BaseButton>
               ) : null}
-              {coverLetter}
-            </S.JobInfoText>
+              {<p>{coverLetter}</p>}
+            </S.JobSantizedDescription>
           </S.JobDetailContent>
         </S.JobTabs.TabPane>
       </S.JobTabs>
