@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React from 'react';
 import { ConfigProvider } from 'antd';
 import { HelmetProvider } from 'react-helmet-async';
@@ -20,9 +20,9 @@ const App: React.FC = () => {
   const { language } = useLanguage();
   const theme = useAppSelector((state) => state.theme.theme);
 
-  usePWA();
+  // usePWA();
 
-  useAutoNightMode();
+  // useAutoNightMode();
 
   useThemeWatcher();
 

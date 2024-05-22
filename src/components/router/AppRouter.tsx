@@ -18,31 +18,31 @@ import RequireAuth from '@app/components/router/RequireAuth';
 import { withLoading } from '@app/hocs/withLoading.hoc';
 import NftDashboardPage from '@app/pages/DashboardPages/NftDashboardPage';
 import MedicalDashboardPage from '@app/pages/DashboardPages/MedicalDashboardPage';
-import { JobsFeed } from '../apps/jobsFeed/JobsFeed';
-import { HistoryJobsFeed } from '../historyJobsFeed/HistoryJobsFeed';
 
 const NewsFeedPage = React.lazy(() => import('@app/pages/NewsFeedPage'));
 const ServerErrorPage = React.lazy(() => import('@app/pages/ServerErrorPage'));
 const Error404Page = React.lazy(() => import('@app/pages/Error404Page'));
-const PersonalInfoPage = React.lazy(() => import('@app/pages/PersonalInfoPage'));
 const SecuritySettingsPage = React.lazy(() => import('@app/pages/SecuritySettingsPage'));
 const UploadCVPage = React.lazy(() => import('@app/pages/UploadCVPage'));
 const Logout = React.lazy(() => import('./Logout'));
 const LandingPage = React.lazy(() => import('@app/components/landing/LandingMain/LandingMain'));
+const JobsFeedPage = React.lazy(() => import('@app/components/apps/jobsFeed/JobsFeed'));
+const HistoryJobsFeedPage = React.lazy(() => import('@app/components/historyJobsFeed/HistoryJobsFeed'));
+const PersonalInfoPage = React.lazy(() => import('@app/pages/PersonalInfoPage'));
 
 export const NFT_DASHBOARD_PATH = '/';
 export const MEDICAL_DASHBOARD_PATH = '/medical-dashboard';
 
 // const NewsFeed = withLoading(NewsFeedPage);
-const JobsFeedPage = withLoading(JobsFeed);
-const HistoryJobsFeedPage = withLoading(HistoryJobsFeed);
 const Landing = withLoading(LandingPage);
+const JobsFeed = withLoading(JobsFeedPage);
+const HistoryJobsFeed = withLoading(HistoryJobsFeedPage);
+const PersonalInfo = withLoading(PersonalInfoPage);
 
 const ServerError = withLoading(ServerErrorPage);
 const Error404 = withLoading(Error404Page);
 
 // Profile
-const PersonalInfo = withLoading(PersonalInfoPage);
 const SecuritySettings = withLoading(SecuritySettingsPage);
 const UploadCV = withLoading(UploadCVPage);
 
@@ -64,8 +64,8 @@ export const AppRouter: React.FC = () => {
         <Route path={HOME_PATH} element={<Landing />} />
 
         <Route path={HOME_PATH} element={protectedLayout}>
-          <Route path="jobs" index element={<JobsFeedPage />} />
-          <Route path="history" element={<HistoryJobsFeedPage />} />
+          <Route path="jobs" index element={<JobsFeed />} />
+          <Route path="history" element={<HistoryJobsFeed />} />
           {/* HomePage Router */}
           {/* <Route path="apps">
             <Route path="feed" element={<NewsFeed />} />
