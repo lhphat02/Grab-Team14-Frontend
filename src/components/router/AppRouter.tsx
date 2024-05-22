@@ -62,10 +62,13 @@ export const AppRouter: React.FC = () => {
     <BrowserRouter>
       <Routes>
         {/* Landing Page Route */}
-        <Route path={HOME_PATH} element={<Landing />} />
+        <Route path={HOME_PATH} element={<MainLayout />}>
+          <Route path="jobs" element={<JobsFeed />} />
+          <Route index element={<Landing />} />
+
+        </Route>
 
         <Route path={HOME_PATH} element={protectedLayout}>
-          <Route path="jobs" index element={<JobsFeed />} />
           <Route path="history" element={<HistoryJobsFeed />} />
           {/* HomePage Router */}
           {/* <Route path="apps">
