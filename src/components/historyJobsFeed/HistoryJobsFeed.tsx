@@ -9,6 +9,7 @@ import { getHistoryJobList } from '@app/store/slices/jobSlice';
 import { HistoryJobListResponse } from '@app/api/jobs.api';
 import { BaseHistoryJob } from '../common/BaseHistoryJob/BaseHistoryJob';
 import { HistoryJobsFilter } from './HistoryJobsFilter/HistoryJobsFilter';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const HistoryJobsFeed: React.FC = () => {
   const [jobs, setJobs] = useState<HistoryJobListResponse>([]);
@@ -23,6 +24,8 @@ const HistoryJobsFeed: React.FC = () => {
       })
       .finally(() => setLoaded(true));
   }, []);
+
+  if (!loaded) return <LoadingOutlined />;
 
   return (
     <HistoryJobsFilter jobs={jobs}>
