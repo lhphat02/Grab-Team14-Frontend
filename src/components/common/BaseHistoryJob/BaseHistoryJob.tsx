@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Dates } from '@app/constants/Dates';
 import { BaseHashTag, IHashTag } from '../BaseHashTag/BaseHashTag';
@@ -9,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { BaseButton } from '../BaseButton/BaseButton';
 import { HistoryJobListResponse } from '@app/api/jobs.api';
 import { BaseModal } from '../BaseModal/BaseModal';
+import logo from 'assets/logo_svg.svg';
 import { formatDate } from '@app/utils/utils';
 import { JobDetail } from '@app/components/jobDetail/JobDetail';
 
@@ -37,7 +37,7 @@ export const BaseHistoryJob: React.FC<BaseHistoryJobProps> = ({ job }) => {
               alt={job.company}
               width={84}
               height={84}
-              onError={(e) => (e.currentTarget.src = 'path/to/placeholder.png')}
+              onError={(e) => (e.currentTarget.src = logo)}
             />
           </S.ImgWrapper>
 
@@ -50,6 +50,7 @@ export const BaseHistoryJob: React.FC<BaseHistoryJobProps> = ({ job }) => {
                 {job.type && job.type !== 'ANY' ? <S.Label>{job.type}</S.Label> : null}
 
                 {job.experience && <S.Label>{job.experience}</S.Label>}
+                {job.status && <S.Label>{job.status}</S.Label>}
               </S.LabelWrapper>
             </S.InfoHeaderWrapper>
 
