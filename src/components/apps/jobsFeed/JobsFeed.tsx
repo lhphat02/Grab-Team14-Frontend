@@ -15,7 +15,7 @@ import { QueryModel } from '@app/domain/QueryModel';
 import { useSelector } from 'react-redux';
 import { setQuery } from '@app/store/slices/querySlice';
 
-export const JobsFeed: React.FC = () => {
+const JobsFeed: React.FC = () => {
   const [jobs, setJobs] = useState<JobListResponse[]>([]);
   const [hasMore, setHasMore] = useState<boolean>(true);
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -74,3 +74,5 @@ export const JobsFeed: React.FC = () => {
     </JobsFilter>
   );
 };
+
+export default JobsFeed;
