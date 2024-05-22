@@ -22,7 +22,6 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     dispatch(getJobDetail(id))
       .unwrap()
       .then((data) => {
-        console.log('data', data);
         setJob(data!);
       });
   }, [dispatch, id]);
