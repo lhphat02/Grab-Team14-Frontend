@@ -30,19 +30,8 @@ export const querySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(setQuery, (state, action) => {
-      console.log('action', action.payload);
-      let temp = action.payload;
-      console.log('temp', temp);
-      if (!action.payload.isLoaded) {
-        state.query = temp;
-      } else {
-        const page = temp.page;
-        temp = state.query!;
-        temp.page = page;
-        temp.isLoaded = true;
-        state.query = temp;
-        console.log('state.query', state.query.search, temp.search);
-      }
+      console.log('action.payload', action.payload);
+      state.query = action.payload;
     });
   },
 });

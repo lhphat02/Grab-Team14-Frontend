@@ -26,6 +26,8 @@ import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 import { readUser } from '@app/services/localStorage.service';
 import { setUser, updateUser } from '@app/store/slices/userSlice';
 import { updateUserAPI } from '@app/api/user.api';
+import { BaseCollapse } from '@app/components/common/BaseCollapse/BaseCollapse';
+import { Divider, List, Typography } from 'antd';
 
 interface PersonalInfoFormValues {
   birthday?: string;
@@ -41,6 +43,7 @@ interface PersonalInfoFormValues {
   phone: string;
   email: string;
   website: string;
+  skills: [string];
 }
 
 const initialPersonalInfoValues: PersonalInfoFormValues = {
@@ -57,6 +60,7 @@ const initialPersonalInfoValues: PersonalInfoFormValues = {
   linkedin: '',
   facebook: '',
   website: '',
+  skills: [''],
 };
 
 export const PersonalInfo: React.FC = () => {
@@ -83,6 +87,7 @@ export const PersonalInfo: React.FC = () => {
             linkedin: user.linkedin,
             facebook: user.facebook,
             website: user.website,
+            skills: user.skills,
           }
         : initialPersonalInfoValues,
     [user],
@@ -186,6 +191,18 @@ export const PersonalInfo: React.FC = () => {
           <BaseCol span={24}>
             <SocialLinksItem />
           </BaseCol>
+
+
+          <BaseCollapse  style={{'marginBottom' : 30 }}>
+            <BaseCollapse.Panel header="Skills" key={2}>
+              <List
+                size="small"
+                bordered
+                dataSource={user?.skills || []}
+                renderItem={(item) => <List.Item>{item}</List.Item>}
+              />
+            </BaseCollapse.Panel>
+          </BaseCollapse>
         </BaseRow>
       </BaseButtonsForm>
     </BaseCard>

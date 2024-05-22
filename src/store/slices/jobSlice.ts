@@ -36,17 +36,8 @@ const initModel: QueryModel = {
   limit: 10,
 };
 
-export interface QueryRequest {
-  initialQuery: QueryModel;
-  nowQuery: QueryModel | null;
-}
-
-export const getJobList = createAsyncThunk('job/getJobList', async (queryRequest: QueryRequest, { dispatch }) => {
-  console.log('queryRequest', queryRequest);
-  let query: QueryModel;
-  query = queryRequest.initialQuery;
-
-  return getJobListAPI(query!).then((res) => {
+export const getJobList = createAsyncThunk('job/getJobList', async (query: QueryModel, { dispatch }) => {
+  return getJobListAPI(query).then((res) => {
     return res;
   });
 });

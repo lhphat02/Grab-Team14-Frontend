@@ -64,6 +64,7 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     await generateCoverLetterAPI(job.id)
       .then((data) => {
         setCoverLetter(data);
+        console.log('Cover letter generated', data);
         notificationController.success({
           message: 'Cover letter generated',
           description: 'Your cover letter has been generated successfully',
@@ -216,15 +217,15 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
         </S.JobTabs.TabPane>
         <S.JobTabs.TabPane tab="Cover Letter" key="3">
           <S.JobDetailContent>
-            <S.JobInfoText>
+            <S.JobSantizedDescription>
               {' '}
               {coverLetter == '' ? (
                 <BaseButton type="primary" icon={<BookOutlined />} onClick={generateCoverLetter} loading={isLoading}>
                   Generate Cover Letter
                 </BaseButton>
               ) : null}
-              {coverLetter}
-            </S.JobInfoText>
+              {<p>{coverLetter}</p>}
+            </S.JobSantizedDescription>
           </S.JobDetailContent>
         </S.JobTabs.TabPane>
       </S.JobTabs>
