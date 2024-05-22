@@ -26,7 +26,7 @@ const MainSider: React.FC<MainSiderProps> = ({ isCollapsed, setCollapsed, ...pro
         collapsed={!isDesktop && isCollapsed}
         collapsedWidth={tabletOnly ? 80 : 0}
         collapsible={isCollapsible}
-        width={260}
+        width={180}
         {...props}
       >
         <SiderLogo isSiderCollapsed={isCollapsed} toggleSider={toggleSider} />

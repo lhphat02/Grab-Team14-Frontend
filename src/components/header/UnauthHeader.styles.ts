@@ -7,6 +7,16 @@ import { LAYOUT, media } from '@app/styles/themes/constants';
 import { BaseCollapse } from '../common/BaseCollapse/BaseCollapse';
 import { BaseCol } from '../common/BaseCol/BaseCol';
 
+export const NavLogo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  cursor: pointer;
+`;
+
 export const UnauthHeaderActionWrapper = styled.div`
   cursor: pointer;
 

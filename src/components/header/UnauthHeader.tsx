@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import React from 'react';
 import { DesktopUnauthHeader } from './layouts/DesktopUnauthHeader';
 import { MobileUnauthHeader } from './layouts/MobileUnauthHeader';
@@ -11,12 +11,6 @@ interface UnauthHeaderProps {
   isTwoColumnsLayout: boolean;
 }
 
-export const UnauthHeader: React.FC<UnauthHeaderProps> = ({  }) => {
-  const { isTablet } = useResponsive();
-
-  return isTablet ? (
-    <DesktopUnauthHeader />
-  ) : (
-    <MobileUnauthHeader />
-  );
+export const UnauthHeader: React.FC<UnauthHeaderProps> = ({}) => {
+  return <DesktopUnauthHeader />;
 };

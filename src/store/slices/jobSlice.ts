@@ -37,7 +37,10 @@ const initModel: QueryModel = {
 };
 
 export const getJobList = createAsyncThunk('job/getJobList', async (query: QueryModel, { dispatch }) => {
+  console.log('Query in slice:', query);
+
   return getJobListAPI(query).then((res) => {
+    console.log('Response:', res);
     return res;
   });
 });

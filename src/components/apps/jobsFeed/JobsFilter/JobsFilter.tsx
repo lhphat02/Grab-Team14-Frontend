@@ -22,7 +22,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     page: number;
     search: string;
     selectedIndustry: string;
-    selectedLocation: string;
+    location: string;
     selectedExperience: string;
     selectedWorkingMode: string;
     selectedType: string;
@@ -32,7 +32,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     page: 1,
     search: '',
     selectedIndustry: '',
-    selectedLocation: '',
+    location: '',
     selectedExperience: '',
     selectedWorkingMode: '',
     selectedType: '',
@@ -40,14 +40,12 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
   });
 
   if (query) {
-    console.log('query 2223 ', query);
     const { search, industry, location, experience, workingMode, type, time } = query;
 
     if (search != filterFields.search && search != null) setFilterFields({ ...filterFields, search });
     if (industry != filterFields.selectedIndustry && industry != null)
       setFilterFields({ ...filterFields, selectedIndustry: industry });
-    if (location != filterFields.selectedLocation && location != null)
-      setFilterFields({ ...filterFields, selectedLocation: location });
+    if (location != filterFields.location && location != null) setFilterFields({ ...filterFields, location: location });
     if (experience != filterFields.selectedExperience && experience != null)
       setFilterFields({ ...filterFields, selectedExperience: experience });
     if (workingMode != filterFields.selectedWorkingMode && workingMode != null)
@@ -64,19 +62,22 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
   useEffect(() => {
     updateFilteredField('search', query?.search ? query.search : '');
     updateFilteredField('selectedIndustry', query?.industry ? query.industry : '');
-    updateFilteredField('selectedLocation', query?.location ? query.location : '');
+    updateFilteredField('location', query?.location ? query.location : '');
     updateFilteredField('selectedExperience', query?.experience ? query.experience : '');
     updateFilteredField('selectedWorkingMode', query?.workingMode ? query.workingMode : '');
     updateFilteredField('selectedType', query?.type ? query.type : '');
     updateFilteredField('selectedTime', query?.time ? query.time : '');
   }, [query]);
 
-  const onClick = (key: string, value: string | [string]) => {
+  const setState = (key: string, value: string | [string]) => {
     setFilterFields({ ...filterFields, [key]: value });
   };
 
+  const onClick = (key: string, value: string | [string]) => {
+    setState(key, value);
+  };
+
   const handleClickApply = () => {
-    console.log('filterFields ddmmdfm sdmf ', filterFields);
     const newQuery: unknown = {
       page: 1,
       limit: 10,
@@ -89,7 +90,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     setFilterFields({
       search: '',
       selectedIndustry: '',
-      selectedLocation: '',
+      location: '',
       selectedExperience: '',
       selectedWorkingMode: '',
       selectedType: '',
@@ -112,7 +113,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     if (mobileOnly) {
       setOverlayOpen(false);
     }
-  }, [setFilterFields, mobileOnly]);
+  }, [dispatch, mobileOnly]);
 
   const updateFilteredField = (field: string, value: string | [string]) => {
     setFilterFields({ ...filterFields, [field]: value });
@@ -130,7 +131,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
               <Filter
                 search={filterFields.search}
                 selectedIndustry={filterFields.selectedIndustry}
-                selectedLocation={filterFields.selectedLocation}
+                location={filterFields.location}
                 selectedExperience={filterFields.selectedExperience}
                 selectedWorkingMode={filterFields.selectedWorkingMode}
                 selectedType={filterFields.selectedType}
@@ -157,7 +158,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
           <Filter
             search={filterFields.search}
             selectedIndustry={filterFields.selectedIndustry}
-            selectedLocation={filterFields.selectedLocation}
+            location={filterFields.location}
             selectedExperience={filterFields.selectedExperience}
             selectedWorkingMode={filterFields.selectedWorkingMode}
             selectedType={filterFields.selectedType}

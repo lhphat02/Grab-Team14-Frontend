@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ProfileDropdown } from '../components/profileDropdown/ProfileDropdown/ProfileDropdown';
 import { SettingsDropdown } from '../components/settingsDropdown/SettingsDropdown';
@@ -31,21 +30,23 @@ export const DesktopUnauthHeader: React.FC<DesktopUnauthHeaderProps> = ({ isTwoC
 
   return (
     <BaseRow justify="space-between" align="middle">
-      {leftSide}
+      <S.NavLogo>
+        <a href="/">Emploi</a>
+      </S.NavLogo>
 
       <S.ProfileColumn xl={8} xxl={7} $isTwoColumnsLayout={isTwoColumnsLayout}>
         <BaseRow align="middle" justify="end" gutter={[5, 5]}>
           <BaseCol>
             <BaseRow gutter={[{ xxl: 5 }, { xxl: 5 }]}>
               <BaseCol>
-              <BaseButton type="link" href="auth/login">
-                Login
-              </BaseButton>
+                <BaseButton type="link" href="auth/login">
+                  Log in
+                </BaseButton>
               </BaseCol>
               <BaseCol>
-              <BaseButton type="link" href="auth/sign-up">
-                Sign Up
-              </BaseButton>
+                <BaseButton type="link" href="auth/sign-up">
+                  Sign Up
+                </BaseButton>
               </BaseCol>
             </BaseRow>
           </BaseCol>

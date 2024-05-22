@@ -68,6 +68,7 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
                 {jobData.type && jobData.type !== 'ANY' ? <S.Label>{formatOptionString(jobData.type)}</S.Label> : null}
 
                 {jobData.experience && <S.Label>{formatOptionString(jobData.experience)}</S.Label>}
+                {jobData.platform && <S.Label>{formatOptionString(jobData.platform)}</S.Label>}
               </S.LabelWrapper>
             </S.InfoHeaderWrapper>
 

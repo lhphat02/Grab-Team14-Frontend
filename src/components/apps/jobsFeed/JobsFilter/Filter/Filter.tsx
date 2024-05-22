@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { BaseHashTag, IHashTag } from '@app/components/common/BaseHashTag/BaseHashTag';
 import { useResponsive } from '@app/hooks/useResponsive';
 import { BaseDropdown } from '@app/components/common/BaseDropdown/Dropdown';
-import { useAppDispatch } from '@app/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '@app/hooks/reduxHooks';
 import { filter, workingModeFilter } from '@app/constants/enums/filters';
 import { Select } from 'antd';
 import { formatOptionString } from '@app/utils/utils';
@@ -12,7 +12,7 @@ import * as S from './Filter.styles';
 interface Filter {
   search: string;
   selectedIndustry: string;
-  selectedLocation: string;
+  location: string;
   selectedExperience: string;
   selectedWorkingMode: string;
   selectedType: string;
@@ -60,7 +60,7 @@ const FilterDropdownWithTag: React.FC<FilterDropdownWithTagProps> = ({
 const Filter: React.FC<Filter> = ({
   search,
   selectedIndustry,
-  selectedLocation,
+  location,
   selectedExperience,
   selectedWorkingMode,
   selectedType,
@@ -73,6 +73,8 @@ const Filter: React.FC<Filter> = ({
   const { t } = useTranslation();
   const { industriesFilter, typesFilter, experienceLevelsFilter, workingModesFilter, locationFilter, timeFilter } =
     filter;
+
+  let query = useAppSelector((state) => state.query.query);
 
   const applyFilter = () => {
     onApply();
@@ -182,6 +184,8 @@ const Filter: React.FC<Filter> = ({
     [selectedTime, updateFilteredField, onclick],
   );
 
+  console.log('location', location);
+
   return (
     <S.FilterWrapper>
       <S.InputWrapper>
@@ -193,9 +197,9 @@ const Filter: React.FC<Filter> = ({
         <Select
           showSearch
           style={{ width: 280 }}
+          value={location}
           onChange={(value) => {
-            console.log('value new hear', value);
-            onClick('selectedLocation', value.replaceAll('_', ' '));
+            onClick('location', value.replaceAll('_', ' '));
           }}
           placeholder="Location"
           optionFilterProp="children"

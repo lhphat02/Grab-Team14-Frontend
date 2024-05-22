@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './i18n';
@@ -8,6 +8,8 @@ import 'config/config';
 import { Provider } from 'react-redux';
 import { store } from '@app/store/store';
 import { createRoot } from 'react-dom/client';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import React from 'react';
 
 interface EventTarget {
@@ -19,6 +21,8 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+    {/* <SpeedInsights />
+    <Analytics /> */}
     <Provider store={store}>
       <App />
     </Provider>

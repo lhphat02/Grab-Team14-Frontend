@@ -13,6 +13,7 @@ import {
   InfoCircleOutlined,
   LoadingOutlined,
 } from '@ant-design/icons';
+import { Typography } from 'antd';
 
 export const JobDetailContainer = styled.div`
   display: flex;
@@ -140,6 +141,28 @@ export const InfoLabel = styled(BaseTypography)`
 export const LabelWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
+`;
+
+export const CoverLetterSectionWrapper = styled.div`
+  display: flex;
+  height: 20rem;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+`;
+
+export const SeeMore = styled.a`
+  color: var(--primary-color);
+  cursor: pointer;
+  text-align: center;
+
+  :hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+    color: var(--secondary-color);
+  }
 `;
 
 export const InfoIcon = styled(InfoCircleOutlined)`

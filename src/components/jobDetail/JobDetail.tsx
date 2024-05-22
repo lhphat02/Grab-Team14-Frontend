@@ -15,6 +15,8 @@ import { useLocation } from 'react-router-dom';
 import { updateJobStatus } from '@app/api/history.api';
 import { Button, Dropdown, Space } from 'antd';
 import { BaseMenuProps } from '../common/BaseMenu/BaseMenu';
+import { Loading } from './JobDetail.styles';
+import QuotesLoader from './QuoteLoader/QuoteLoader';
 
 export interface JobDetailProps {
   id: string;
@@ -27,8 +29,8 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
   const [job, setJob] = useState<JobDetailResponse | null>(null);
   const token = readToken();
 
-  let [status , setStatus] = useState(job?.status);
-  let [isLoaded , setIsLoaded] = useState(false);
+  let [status, setStatus] = useState(job?.status);
+  let [isLoaded, setIsLoaded] = useState(false);
   const location = useLocation();
   const path = location.pathname;
   const isOnJobHistoryPage = path.includes('history');
@@ -40,16 +42,16 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
         setJob(data!);
       });
 
-      if (token != null && !isLoaded) {
-        setIsLoaded(true);
-        console.log('Getting job status');
-        dispatch(getJobStatus(id))
+    if (token != null && !isLoaded) {
+      setIsLoaded(true);
+      console.log('Getting job status');
+      dispatch(getJobStatus(id))
         .unwrap()
-        .then((data : any) => {
+        .then((data: any) => {
           setStatus(data.status);
         });
-      }
-  }, [ id, status]);
+    }
+  }, [id, status]);
 
   if (!job) {
     return (
@@ -88,7 +90,7 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
 
   const handleOnSaveClick = async (newStatus = 'SAVED') => {
     console.log('Changing job status to ' + newStatus, status);
-    if ( status === newStatus ) {
+    if (status === newStatus) {
       return;
     }
     if (!token) {
@@ -96,15 +98,13 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     }
 
     await updateJobStatus(job.id, { status: newStatus })
-    .then(() => {
-      setStatus(newStatus);
-      notificationController.success({ message: 'Job changed status to ' + newStatus });
-    }
-    )
-    .catch((error) => {
-      notificationController.error({ message: error.message });
-    });
-
+      .then(() => {
+        setStatus(newStatus);
+        notificationController.success({ message: 'Job changed status to ' + newStatus });
+      })
+      .catch((error) => {
+        notificationController.error({ message: error.message });
+      });
   };
 
   const items: BaseMenuProps['items'] = [
@@ -119,7 +119,7 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     {
       key: '2',
       label: (
-        <a target="_blank" onClick={ () => handleOnSaveClick('INTERVIEWED') }>
+        <a target="_blank" onClick={() => handleOnSaveClick('INTERVIEWED')}>
           INTERVIEWED
         </a>
       ),
@@ -154,18 +154,25 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
           <S.JobTitle>{job.title}</S.JobTitle>
 
           <S.ButtonGroupContainer>
-            <S.ApplyButton onClick={handleOnApplyClick}>Apply Now</S.ApplyButton>
+            <S.ApplyButton type="primary" loading={isLoading} onClick={handleOnApplyClick}>
+              Apply Now
+            </S.ApplyButton>
 
             {isOnJobHistoryPage ? (
-                <Dropdown menu={{items }} placement="bottomLeft" arrow={{ pointAtCenter: true }}>
+              <Dropdown menu={{ items }} placement="bottomLeft" arrow={{ pointAtCenter: true }}>
                 <Button>
                   <SwapOutlined />
                   {status}
-
                 </Button>
-                 </Dropdown>
+              </Dropdown>
             ) : (
-              <S.SaveButton type="primary" icon={ (status === 'SAVED' ?  <HeartFilled/> : null) } onClick={() => handleOnSaveClick('SAVED')} disabled = {status === 'SAVED'}>
+              <S.SaveButton
+                type="primary"
+                loading={isLoading}
+                icon={status === 'SAVED' ? <HeartFilled /> : null}
+                onClick={() => handleOnSaveClick('SAVED')}
+                disabled={status === 'SAVED'}
+              >
                 {status === 'SAVED' ? 'Saved' : 'Save'}
               </S.SaveButton>
             )}
@@ -203,8 +210,14 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
             </S.SectionWrapper>
 
             <S.SectionWrapper>
+              <S.SectionTitle>Company Office: </S.SectionTitle>
+              <S.JobInfoText>{job.companyLocation}</S.JobInfoText>
+            </S.SectionWrapper>
+
+            <S.SectionWrapper>
               <S.SectionTitle>About the job: </S.SectionTitle>
               <S.JobSantizedDescription dangerouslySetInnerHTML={{ __html: santizedDescription }} />
+              <S.SeeMore href={job.jobLink}>See more</S.SeeMore>
             </S.SectionWrapper>
           </S.JobDetailContent>
         </S.JobTabs.TabPane>
@@ -212,21 +225,21 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
         <S.JobTabs.TabPane tab="Requirements" key="2">
           <S.JobDetailContent>
             <S.JobSantizedDescription dangerouslySetInnerHTML={{ __html: sanitizedRequirements }} />
-            <S.JobInfoText>Matching CV Score</S.JobInfoText>
+            {/* <S.JobInfoText>Matching CV Score</S.JobInfoText> */}
           </S.JobDetailContent>
         </S.JobTabs.TabPane>
         <S.JobTabs.TabPane tab="Cover Letter" key="3">
-          <S.JobDetailContent>
-            <S.JobSantizedDescription>
-              {' '}
-              {coverLetter == '' ? (
-                <BaseButton type="primary" icon={<BookOutlined />} onClick={generateCoverLetter} loading={isLoading}>
-                  Generate Cover Letter
-                </BaseButton>
-              ) : null}
-              {<p>{coverLetter}</p>}
-            </S.JobSantizedDescription>
-          </S.JobDetailContent>
+          <S.CoverLetterSectionWrapper>
+            {' '}
+            {coverLetter == '' ? (
+              <BaseButton type="primary" icon={<BookOutlined />} onClick={generateCoverLetter} loading={isLoading}>
+                Generate Cover Letter
+              </BaseButton>
+            ) : (
+              <p>{coverLetter}</p>
+            )}
+            {isLoading ? <QuotesLoader /> : null}
+          </S.CoverLetterSectionWrapper>
         </S.JobTabs.TabPane>
       </S.JobTabs>
     </S.JobDetailContainer>

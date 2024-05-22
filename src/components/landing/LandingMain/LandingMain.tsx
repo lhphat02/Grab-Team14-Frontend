@@ -34,23 +34,35 @@ const LandingMain: React.FC = (): React.ReactElement => {
   };
 
   return (
-    <S.Container>
-      <S.ScrollButton onClick={scrollToTop}>
-        <UpOutlined className="icon" />
-      </S.ScrollButton>
+    <S.LandingLayout>
+      <S.LandingNav>
+        <S.NavLogo>
+          <span>Emploi</span>
+        </S.NavLogo>
+        <S.NavLinks>
+          <S.NavLink href="/auth/login">Log in</S.NavLink>
+          <S.NavLink href="/auth/sign-up">Sign Up</S.NavLink>
+        </S.NavLinks>
+      </S.LandingNav>
 
-      <S.SlideContainer>
-        <HeroSlide onSlideChange={() => scrollToSlide(slideTwo)} />
-      </S.SlideContainer>
+      <S.Container>
+        <S.ScrollButton onClick={scrollToTop}>
+          <UpOutlined className="icon" />
+        </S.ScrollButton>
 
-      <S.SlideContainer ref={slideTwo}>
-        <CategorySlide onSlideChange={() => scrollToSlide(slideThree)} />
-      </S.SlideContainer>
+        <S.SlideContainer>
+          <HeroSlide onSlideChange={() => scrollToSlide(slideTwo)} />
+        </S.SlideContainer>
 
-      <S.SlideContainer ref={slideThree}>
-        <SignupPromptSlide />
-      </S.SlideContainer>
-    </S.Container>
+        <S.SlideContainer ref={slideTwo}>
+          <CategorySlide onSlideChange={() => scrollToSlide(slideThree)} />
+        </S.SlideContainer>
+
+        <S.SlideContainer ref={slideThree}>
+          <SignupPromptSlide />
+        </S.SlideContainer>
+      </S.Container>
+    </S.LandingLayout>
   );
 };
 

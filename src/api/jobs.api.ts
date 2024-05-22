@@ -73,6 +73,8 @@ export interface PaginationResponse {
 
 export const getJobListAPI = async (getJobListReq: QueryModel): Promise<PaginationResponse | undefined> => {
   try {
+    console.log('Query in API:', getJobListReq);
+
     const response = await httpApi.get<PaginationResponse>('/job', { params: getJobListReq });
     return response.data;
   } catch (e: any) {
