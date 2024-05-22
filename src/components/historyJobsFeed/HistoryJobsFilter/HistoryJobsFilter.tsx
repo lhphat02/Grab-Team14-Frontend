@@ -72,6 +72,8 @@ export const HistoryJobsFilter: React.FC<JobsFilterProps> = ({ jobs, children })
       setFilteredJobs(jobs);
       return;
     }
+    console.log(value)
+    console.log(jobs)
     const filtered = jobs.filter((job) => job.status === value);
     console.log(filtered)
     setFilteredJobs(filtered);

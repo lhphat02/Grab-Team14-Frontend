@@ -23,6 +23,7 @@ export interface JobListResponse {
 export interface JobDetailResponse {
   requirements: [string];
   id: string;
+  status?: string;
   title: string;
   date: Date;
   company: string;
