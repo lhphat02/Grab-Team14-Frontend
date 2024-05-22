@@ -61,19 +61,19 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
 
           <S.InfoWrapper>
             <S.InfoHeaderWrapper>
+              <S.TitleWrapper>
+                <S.Title level={5}>{jobData.title}</S.Title>
+              </S.TitleWrapper>
               <S.LabelWrapper>
                 {jobData.type && jobData.type !== 'ANY' ? <S.Label>{formatOptionString(jobData.type)}</S.Label> : null}
 
                 {jobData.experience && <S.Label>{formatOptionString(jobData.experience)}</S.Label>}
               </S.LabelWrapper>
-              <S.TitleWrapper>
-                <S.Title level={5}>{jobData.title}</S.Title>
-              </S.TitleWrapper>
             </S.InfoHeaderWrapper>
 
             <S.InfoBottomWrapper>
               <S.Text>{jobData.location ? jobData.location : 'Location provided'}</S.Text>
-              <S.DateText>{jobData.date ? calculateDateDifference(jobData.date) : 'No Date'}</S.DateText>
+              <S.DateText>{jobData.date ? formatDate(jobData.date) : 'No Date'}</S.DateText>
             </S.InfoBottomWrapper>
           </S.InfoWrapper>
         </S.Wrapper>

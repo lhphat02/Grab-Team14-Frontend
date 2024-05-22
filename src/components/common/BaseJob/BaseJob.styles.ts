@@ -7,6 +7,7 @@ import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypogr
 
 export const JobCard = styled(NFTCard)`
   box-shadow: var(--box-shadow-nft-secondary-color);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
   border-radius: 0.625rem;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 
