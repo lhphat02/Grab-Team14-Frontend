@@ -41,7 +41,7 @@ export const ImageOverlay = styled.div`
   bottom: 0;
   left: 0;
   opacity: 0.7;
-  background-color: #00607a;
+  background-color: var(--primary-color);
 `;
 
 export const HeroSlideMainContent = styled.div`
