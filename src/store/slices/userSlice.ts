@@ -1,6 +1,6 @@
 // @ts-nocheck
 // @ts-ignore
-import { createAction, createSlice, PrepareAction } from '@reduxjs/toolkit';
+import { createAction, createSlice, PrepareAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { UserModel } from '@app/domain/UserModel';
 import { persistUser, readUser } from '@app/services/localStorage.service';
 import { updateUserAPI } from '@app/api/user.api';
@@ -12,8 +12,9 @@ const initialState: UserState = {
   user: readUser(),
 };
 
-export const setUser = createAction<PrepareAction<UserModel>>('user/setUser', (newUser) => {
+export const setUser = createAsyncThunk('auth/doSignUp', (newUser: UserModel) => {
   persistUser(newUser);
+  console.log('newUser', newUser);
 
   return {
     payload: newUser,
@@ -33,8 +34,10 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(setUser, (state, action) => {
+    builder.addCase(setUser.fulfilled, (state, action) => {
       state.user = action.payload;
+      console.log('localStorage.getItem(user)', localStorage.getItem('user'));
+      console.log('action.payload', action.payload);
     });
   },
 });

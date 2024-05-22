@@ -15,6 +15,7 @@ export interface UserInfo {
   email?: string;
   website?: string;
   coverLetter?: string;
+  skills?: string[];
 }
 
 export const updateUserAPI = async (data: UserInfo) => {
@@ -22,5 +23,5 @@ export const updateUserAPI = async (data: UserInfo) => {
 };
 
 export const updateCVAPI = async (cvURL: string) => {
-  httpApi.post<undefined>('/user/update-cv', { cvURL }).then(({ data }) => data);
+  return httpApi.post<undefined>('/user/update-cv', { cvURL }).then(({ data }) => data);
 };

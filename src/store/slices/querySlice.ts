@@ -18,6 +18,7 @@ const initialState: QueryState = {
 
 export const setQuery = createAction<PrepareAction<QueryModel>>('user/setUser', (newQuery) => {
   persistQuery(newQuery);
+  console.log('newQuery', newQuery);
   return {
     payload: newQuery,
   };

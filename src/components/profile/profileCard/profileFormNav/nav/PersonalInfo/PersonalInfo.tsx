@@ -24,7 +24,7 @@ import { PaymentCard } from '@app/interfaces/interfaces';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 import { readUser } from '@app/services/localStorage.service';
-import { updateUser } from '@app/store/slices/userSlice';
+import { setUser, updateUser } from '@app/store/slices/userSlice';
 import { updateUserAPI } from '@app/api/user.api';
 
 interface PersonalInfoFormValues {
@@ -92,17 +92,19 @@ export const PersonalInfo: React.FC = () => {
 
   const { t } = useTranslation();
 
-  const onFinish = useCallback(
-    (values: PersonalInfoFormValues) => {
+  const onFinish = 
+    async (values: PersonalInfoFormValues) => {
       setLoading(true);
 
-      updateUserAPI(values)
+      setFieldsChanged(false);
+
+      await updateUserAPI(values)
         .then((data) => { console.log(data); notificationController.success({ message: t('common.success') }) })
         .catch((error) => { console.log(error); notificationController.error({ message: error.message })})
         .finally(() => setLoading(false));
-    },
-    [t],
-  );
+
+      setUser(values);
+    };
 
   return (
     <BaseCard>

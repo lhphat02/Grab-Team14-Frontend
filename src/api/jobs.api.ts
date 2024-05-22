@@ -88,6 +88,15 @@ export const getJobDetailAPI = async (id: string): Promise<JobDetailResponse | u
   }
 };
 
+export const generateCoverLetterAPI = async (id: string): Promise<any | undefined> => {
+  try {
+    const response = await httpApi.get(`/job/${id}/cover-letter`);
+    return response.data;
+  } catch (e: any) {
+    throw new Error(e);
+  }
+};
+
 export const getHistoryJobListAPI = async (): Promise<HistoryJobListResponse[] | undefined> => {
   try {
     const response = await httpApi.get<HistoryJobListResponse[]>(`/userJob/history/`);
