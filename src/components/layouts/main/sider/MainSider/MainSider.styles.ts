@@ -15,11 +15,8 @@ export const Sider = styled(BaseLayout.Sider)`
   min-height: 100vh;
   max-height: 100vh;
 
-  color: var(--text-secondary-color);
-
-  .ant-layout-sider-children {
-    background-color: #00607a;
-  }
+  color: var(--primary-color);
+  background: var(--primary-color);
 
   @media only screen and ${media.md} {
     right: unset;
