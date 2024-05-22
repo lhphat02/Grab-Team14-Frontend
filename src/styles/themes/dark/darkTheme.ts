@@ -1,5 +1,5 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import { shadeColor } from '@app/utils/utils';
 import { graphic } from 'echarts';
 import { BASE_COLORS } from '../constants';
@@ -50,11 +50,11 @@ const chartColors = {
 };
 
 export const darkColorsTheme: ITheme = {
-  primary: '#339CFD',
+  primary: '#118A00',
   primary1: '#7568f6',
   primaryGradient: 'linear-gradient(211.49deg, #dc88f5 15.89%, #339CFD 48.97%)',
   light: '#696969',
-  secondary: '#0072DD',
+  secondary: '#0D6E00',
   error: '#FF5252',
   warning: '#FFB765',
   success: '#57D682',
