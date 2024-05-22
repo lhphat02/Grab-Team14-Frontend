@@ -16,6 +16,7 @@ import { setQuery } from '@app/store/slices/querySlice';
 import { QueryModel } from '@app/domain/QueryModel';
 import { Select, Space } from 'antd';
 import { BaseCollapse } from '@app/components/common/BaseCollapse/BaseCollapse';
+import { formatOptionString } from '@app/utils/utils';
 
 interface JobsFilterProps {
   jobs: JobListResponse[];
@@ -81,7 +82,7 @@ const Filter: React.FC<Filter> = ({
             }}
           >
             <S.PopoverCheckbox checked={selectedIndustry == industry} />
-            <BaseHashTag title={industry.replace('_', ' ')} />
+            <BaseHashTag title={formatOptionString(industry)} />
           </S.TagPopoverLine>
         ),
       })),
@@ -101,7 +102,7 @@ const Filter: React.FC<Filter> = ({
             }}
           >
             <S.PopoverCheckbox checked={selectedWorkingMode == workingMode} />
-            <BaseHashTag title={workingMode.replace('_', ' ')} />
+            <BaseHashTag title={formatOptionString(workingMode)} />
           </S.TagPopoverLine>
         ),
       })),
@@ -121,7 +122,7 @@ const Filter: React.FC<Filter> = ({
             }}
           >
             <S.PopoverCheckbox checked={selectedType == type} />
-            <BaseHashTag title={type.replace('_', ' ')} />
+            <BaseHashTag title={formatOptionString(type)} />
           </S.TagPopoverLine>
         ),
       })),
@@ -141,7 +142,7 @@ const Filter: React.FC<Filter> = ({
             }}
           >
             <S.PopoverCheckbox checked={selectedExperience == experience} />
-            <BaseHashTag title={experience.replace('_', ' ')} />
+            <BaseHashTag title={formatOptionString(experience)} />
           </S.TagPopoverLine>
         ),
       })),
@@ -161,7 +162,7 @@ const Filter: React.FC<Filter> = ({
             }}
           >
             <S.PopoverCheckbox checked={selectedTime == time} />
-            <BaseHashTag title={time.replace('_', ' ')} />
+            <BaseHashTag title={formatOptionString(time)} />
           </S.TagPopoverLine>
         ),
       })),
@@ -185,7 +186,7 @@ const Filter: React.FC<Filter> = ({
         <Select
           value={selectedLocation}
           showSearch
-          style={{ width: 200 }}
+          style={{ width: 280 }}
           onChange={(value) => {
             onClick('selectedLocation', value.replaceAll('_', ' '));
           }}
@@ -209,7 +210,12 @@ const Filter: React.FC<Filter> = ({
       {!!selectedTime.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedTime} bgColor={'success'} removeTag={() => onClick('selectedTime', '')} />
+            <BaseHashTag
+              key={'1'}
+              title={selectedTime}
+              bgColor={'primary'}
+              removeTag={() => onClick('selectedTime', '')}
+            />
           }
         </S.TagsWrapper>
       )}
@@ -221,10 +227,15 @@ const Filter: React.FC<Filter> = ({
         </S.AddTagWrapper>
       </BaseDropdown>
 
-      {!!selectedType.length && ( 
+      {!!selectedType.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedType} bgColor={'success'} removeTag={() => onClick('selectedType', '')} />
+            <BaseHashTag
+              key={'1'}
+              title={formatOptionString(selectedType)}
+              bgColor={'primary'}
+              removeTag={() => onClick('selectedType', '')}
+            />
           }
         </S.TagsWrapper>
       )}
@@ -239,7 +250,12 @@ const Filter: React.FC<Filter> = ({
       {!!selectedWorkingMode.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedWorkingMode} bgColor={'success'} removeTag={() => onClick('selectedWorkingMode', '')} />
+            <BaseHashTag
+              key={'1'}
+              title={formatOptionString(selectedWorkingMode)}
+              bgColor={'primary'}
+              removeTag={() => onClick('selectedWorkingMode', '')}
+            />
           }
         </S.TagsWrapper>
       )}
@@ -254,11 +270,16 @@ const Filter: React.FC<Filter> = ({
       {!!selectedExperience.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedExperience} bgColor={'success'} removeTag={() => onClick('selectedExperience', '')} />
+            <BaseHashTag
+              key={'1'}
+              title={formatOptionString(selectedExperience)}
+              bgColor={'primary'}
+              removeTag={() => onClick('selectedExperience', '')}
+            />
           }
         </S.TagsWrapper>
       )}
-      
+
       <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: industryItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
@@ -269,7 +290,12 @@ const Filter: React.FC<Filter> = ({
       {!!selectedIndustry.length && (
         <S.TagsWrapper>
           {
-            <BaseHashTag key={'1'} title={selectedIndustry} bgColor={'success'} removeTag={() => onClick('selectedIndustry', '')} />
+            <BaseHashTag
+              key={'1'}
+              title={formatOptionString(selectedIndustry)}
+              bgColor={'primary'}
+              removeTag={() => onClick('selectedIndustry', '')}
+            />
           }
         </S.TagsWrapper>
       )}
@@ -305,7 +331,6 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
     selectedTime: '',
   });
 
-  
   const {
     search,
     selectedIndustry,
@@ -316,20 +341,23 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
     selectedTime,
   } = filterFields;
 
-  console.log('query', query);  
+  console.log('query', query);
 
   if (query) {
     const { search, industry, location, experience, workingMode, type, time } = query;
 
-    if (search != filterFields.search && search != null ) setFilterFields({ ...filterFields, search });
-    if (industry != filterFields.selectedIndustry && industry != null) setFilterFields({ ...filterFields, selectedIndustry: industry });
-    if (location != filterFields.selectedLocation  && location != null ) setFilterFields({ ...filterFields, selectedLocation: location });
-    if (experience != filterFields.selectedExperience && experience != null ) setFilterFields({ ...filterFields, selectedExperience: experience });
-    if (workingMode != filterFields.selectedWorkingMode && workingMode != null ) setFilterFields({ ...filterFields, selectedWorkingMode: workingMode });
+    if (search != filterFields.search && search != null) setFilterFields({ ...filterFields, search });
+    if (industry != filterFields.selectedIndustry && industry != null)
+      setFilterFields({ ...filterFields, selectedIndustry: industry });
+    if (location != filterFields.selectedLocation && location != null)
+      setFilterFields({ ...filterFields, selectedLocation: location });
+    if (experience != filterFields.selectedExperience && experience != null)
+      setFilterFields({ ...filterFields, selectedExperience: experience });
+    if (workingMode != filterFields.selectedWorkingMode && workingMode != null)
+      setFilterFields({ ...filterFields, selectedWorkingMode: workingMode });
     if (type != filterFields.selectedType && type != null) setFilterFields({ ...filterFields, selectedType: type });
-    if (time != filterFields.selectedTime  && time != null) setFilterFields({ ...filterFields, selectedTime: time });
+    if (time != filterFields.selectedTime && time != null) setFilterFields({ ...filterFields, selectedTime: time });
   }
-
 
   const [filteredJobs, setFilteredJobs] = useState<JobListResponse[]>(jobs);
   const [overlayOpen, setOverlayOpen] = useState<boolean>(false);
@@ -339,7 +367,6 @@ export const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, jobsTags, children
 
   useEffect(() => {
     setFilteredJobs(jobs);
-
   }, [jobs]);
 
   const onClick = useCallback(
