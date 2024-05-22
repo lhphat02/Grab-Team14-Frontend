@@ -1,9 +1,9 @@
-// @ts-nocheck 
-// @ts-ignore 
+// @ts-nocheck
+// @ts-ignore
 import { createAction, createSlice, PrepareAction } from '@reduxjs/toolkit';
 import { UserModel } from '@app/domain/UserModel';
 import { persistUser, readUser } from '@app/services/localStorage.service';
-
+import { updateUserAPI } from '@app/api/user.api';
 export interface UserState {
   user: UserModel | null;
 }
@@ -18,6 +18,14 @@ export const setUser = createAction<PrepareAction<UserModel>>('user/setUser', (n
   return {
     payload: newUser,
   };
+});
+
+export const updateUser = createAction<PrepareAction<UserModel>>('user/updateUser', (newUser) => {
+  persistUser(newUser);
+
+  return updateUserAPI(newUser).then((res) => {
+    return res;
+  });
 });
 
 export const userSlice = createSlice({

@@ -206,12 +206,28 @@ const Filter: React.FC<Filter> = ({
         </S.AddTagWrapper>
       </BaseDropdown>
 
+      {!!selectedTime.length && (
+        <S.TagsWrapper>
+          {
+            <BaseHashTag key={'1'} title={selectedTime} bgColor={'success'} removeTag={() => onClick('selectedTime', '')} />
+          }
+        </S.TagsWrapper>
+      )}
+
       <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: typeItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
           <S.AddTagText>{t('jobsFeed.type')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
+
+      {!!selectedType.length && ( 
+        <S.TagsWrapper>
+          {
+            <BaseHashTag key={'1'} title={selectedType} bgColor={'success'} removeTag={() => onClick('selectedType', '')} />
+          }
+        </S.TagsWrapper>
+      )}
 
       <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: workingModeItems }}>
         <S.AddTagWrapper>
@@ -220,6 +236,14 @@ const Filter: React.FC<Filter> = ({
         </S.AddTagWrapper>
       </BaseDropdown>
 
+      {!!selectedWorkingMode.length && (
+        <S.TagsWrapper>
+          {
+            <BaseHashTag key={'1'} title={selectedWorkingMode} bgColor={'success'} removeTag={() => onClick('selectedWorkingMode', '')} />
+          }
+        </S.TagsWrapper>
+      )}
+
       <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: experienceItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
@@ -227,12 +251,28 @@ const Filter: React.FC<Filter> = ({
         </S.AddTagWrapper>
       </BaseDropdown>
 
+      {!!selectedExperience.length && (
+        <S.TagsWrapper>
+          {
+            <BaseHashTag key={'1'} title={selectedExperience} bgColor={'success'} removeTag={() => onClick('selectedExperience', '')} />
+          }
+        </S.TagsWrapper>
+      )}
+      
       <BaseDropdown placement="bottom" trigger={['click']} menu={{ items: industryItems }}>
         <S.AddTagWrapper>
           <S.PlusIcon />
           <S.AddTagText>{t('jobsFeed.industry')}</S.AddTagText>
         </S.AddTagWrapper>
       </BaseDropdown>
+
+      {!!selectedIndustry.length && (
+        <S.TagsWrapper>
+          {
+            <BaseHashTag key={'1'} title={selectedIndustry} bgColor={'success'} removeTag={() => onClick('selectedIndustry', '')} />
+          }
+        </S.TagsWrapper>
+      )}
 
       <S.BtnWrapper>
         <S.Btn onClick={() => resetFilter()}>{t('jobsFeed.reset')}</S.Btn>

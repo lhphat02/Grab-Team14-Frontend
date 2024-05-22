@@ -23,6 +23,11 @@ import { getSignUrl } from '@app/api/media';
 import { RcFile } from 'antd/lib/upload';
 import { Progress } from 'antd';
 import { BaseForm } from '@app/components/common/forms/BaseForm/BaseForm';
+import { updateCVAPI, updateUserAPI } from '@app/api/user.api';
+import { updateUser } from '@app/store/slices/userSlice';
+import { UserModel } from '@app/domain/UserModel';
+import { readUser } from '@app/services/localStorage.service';
+
 const formItemLayout = {
   labelCol: { span: 24 },
   wrapperCol: { span: 24 },
@@ -43,6 +48,9 @@ export const UploadForm: React.FC = () => {
   const [isLoadingCover, setLoadingCover] = useState(false);
   const [progress, setProgress] = useState(0);
   const timeoutRef = useRef<number>();
+  const [keyCV, setKeyCV] = useState('');
+
+  const coverLetter = readUser()?.coverLetter;
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -55,21 +63,36 @@ export const UploadForm: React.FC = () => {
     };
   }, []);
 
-  const onFinish = async (values = {}) => {
-    // setLoading(true);
-    // setTimeout(() => {
-    //   setLoading(false);
-    //   setFieldsChanged(false);
-    //   notificationController.success({ message: t('common.success') });
-    //   console.log(values);
-    // }, 1000);
-  };
+  const onUploadCV = async (values: any) => {
+    setLoadingCV(true);
+    updateCVAPI("https://grabbootcamp.s3.ap-southeast-1.amazonaws.com/" + keyCV)
+      .then((data) => {
+          console.log(data) }
+      )
+      .catch((error) => {
+        notificationController.error({ message: t('common.error') }); 
+      })
+      .finally(() => setLoadingCV(false));
+  }
+
+
+  const onUploadCoverLetter = async (value: string) => {
+    setLoadingCover(true);
+    console.log("HAHHAHA" , value)
+    await updateUserAPI({
+      coverLetter: value  
+      })
+        .then((data: any) => { console.log(data) ,  notificationController.success({ message: 'Update cover letter template succesfully' }) })
+        .catch((error: Error) => { console.log(error); notificationController.error({ message: error.message })})
+        .finally(() => setLoadingCover(false));
+  }
 
   const onUploadFile = ({ file }: { file: string | Blob | RcFile }) => {
     if (file instanceof File) {
       getSignUrl({ fileName: file.name, contentType: file.type, isPublic: true })
       .then( async data => {
         const urlObj = new URL(data.url);
+        setKeyCV(data.key);
         const url = `${urlObj.origin}${urlObj.pathname}`;
         await axios.put(data.url, file, {
           headers: {
@@ -89,8 +112,6 @@ export const UploadForm: React.FC = () => {
             }
           },
         }).then((data) => {
-          console.log(data)
-          console.log("https://grabbootcamp.s3.ap-southeast-1.amazonaws.com/" + "1")
           notificationController.success({ message: t('common.success') });
         });
       })
@@ -104,11 +125,7 @@ export const UploadForm: React.FC = () => {
       isFieldsChanged={isFieldsChangedCV}
       onFieldsChange={() => setFieldsChangedCV(true)}
       name="validateForm"
-      initialValues={{
-        'input-number': 3,
-        'checkbox-group': ['A', 'B'],
-        rate: 3.5,
-      }}
+
       footer={
         <BaseButtonsForm.Item>
           <BaseButton type="primary" htmlType="submit" loading={isLoadingCV}>
@@ -116,7 +133,7 @@ export const UploadForm: React.FC = () => {
           </BaseButton>
         </BaseButtonsForm.Item>
       }
-      onFinish={onFinish}
+      onFinish={onUploadCV}
     >
 
     <BaseButtonsForm.Item label={t('forms.uploadFormLabels.cv')}>
@@ -140,12 +157,8 @@ export const UploadForm: React.FC = () => {
       {...formItemLayout}
       isFieldsChanged={isFieldsChangedCover}
       onFieldsChange={() => setFieldsChangedCover(true)}
-      name="validateForm"
-      initialValues={{
-        'input-number': 3,
-        'checkbox-group': ['A', 'B'],
-        rate: 3.5,
-      }}
+      name="validateFormCover"
+
       footer={
         <BaseButtonsForm.Item>
           <BaseButton type="primary" htmlType="submit" loading={isLoadingCover}>
@@ -153,10 +166,10 @@ export const UploadForm: React.FC = () => {
           </BaseButton>
         </BaseButtonsForm.Item>
       }
-      onFinish={onFinish}
+      onFinish={onUploadCoverLetter}
     >
-      <BaseButtonsForm.Item label={t('forms.uploadFormLabels.coverLetter')} name = "coverLetter````````````````````````````````````````````````````````````````````````````````````````````````">
-          <S.InputsWrapper>
+      <BaseButtonsForm.Item label={t('forms.uploadFormLabels.coverLetter')} name = "coverLetter">
+          <S.InputsWrapper defaultValue={coverLetter}>
             <BaseInput.TextArea rows={10} cols = {20} maxLength={24} />
           </S.InputsWrapper>
       </BaseButtonsForm.Item> 

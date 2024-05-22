@@ -8,6 +8,7 @@ import * as S from './JobDetail.styles';
 import { formatDate } from '../../utils/utils';
 import DOMPurify from 'dompurify';
 
+
 export interface JobDetailProps {
   id: string;
 }

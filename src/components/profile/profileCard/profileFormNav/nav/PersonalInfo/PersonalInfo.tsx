@@ -1,12 +1,11 @@
-// @ts-nocheck
-// @ts-ignore
+
 import React, { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BaseButtonsForm } from '@app/components/common/forms/BaseButtonsForm/BaseButtonsForm';
 import { BaseCard } from '@app/components/common/BaseCard/BaseCard';
 import { FullNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/FullNameItem/FullNameItem';
 // import { LastNameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/LastNameItem/LastNameItem';
-// import { usernameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/usernameItem/usernameItem';
+import { UsernameItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/UsernameItem/UsernameItem';
 import { SexItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/SexItem/SexItem';
 import { BirthdayItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/BirthdayItem/BirthdayItem';
 import { LanguageItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/LanguageItem/LanguageItem';
@@ -18,13 +17,15 @@ import { ZipcodeItem } from '@app/components/profile/profileCard/profileFormNav/
 import { AddressItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/AddressItem/AddressItem';
 import { WebsiteItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/WebsiteItem/WebsiteItem';
 import { SocialLinksItem } from '@app/components/profile/profileCard/profileFormNav/nav/PersonalInfo/SocialLinksItem/SocialLinksItem';
-import { useAppSelector } from '@app/hooks/reduxHooks';
+import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { Dates } from '@app/constants/Dates';
 import { notificationController } from '@app/controllers/notificationController';
 import { PaymentCard } from '@app/interfaces/interfaces';
 import { BaseRow } from '@app/components/common/BaseRow/BaseRow';
 import { BaseCol } from '@app/components/common/BaseCol/BaseCol';
 import { readUser } from '@app/services/localStorage.service';
+import { updateUser } from '@app/store/slices/userSlice';
+import { updateUserAPI } from '@app/api/user.api';
 
 interface PersonalInfoFormValues {
   birthday?: string;
@@ -63,6 +64,7 @@ export const PersonalInfo: React.FC = () => {
 
   const [isFieldsChanged, setFieldsChanged] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
 
   const userFormValues = useMemo(
     () =>
@@ -91,15 +93,13 @@ export const PersonalInfo: React.FC = () => {
   const { t } = useTranslation();
 
   const onFinish = useCallback(
-    (values: PaymentCard) => {
-      // todo dispatch an action here
+    (values: PersonalInfoFormValues) => {
       setLoading(true);
-      setTimeout(() => {
-        setLoading(false);
-        setFieldsChanged(false);
-        notificationController.success({ message: t('common.success') });
-        console.log(values);
-      }, 1000);
+
+      updateUserAPI(values)
+        .then((data) => { console.log(data); notificationController.success({ message: t('common.success') }) })
+        .catch((error) => { console.log(error); notificationController.error({ message: error.message })})
+        .finally(() => setLoading(false));
     },
     [t],
   );
@@ -128,7 +128,7 @@ export const PersonalInfo: React.FC = () => {
           </BaseCol>
 
           <BaseCol xs={24} md={12}>
-            <usernameItem />
+            <UsernameItem />
           </BaseCol>
 
           <BaseCol xs={24} md={12}>
@@ -138,10 +138,6 @@ export const PersonalInfo: React.FC = () => {
           {/* <BaseCol xs={24} md={12}>
             <BirthdayItem />
           </BaseCol> */}
-
-          <BaseCol xs={24} md={12}>
-            <LanguageItem />
-          </BaseCol>
 
           <BaseCol span={24}>
             <BaseButtonsForm.Item>
