@@ -3,10 +3,12 @@ import { JobDetailResponse } from '@app/api/jobs.api';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { getJobDetail } from '@app/store/slices/jobSlice';
 import { useEffect, useState } from 'react';
-import { LoadingOutlined } from '@ant-design/icons';
+import { BookOutlined, HeartFilled, LoadingOutlined } from '@ant-design/icons';
 import * as S from './JobDetail.styles';
 import { formatDate } from '../../utils/utils';
 import DOMPurify from 'dompurify';
+import logo from 'assets/logo_svg.svg';
+import { BaseButton } from '../common/BaseButton/BaseButton';
 
 
 export interface JobDetailProps {
@@ -21,16 +23,15 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     dispatch(getJobDetail(id))
       .unwrap()
       .then((data) => {
-        console.log('data', data);
         setJob(data!);
       });
   }, [dispatch, id]);
 
   if (!job) {
     return (
-      <S.JobDetailContainer>
-        <LoadingOutlined />
-      </S.JobDetailContainer>
+      <S.LoadingWrapper>
+        <S.Loading />
+      </S.LoadingWrapper>
     );
   }
 
@@ -47,24 +48,37 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
     <S.JobDetailContainer>
       <S.JobDetailHeader>
         <S.CompanyLogoWrapper onClick={handleOnCompanyClick}>
-          <img src={job.companyImageUrl} alt={job.company} />
+          <img
+            src={job.companyImageUrl}
+            alt={job.company}
+            width={84}
+            height={84}
+            onError={(e) => (e.currentTarget.src = logo)}
+          />
         </S.CompanyLogoWrapper>
         <S.TitleWrapper>
           <S.CompanyName onClick={handleOnCompanyClick}>{job.company}</S.CompanyName>
           <S.JobTitle>{job.title}</S.JobTitle>
+
+          <S.ButtonGroupContainer>
+            <S.ApplyButton onClick={() => window.open(job.companyLink, '_blank')}>Apply Now</S.ApplyButton>
+            <S.SaveButton type="primary" icon={<HeartFilled />}>
+              Save
+            </S.SaveButton>
+          </S.ButtonGroupContainer>
         </S.TitleWrapper>
       </S.JobDetailHeader>
 
       <S.JobTabs defaultActiveKey="1">
-        <S.JobTabs.TabPane tab="Detail" key="1">
+        <S.JobTabs.TabPane tab="Information" key="1">
           <S.JobDetailContent>
             <S.SectionWrapper>
               <S.JobInfoWrapper>
                 <S.InfoIcon />
                 <S.LabelWrapper>
-                  {job.type && <S.InfoLabel>{job.type} TYPE</S.InfoLabel>}
-                  {job.experience && <S.InfoLabel>{job.experience} LEVEL</S.InfoLabel>}
+                  {job.type && job.type !== 'ANY' ? <S.InfoLabel>{job.type}</S.InfoLabel> : null}
                   {job.workingMode && <S.InfoLabel>{job.workingMode} MODE</S.InfoLabel>}
+                  {job.experience && <S.InfoLabel>{job.experience} LEVEL</S.InfoLabel>}
                 </S.LabelWrapper>
               </S.JobInfoWrapper>
 
@@ -94,6 +108,12 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
         <S.JobTabs.TabPane tab="Requirements" key="2">
           <S.JobDetailContent>
             <S.JobSantizedDescription dangerouslySetInnerHTML={{ __html: sanitizedRequirements }} />
+            <S.JobInfoText>Matching CV Score</S.JobInfoText>
+          </S.JobDetailContent>
+        </S.JobTabs.TabPane>
+        <S.JobTabs.TabPane tab="Cover Letter" key="3">
+          <S.JobDetailContent>
+            <S.JobInfoText>Generate Cover Letter</S.JobInfoText>
           </S.JobDetailContent>
         </S.JobTabs.TabPane>
       </S.JobTabs>

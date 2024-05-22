@@ -1,13 +1,17 @@
 import styled from 'styled-components';
-import { FONT_SIZE, media, FONT_FAMILY } from '@app/styles/themes/constants';
+import { FONT_SIZE, media } from '@app/styles/themes/constants';
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';
 import { Tabs } from '../common/BaseTabs/BaseTabs.styles';
+import { ButtonGroup } from '../common/CalendarSwitch/CalendarSwitch.styles';
+import { BaseButton } from '../common/BaseButton/BaseButton';
+
 import {
   ClockCircleFilled,
   CompassFilled,
   CompassOutlined,
   GlobalOutlined,
   InfoCircleOutlined,
+  LoadingOutlined,
 } from '@ant-design/icons';
 
 export const JobDetailContainer = styled.div`
@@ -43,8 +47,9 @@ export const TitleWrapper = styled.div`
 
 export const JobTitle = styled(BaseTypography)`
   font-size: ${FONT_SIZE.lg};
-  font-weight: 800;
+  font-weight: 700;
   word-break: break-word;
+  font-family: var(--secondary-font);
 `;
 
 export const CompanyName = styled(BaseTypography)`
@@ -77,8 +82,8 @@ export const CompanyLogoWrapper = styled.div`
   }
 
   @media ${media.sm} {
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
   }
 `;
 
@@ -126,11 +131,10 @@ export const JobInfoText = styled(BaseTypography)`
 export const InfoLabel = styled(BaseTypography)`
   font-size: ${FONT_SIZE.xxs};
   font-weight: 500;
-  color: var(--text-nft-light-color);
+  color: var(--white);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  color: white;
-  background-color: var(--primary-color);
+  background-color: var(--text-nft-light-color);
 `;
 
 export const LabelWrapper = styled.div`
@@ -156,4 +160,32 @@ export const TimeIcon = styled(ClockCircleFilled)`
 export const LinkIcon = styled(GlobalOutlined)`
   font-size: ${FONT_SIZE.lg};
   color: var(--primary-color);
+`;
+
+export const Loading = styled(LoadingOutlined)`
+  font-size: 3rem;
+  color: var(--primary-color);
+`;
+
+export const LoadingWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+`;
+
+export const ButtonGroupContainer = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  margin-top: 1rem;
+`;
+
+export const ApplyButton = styled(BaseButton)`
+  width: 100%;
+`;
+
+export const SaveButton = styled(BaseButton)`
+  padding: 0.5rem 1rem;
 `;

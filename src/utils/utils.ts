@@ -198,3 +198,35 @@ export const formatDate = (date: Date | string, region = 'en-US'): string => {
     year: 'numeric',
   });
 };
+
+export const calculateDateDifference = (dateString: string): string => {
+  const inputDate = new Date(dateString);
+  const now = new Date();
+  const diffInMs = now.getTime() - inputDate.getTime();
+
+  const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+  if (diffInDays === 0) return 'today';
+  if (diffInDays === 1) return 'yesterday';
+  if (diffInDays === -1) return 'tomorrow';
+  if (diffInDays > 1 && diffInDays < 7) return `${diffInDays} days ago`;
+  if (diffInDays > -7 && diffInDays < -1) return `in ${-diffInDays} days`;
+
+  const diffInWeeks = Math.floor(diffInDays / 7);
+  if (diffInWeeks === 1) return '1 week ago';
+  if (diffInWeeks > 1) return `${diffInWeeks} weeks ago`;
+  if (diffInWeeks === -1) return 'in 1 week';
+  if (diffInWeeks < -1) return `in ${-diffInWeeks} weeks`;
+
+  const diffInMonths = Math.floor(diffInDays / 30.44); // Average days in a month
+  if (diffInMonths === 1) return '1 month ago';
+  if (diffInMonths > 1) return `${diffInMonths} months ago`;
+  if (diffInMonths === -1) return 'in 1 month';
+  if (diffInMonths < -1) return `in ${-diffInMonths} months`;
+
+  const diffInYears = Math.floor(diffInDays / 365.25); // Average days in a year
+  if (diffInYears === 1) return '1 year ago';
+  if (diffInYears > 1) return `${diffInYears} years ago`;
+  if (diffInYears === -1) return 'in 1 year';
+  if (diffInYears < -1) return `in ${-diffInYears} years`;
+};

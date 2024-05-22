@@ -59,7 +59,7 @@ export const InfoWrapper = styled.div`
 export const InfoHeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
+  gap: 0.5rem;
 `;
 
 export const InfoBottomWrapper = styled.div`
@@ -80,10 +80,10 @@ export const Title = styled(BaseTypography.Title)`
 
     margin-bottom: 0;
 
-    font-size: ${FONT_SIZE.xs};
+    font-size: ${FONT_SIZE.md};
 
     @media only screen and ${media.xl} {
-      font-size: ${FONT_SIZE.md};
+      font-size: ${FONT_SIZE.lg};
     }
   }
 `;
@@ -112,10 +112,9 @@ export const Label = styled(BaseTypography.Text)`
   font-size: ${FONT_SIZE.xxs};
   font-weight: 500;
   color: var(--text-nft-light-color);
-  padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  color: white;
-  background-color: var(--primary-color);
+  border: 1px solid var(--text-nft-light-color);
+  padding: 0.25rem 0.5rem;
 `;
 
 export const LabelWrapper = styled.div`

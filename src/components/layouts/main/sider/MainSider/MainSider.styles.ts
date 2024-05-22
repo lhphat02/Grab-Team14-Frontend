@@ -17,7 +17,6 @@ export const Sider = styled(BaseLayout.Sider)`
 
   color: var(--text-secondary-color);
 
-  // background-color: #00607a !important;
   .ant-layout-sider-children {
     background-color: #00607a;
   }
@@ -64,7 +63,6 @@ export const CollapseButton = styled(BaseButton)<{ $isCollapsed: boolean }>`
 export const SiderContent = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
-  // background-color: var(--white);
   max-height: calc(100vh - ${LAYOUT.mobile.headerHeight});
 
   @media only screen and ${media.md} {

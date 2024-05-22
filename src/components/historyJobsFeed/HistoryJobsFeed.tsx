@@ -1,4 +1,4 @@
-// @ts-nocheck 
+// @ts-nocheck
 // @ts-ignore
 // @ts-nocheck
 import React, { useEffect, useState } from 'react';
@@ -10,11 +10,10 @@ import { HistoryJobListResponse } from '@app/api/jobs.api';
 import { BaseHistoryJob } from '../common/BaseHistoryJob/BaseHistoryJob';
 import { HistoryJobsFilter } from './HistoryJobsFilter/HistoryJobsFilter';
 
-export const HistoryJobsFeed: React.FC = () => {
+const HistoryJobsFeed: React.FC = () => {
   const [jobs, setJobs] = useState<HistoryJobListResponse>([]);
-const dispatch = useAppDispatch();
-const [loaded, setLoaded] = useState<boolean>(false);
-
+  const dispatch = useAppDispatch();
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(getHistoryJobList())
@@ -29,11 +28,9 @@ const [loaded, setLoaded] = useState<boolean>(false);
     <HistoryJobsFilter jobs={jobs}>
       {({ filteredJobs }) =>
         filteredJobs?.length || !loaded ? (
-          <BaseJobList >
+          <BaseJobList>
             {filteredJobs.map((job, index) => (
-              <BaseHistoryJob
-                job = {job}
-              />
+              <BaseHistoryJob job={job} />
             ))}
           </BaseJobList>
         ) : (
@@ -43,3 +40,5 @@ const [loaded, setLoaded] = useState<boolean>(false);
     </HistoryJobsFilter>
   );
 };
+
+export default HistoryJobsFeed;

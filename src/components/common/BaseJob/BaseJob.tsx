@@ -7,8 +7,9 @@ import * as S from './BaseJob.styles';
 import { BaseModal } from '../BaseModal/BaseModal';
 import { useTranslation } from 'react-i18next';
 import { BaseButton } from '../BaseButton/BaseButton';
+import logo from 'assets/logo_svg.svg';
 import { JobDetail } from '@app/components/jobDetail/JobDetail';
-import { formatDate } from '@app/utils/utils';
+import { calculateDateDifference, formatDate } from '@app/utils/utils';
 
 export interface IJobData {
   applyLink?: string;
@@ -54,25 +55,25 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
               alt={jobData.company}
               width={84}
               height={84}
-              onError={(e) => (e.currentTarget.src = 'path/to/placeholder.png')}
+              onError={(e) => (e.currentTarget.src = logo)}
             />
           </S.ImgWrapper>
 
           <S.InfoWrapper>
             <S.InfoHeaderWrapper>
-              <S.TitleWrapper>
-                <S.Title level={5}>{jobData.title}</S.Title>
-              </S.TitleWrapper>
               <S.LabelWrapper>
                 {jobData.type && jobData.type !== 'ANY' ? <S.Label>{jobData.type}</S.Label> : null}
 
                 {jobData.experience && <S.Label>{jobData.experience}</S.Label>}
               </S.LabelWrapper>
+              <S.TitleWrapper>
+                <S.Title level={5}>{jobData.title}</S.Title>
+              </S.TitleWrapper>
             </S.InfoHeaderWrapper>
 
             <S.InfoBottomWrapper>
               <S.Text>{jobData.location ? jobData.location : 'Location provided'}</S.Text>
-              <S.DateText>{jobData.date ? formatDate(jobData.date) : 'No Date'}</S.DateText>
+              <S.DateText>{jobData.date ? calculateDateDifference(jobData.date) : 'No Date'}</S.DateText>
             </S.InfoBottomWrapper>
           </S.InfoWrapper>
         </S.Wrapper>
@@ -90,7 +91,6 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
         }}
         okButtonProps={{ hidden: true }}
         cancelButtonProps={{ hidden: true }}
-        // width={'100%'}
       >
         <JobDetail id={jobData.id} />
       </BaseModal>
