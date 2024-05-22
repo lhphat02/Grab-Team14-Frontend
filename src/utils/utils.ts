@@ -230,3 +230,16 @@ export const calculateDateDifference = (dateString: string): string => {
   if (diffInYears === -1) return 'in 1 year';
   if (diffInYears < -1) return `in ${-diffInYears} years`;
 };
+
+export const formatOptionString = (inputString: string): string => {
+  // 1. Split into words based on underscores
+  const words = inputString.toLowerCase().split('_');
+
+  // 2. Capitalize the first letter of each word
+  const capitalizedWords = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+
+  // 3. Join the words with spaces
+  const formattedString = capitalizedWords.join(' ');
+
+  return formattedString;
+};
