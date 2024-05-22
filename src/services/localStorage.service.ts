@@ -48,7 +48,6 @@ export const readQuery = (): QueryModel | null => {
 };
 
 export const readToken = (): string | null => {
-  console.log('Cookies.get(access_token)', Cookies.get('access_token'));
   return Cookies.get('access_token') || null;
 };
 

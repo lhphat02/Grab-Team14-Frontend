@@ -3,6 +3,7 @@
 import { newsTags } from 'constants/newsTags';
 import { httpApi } from '@app/api/http.api';
 import { QueryModel } from '@app/domain/QueryModel';
+import { readUser } from '@app/services/localStorage.service';
 
 export interface JobListResponse {
   id: string;
@@ -73,8 +74,15 @@ export interface PaginationResponse {
 
 export const getJobListAPI = async (getJobListReq: QueryModel): Promise<PaginationResponse | undefined> => {
   try {
-    const response = await httpApi.get<PaginationResponse>('/job', { params: getJobListReq });
-    return response.data;
+    console.log('getJobListReq', getJobListReq);
+    if (getJobListReq.isMatchingCV != null && getJobListReq.isMatchingCV) {
+      const userId = readUser()?._id;
+      const response = await httpApi.get<PaginationResponse>('/job', { params: { ...getJobListReq, userId } });
+      return response.data;
+    } else {
+      const response = await httpApi.get<PaginationResponse>('/job', { params: getJobListReq });
+      return response.data;
+    }
   } catch (e: any) {
     throw new Error(e);
   }

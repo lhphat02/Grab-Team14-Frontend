@@ -10,4 +10,5 @@ export interface QueryModel {
   type: string | null;
   time: string | null;
   workingMode: string | null;
+  isMatchingCV: boolean | null;
 }

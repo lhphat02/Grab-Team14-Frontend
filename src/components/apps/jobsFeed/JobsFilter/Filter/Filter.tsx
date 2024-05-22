@@ -51,7 +51,7 @@ const FilterDropdownWithTag: React.FC<FilterDropdownWithTagProps> = ({
     </BaseDropdown>
     {selectedValue && ( // Simplified check for non-empty string
       <S.TagsWrapper>
-        <BaseHashTag key={tagKey} title={selectedValue} bgColor={'primary'} removeTag={() => onClick(titleKey, '')} />
+        <BaseHashTag key={tagKey} title={selectedValue} bgColor={'primary'} removeTag={() => { console.log(titleKey, tagKey , selectedValue) ,onClick(tagKey, '')}} />
       </S.TagsWrapper>
     )}
   </>
@@ -186,7 +186,7 @@ const Filter: React.FC<Filter> = ({
     <S.FilterWrapper>
       <S.InputWrapper>
         <S.SearchIcon />
-        <S.Input placeholder={t('jobsFeed.Search')} onChange={(event) => onClick('search', event.target.value)} />
+        <S.Input placeholder={t('jobsFeed.Search')} onChange={(event) => { console.log('on change' , event.target.value) ,onClick('search', event.target.value) , event.stopPropagation()}} />
       </S.InputWrapper>
 
       <S.AddTagWrapper>
@@ -212,35 +212,36 @@ const Filter: React.FC<Filter> = ({
         selectedValue={selectedTime}
         onClick={onClick}
         titleKey="jobsFeed.time"
-        tagKey="1"
+        tagKey="selectedTime"
       />
+
       <FilterDropdownWithTag
         items={typeItems}
         selectedValue={selectedType}
         onClick={onClick}
         titleKey="jobsFeed.type"
-        tagKey="2"
+        tagKey="selectedType"
       />
       <FilterDropdownWithTag
         items={workingModeItems}
         selectedValue={selectedWorkingMode}
         onClick={onClick}
         titleKey="jobsFeed.workingMode"
-        tagKey="3"
+        tagKey="selectedWorkingMode"
       />
       <FilterDropdownWithTag
         items={experienceItems}
         selectedValue={selectedExperience}
         onClick={onClick}
         titleKey="jobsFeed.experienceLevel"
-        tagKey="4"
+        tagKey="selectedExperience"
       />
       <FilterDropdownWithTag
         items={industryItems}
         selectedValue={selectedIndustry}
         onClick={onClick}
         titleKey="jobsFeed.industry"
-        tagKey="5"
+        tagKey="selectedIndustry"
       />
 
       <S.BtnWrapper>

@@ -1,6 +1,7 @@
 // @ts-nocheck
 // @ts-ignore
 export interface UserModel {
+  _id: string;
   username: string;
   fullName?: string;
   email: string;

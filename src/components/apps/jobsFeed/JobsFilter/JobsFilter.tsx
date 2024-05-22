@@ -76,11 +76,16 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
   };
 
   const handleClickApply = () => {
-    console.log('filterFields ddmmdfm sdmf ', filterFields);
     const newQuery: unknown = {
       page: 1,
       limit: 10,
-      ...Object.fromEntries(Object.entries(filterFields).filter(([_, value]) => value !== '')),
+      location: filterFields.selectedLocation != '' ? filterFields.selectedLocation : null,
+      industry: filterFields.selectedIndustry != '' ? filterFields.selectedIndustry : null,
+      experience: filterFields.selectedExperience != '' ? filterFields.selectedExperience : null,
+      workingMode: filterFields.selectedWorkingMode != '' ? filterFields.selectedWorkingMode : null,
+      type: filterFields.selectedType != '' ? filterFields.selectedType : null,
+      time: (filterFields.selectedTime != ''  && filterFields.selectedTime != 'ANY') ? filterFields.selectedTime : null,
+      search: filterFields.search != '' ? filterFields.search : null,
     };
     dispatch(setQuery(newQuery));
   };

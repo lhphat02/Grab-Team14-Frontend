@@ -34,11 +34,16 @@ const JobsFeed: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log('query job bbb', query);
+    console.log('query state in job feed', query);
     dispatch(getJobList(query))
       .unwrap()
       .then((data) => {
-        setTotalDocs(data.totalDocs);
+        if(data?.totalDocs.value) {
+          setTotalDocs(data.totalDocs.value);
+        } else {
+          setTotalDocs(data.totalDocs);
+        }
+          console.log('data.docs', data.docs)
         setJobs(data.docs);
       })
       .finally(() => setLoaded(true));

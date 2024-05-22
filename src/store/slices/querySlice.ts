@@ -10,7 +10,6 @@ export interface QueryState {
 const initQuery: QueryModel = {
   page: 1,
   limit: 10,
-  isLoaded: false,
 };
 const initialState: QueryState = {
   query: initQuery,
@@ -18,7 +17,7 @@ const initialState: QueryState = {
 
 export const setQuery = createAction<PrepareAction<QueryModel>>('user/setUser', (newQuery) => {
   persistQuery(newQuery);
-  console.log('newQuery', newQuery);
+  console.log('newQuery Redux', newQuery);
   return {
     payload: newQuery,
   };

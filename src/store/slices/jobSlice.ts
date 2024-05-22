@@ -37,6 +37,7 @@ const initModel: QueryModel = {
 };
 
 export const getJobList = createAsyncThunk('job/getJobList', async (query: QueryModel, { dispatch }) => {
+  console.log('Query in redux', query);
   return getJobListAPI(query).then((res) => {
     return res;
   });
