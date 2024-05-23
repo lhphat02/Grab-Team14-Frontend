@@ -27,6 +27,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     selectedWorkingMode: string;
     selectedType: string;
     selectedTime: string;
+    selectedMatchingCV: boolean;
   }>({
     limit: 10,
     page: 1,
@@ -37,6 +38,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     selectedWorkingMode: '',
     selectedType: '',
     selectedTime: '',
+    selectedMatchingCV: false,
   });
 
   if (query) {
@@ -69,19 +71,31 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     updateFilteredField('selectedTime', query?.time ? query.time : '');
   }, [query]);
 
-  const setState = (key: string, value: string | [string]) => {
+  const setState = (key: string, value: string | [string] | boolean) => {
     setFilterFields({ ...filterFields, [key]: value });
+    console.log("HAHA",key, value);
   };
 
-  const onClick = (key: string, value: string | [string]) => {
+  const onClick = (key: string, value: string | [string]| boolean) => {
+    console.log("HAHA 2",key, value);
+
     setState(key, value);
   };
 
   const handleClickApply = () => {
-    const newQuery: unknown = {
+    console.log('Apply filter:', filterFields);
+    const newQuery: QueryModel = {
       page: 1,
       limit: 10,
-      ...Object.fromEntries(Object.entries(filterFields).filter(([_, value]) => value !== '')),
+      location: filterFields.location != '' ? filterFields.location : null,
+      search: filterFields.search != '' ? filterFields.search : null,
+      industry: filterFields.selectedIndustry != '' ? filterFields.selectedIndustry : null,
+      experience: filterFields.selectedExperience != '' ? filterFields.selectedExperience : null,
+      workingMode: filterFields.selectedWorkingMode != '' ? filterFields.selectedWorkingMode : null,
+      type: filterFields.selectedType != '' ? filterFields.selectedType : null,
+      time: (filterFields.selectedTime != '')  ? filterFields.selectedTime : null,
+      isMatchingCV: filterFields.selectedMatchingCV,
+
     };
     dispatch(setQuery(newQuery));
   };
@@ -97,6 +111,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
       selectedTime: '',
       page: 1,
       limit: 10,
+      selectedMatchingCV: false,
     });
     const newQuery: QueryModel = {
       page: 1,
@@ -108,6 +123,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
       workingMode: null,
       type: null,
       time: null,
+      isMatchingCV: false,
     };
     dispatch(setQuery(newQuery));
     if (mobileOnly) {
@@ -115,7 +131,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
     }
   }, [dispatch, mobileOnly]);
 
-  const updateFilteredField = (field: string, value: string | [string]) => {
+  const updateFilteredField = (field: string, value: string | [string] | boolean) => {
     setFilterFields({ ...filterFields, [field]: value });
   };
 
@@ -130,6 +146,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
             content={
               <Filter
                 search={filterFields.search}
+                selectedMatchingCV={filterFields.selectedMatchingCV}
                 selectedIndustry={filterFields.selectedIndustry}
                 location={filterFields.location}
                 selectedExperience={filterFields.selectedExperience}
@@ -157,6 +174,7 @@ const JobsFilter: React.FC<JobsFilterProps> = ({ jobs, children }) => {
         {!mobileOnly && (
           <Filter
             search={filterFields.search}
+            selectedMatchingCV={filterFields.selectedMatchingCV}
             selectedIndustry={filterFields.selectedIndustry}
             location={filterFields.location}
             selectedExperience={filterFields.selectedExperience}

@@ -3,6 +3,7 @@
 import { newsTags } from 'constants/newsTags';
 import { httpApi } from '@app/api/http.api';
 import { QueryModel } from '@app/domain/QueryModel';
+import { readUser } from '@app/services/localStorage.service';
 
 export interface JobListResponse {
   id: string;

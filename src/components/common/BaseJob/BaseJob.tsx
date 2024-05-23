@@ -11,6 +11,7 @@ import logo from 'assets/logo_svg.svg';
 import { JobDetail } from '@app/components/jobDetail/JobDetail';
 import { calculateDateDifference, formatDate, formatOptionString } from '@app/utils/utils';
 import { useResponsive } from '@app/hooks/useResponsive';
+import { useAppSelector } from '@app/hooks/reduxHooks';
 
 export interface IJobData {
   applyLink?: string;
@@ -29,6 +30,7 @@ export interface IJobData {
   requirements?: string[];
   title: string;
   type?: string;
+  score?: number;
 }
 
 export interface BaseJobProps {
@@ -39,6 +41,8 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const { isDesktop } = useResponsive();
   const { t } = useTranslation();
+
+  const query = useAppSelector((state) => state.query.query);
 
   const handleOnCardClick = () => {
     setModalOpen(true);
@@ -65,6 +69,12 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
             <S.InfoHeaderWrapper>
               <S.TitleWrapper>
                 <S.Title level={5}>{jobData.title}</S.Title>
+
+                {query?.isMatchingCV && (
+                  <BaseButton type="primary" style={{ backgroundColor: '#FA7070' }}>
+                    {jobData.score}
+                  </BaseButton>
+                )}
               </S.TitleWrapper>
               <S.LabelWrapper>
                 {jobData.type && jobData.type !== 'ANY' ? <S.Label>{formatOptionString(jobData.type)}</S.Label> : null}

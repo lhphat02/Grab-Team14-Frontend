@@ -29,6 +29,8 @@ import { UserModel } from '@app/domain/UserModel';
 import { readUser } from '@app/services/localStorage.service';
 import { BaseCollapse } from '@app/components/common/BaseCollapse/BaseCollapse';
 import { Divider, List, Typography } from 'antd';
+import { setQuery } from '@app/store/slices/querySlice';
+import { useNavigate } from 'react-router-dom';
 
 const formItemLayout = {
   labelCol: { span: 24 },
@@ -63,7 +65,7 @@ export const UploadForm: React.FC = () => {
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   useEffect(() => {
     return () => {
       console.log("User effect")
@@ -124,6 +126,22 @@ export const UploadForm: React.FC = () => {
       .finally(() => setLoadingProfile(false));
 
     dispatch(setUser({...readUser()!, skills: skills, phone: phone, email: email, fullName: fullName}));
+  }
+
+  const findMatchingCV = async () => {
+    setLoadingProfile(true);
+    await updateUserAPI({
+      skills: skills,
+      phone: phone,
+      fullName: fullName
+    })
+      .then((data: any) => { console.log(data) ,  notificationController.success({ message: 'Update your profile succesfully' }) })
+      .catch((error: Error) => { console.log(error); notificationController.error({ message: error.message })})
+      .finally(() => setLoadingProfile(false));
+
+    dispatch(setUser({...readUser()!, skills: skills, phone: phone, email: email, fullName: fullName}));
+    dispatch(setQuery({ limit: 10, page: 1, isMatchingCV: true }));
+    navigate('/jobs');
   }
 
   const onUploadFile = ({ file }: { file: string | Blob | RcFile }) => {
@@ -219,9 +237,16 @@ export const UploadForm: React.FC = () => {
             </BaseCollapse.Panel>
           </BaseCollapse>
 
+          <BaseRow gutter={[12,112]}>
           <BaseButton type="primary" onClick= {onUpdateYourProfile} loading={isLoadingProfile}>
               Update your profile
             </BaseButton>
+
+            <BaseButton type="primary" onClick= {findMatchingCV} loading={isLoadingProfile} style={{marginLeft:'20px'}}>
+              Find Job Matching your CV
+            </BaseButton>
+          </BaseRow>
+          
           </BaseCol>
           
 
