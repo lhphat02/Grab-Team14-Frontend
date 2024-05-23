@@ -8,6 +8,7 @@ import { filter, workingModeFilter } from '@app/constants/enums/filters';
 import { Select } from 'antd';
 import { formatOptionString } from '@app/utils/utils';
 import * as S from './Filter.styles';
+import Cookies from 'js-cookie';
 
 interface Filter {
   search: string;
@@ -17,19 +18,20 @@ interface Filter {
   selectedWorkingMode: string;
   selectedType: string;
   selectedTime: string;
+  selectedMatchingCV: boolean;
   jobsTagData: IHashTag[];
-  onClick: (key: string, value: string | [string]) => void;
+  onClick: (key: string, value: string | [string] | boolean) => void;
   selectedTagsIds: Array<string>;
   selectedTags: IHashTag[];
-  updateFilteredField: (field: string, value: [string] | string) => void;
+  updateFilteredField: (field: string, value: [string] | string | boolean) => void;
   onApply: () => void;
   onReset: () => void;
 }
 
 interface FilterDropdownWithTagProps {
   items: Array<{ key: string; label: JSX.Element }> | undefined;
-  selectedValue: string;
-  onClick: (field: string, value: string) => void;
+  selectedValue: string | boolean;
+  onClick: (field: string, value: string | boolean) => void;
   titleKey: string;
   tagKey: string;
   bgColor?: string;
@@ -51,7 +53,7 @@ const FilterDropdownWithTag: React.FC<FilterDropdownWithTagProps> = ({
     </BaseDropdown>
     {selectedValue && ( // Simplified check for non-empty string
       <S.TagsWrapper>
-        <BaseHashTag key={tagKey} title={selectedValue} bgColor={'primary'} removeTag={() => onClick(titleKey, '')} />
+        <BaseHashTag key={tagKey} title={selectedValue.toString()} bgColor={'primary'} removeTag={() => onClick(tagKey, '')} />
       </S.TagsWrapper>
     )}
   </>
@@ -65,6 +67,7 @@ const Filter: React.FC<Filter> = ({
   selectedWorkingMode,
   selectedType,
   selectedTime,
+  selectedMatchingCV,
   onClick,
   onApply,
   onReset,
@@ -75,6 +78,7 @@ const Filter: React.FC<Filter> = ({
     filter;
 
   let query = useAppSelector((state) => state.query.query);
+  let token = Cookies.get('access_token');
 
   const applyFilter = () => {
     onApply();
@@ -184,7 +188,28 @@ const Filter: React.FC<Filter> = ({
     [selectedTime, updateFilteredField, onclick],
   );
 
-  console.log('location', location);
+  const matchingCVItems = useMemo(
+    () =>
+      [true , false].map((isMatch, i) => ({
+        key: `${i + 1}`,
+        label: (
+          <S.TagPopoverLine
+            key={i}
+            onClick={(e) => {
+              onClick('selectedMatchingCV', isMatch);
+              e.stopPropagation();
+            }}
+          >
+            <S.PopoverCheckbox checked={selectedMatchingCV == isMatch} />
+            <BaseHashTag title={isMatch ? "True" : "False"} />
+          </S.TagPopoverLine>
+        ),
+      })),
+    [selectedTime, updateFilteredField, onclick],
+  );
+
+
+
 
   return (
     <S.FilterWrapper>
@@ -197,10 +222,10 @@ const Filter: React.FC<Filter> = ({
         <Select
           showSearch
           style={{ width: 280 }}
-          value={location}
-          onChange={(value) => {
+          onSelect={(value) => {
             onClick('location', value.replaceAll('_', ' '));
           }}
+          value={location}
           placeholder="Location"
           optionFilterProp="children"
           filterOption={(input, option) => (option?.label ?? '').includes(input)}
@@ -216,36 +241,45 @@ const Filter: React.FC<Filter> = ({
         selectedValue={selectedTime}
         onClick={onClick}
         titleKey="jobsFeed.time"
-        tagKey="1"
+        tagKey="selectedTime"
       />
       <FilterDropdownWithTag
         items={typeItems}
         selectedValue={selectedType}
         onClick={onClick}
         titleKey="jobsFeed.type"
-        tagKey="2"
+        tagKey="selectedType"
       />
       <FilterDropdownWithTag
         items={workingModeItems}
         selectedValue={selectedWorkingMode}
         onClick={onClick}
         titleKey="jobsFeed.workingMode"
-        tagKey="3"
+        tagKey="selectedWorkingMode"
       />
       <FilterDropdownWithTag
         items={experienceItems}
         selectedValue={selectedExperience}
         onClick={onClick}
         titleKey="jobsFeed.experienceLevel"
-        tagKey="4"
+        tagKey="selectedExperience"
       />
       <FilterDropdownWithTag
         items={industryItems}
         selectedValue={selectedIndustry}
         onClick={onClick}
         titleKey="jobsFeed.industry"
-        tagKey="5"
+        tagKey="selectedIndustry"
       />
+
+      {(token != null && (
+      <FilterDropdownWithTag
+        items={matchingCVItems}
+        selectedValue={selectedMatchingCV}
+        onClick={onClick}
+        titleKey="Matching CV"
+        tagKey="selectedMatchingCV"
+      />))}
 
       <S.BtnWrapper>
         <S.Btn onClick={() => resetFilter()}>{t('jobsFeed.reset')}</S.Btn>
