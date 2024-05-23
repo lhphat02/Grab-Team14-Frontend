@@ -3,7 +3,7 @@ import { JobDetailResponse, generateCoverLetterAPI } from '@app/api/jobs.api';
 import { useAppDispatch } from '@app/hooks/reduxHooks';
 import { getJobDetail, getJobStatus } from '@app/store/slices/jobSlice';
 import { useEffect, useState } from 'react';
-import { BookOutlined, HeartFilled, LoadingOutlined, SwapOutlined } from '@ant-design/icons';
+import { BookOutlined, HeartFilled, HeartOutlined, LoadingOutlined, SwapOutlined } from '@ant-design/icons';
 import * as S from './JobDetail.styles';
 import { formatDate, formatOptionString } from '../../utils/utils';
 import DOMPurify from 'dompurify';
@@ -169,7 +169,7 @@ export const JobDetail: React.FC<JobDetailProps> = ({ id }) => {
               <S.SaveButton
                 type="primary"
                 loading={isLoading}
-                icon={status === 'SAVED' ? <HeartFilled /> : null}
+                icon={status === 'SAVED' ? <HeartFilled /> : <HeartOutlined />}
                 onClick={() => handleOnSaveClick('SAVED')}
                 disabled={status === 'SAVED'}
               >
