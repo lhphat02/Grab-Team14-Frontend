@@ -18,6 +18,7 @@ export interface JobSlice {
   experience?: string;
   type?: string;
   workingMode?: string;
+  isMatchingCV?: boolean;
 }
 
 const initialState: JobSlice = {
@@ -29,6 +30,7 @@ const initialState: JobSlice = {
   experience: '',
   type: '',
   workingMode: '',
+  isMatchingCV: false,
 };
 
 const initModel: QueryModel = {

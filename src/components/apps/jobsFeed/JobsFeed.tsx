@@ -38,7 +38,12 @@ const JobsFeed: React.FC = () => {
     dispatch(getJobList(query))
       .unwrap()
       .then((data) => {
-        setTotalDocs(data.totalDocs);
+        if(data?.totalDocs.value) {
+          setTotalDocs(data.totalDocs.value);
+        } else {
+          setTotalDocs(data.totalDocs);
+        }
+
         setJobs(data.docs);
         // console.log('Get new job list:', data.docs);
       })

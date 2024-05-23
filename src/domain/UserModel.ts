@@ -18,4 +18,5 @@ export interface UserModel {
   coverLetter?: string;
   website?: string;
   skills?: string[];
+  _id: string;
 }
