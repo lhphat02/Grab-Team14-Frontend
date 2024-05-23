@@ -67,6 +67,7 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
 
           <S.InfoWrapper>
             <S.InfoHeaderWrapper>
+              <S.Text>{jobData.company}</S.Text>
               <S.TitleWrapper>
                 <S.Title level={5}>{jobData.title}</S.Title>
 
