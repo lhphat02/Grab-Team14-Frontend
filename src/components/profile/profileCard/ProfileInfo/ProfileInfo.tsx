@@ -18,11 +18,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({ profileData }) => {
   return profileData ? (
     <S.Wrapper>
       <S.ImgWrapper>
-        <BaseAvatar
-          shape="circle"
-          src="https://seeklogo.com/images/G/grab-logo-7020E74857-seeklogo.com.png"
-          alt="Profile"
-        />
+        <BaseAvatar shape="circle" src="https://cdn-icons-png.freepik.com/512/219/219964.png" alt="Profile" />
       </S.ImgWrapper>
       <S.Title>{`${profileData?.fullName || profileData?.username}`}</S.Title>
       <S.Subtitle>{profileData?.username}</S.Subtitle>

@@ -21,14 +21,7 @@ export const ImgWrapper = styled.div`
   justify-content: center;
   border-radius: 50%;
 
-  background: conic-gradient(
-    from -35.18deg at 50% 50%,
-    #00607a -154.36deg,
-    #005066 24.13deg,
-    #004052 118.76deg,
-    #00303d 205.64deg,
-    #002029 384.13deg
-  );
+  background: var(--primary-color);
 
   @media only screen and ${media.xl} {
     width: 11.125rem;
