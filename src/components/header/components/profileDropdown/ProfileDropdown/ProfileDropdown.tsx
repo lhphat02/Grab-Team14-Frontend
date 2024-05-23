@@ -20,12 +20,7 @@ export const ProfileDropdown: React.FC = () => {
     <BasePopover content={<ProfileOverlay />} trigger="click">
       <S.ProfileDropdownHeader as={BaseRow} gutter={[10, 10]} align="middle">
         <BaseCol>
-          <BaseAvatar
-            src="https://seeklogo.com/images/G/grab-logo-7020E74857-seeklogo.com.png"
-            alt="User"
-            shape="circle"
-            size={40}
-          />
+          <BaseAvatar src="https://cdn-icons-png.freepik.com/512/219/219964.png" alt="User" shape="circle" size={40} />
         </BaseCol>
         {isTablet && (
           <BaseCol>
