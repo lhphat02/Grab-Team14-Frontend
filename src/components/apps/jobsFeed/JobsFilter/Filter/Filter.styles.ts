@@ -153,12 +153,12 @@ export const FilterWrapper = styled.div`
     margin-left: 1.875rem;
     position: sticky;
     top: 1.875rem;
-    padding: 2rem 2rem;
+    padding: 1rem 1rem;
     background: var(--background-color);
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.07);
 
     border-radius: ${BORDER_RADIUS};
-    gap: 0.625rem;
+    gap: 0.2rem;
   }
 `;
 
