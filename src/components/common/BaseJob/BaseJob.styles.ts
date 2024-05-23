@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { NFTCard } from '@app/components/nft-dashboard/common/NFTCard/NFTCard';
 import { FONT_SIZE, media, FONT_FAMILY } from '@app/styles/themes/constants';
 import { BaseTypography } from '@app/components/common/BaseTypography/BaseTypography';
+import { BaseModal } from '../BaseModal/BaseModal';
 
 export const JobCard = styled(NFTCard)`
   box-shadow: var(--box-shadow-nft-secondary-color);

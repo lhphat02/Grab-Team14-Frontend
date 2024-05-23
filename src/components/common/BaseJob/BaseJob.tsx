@@ -10,6 +10,7 @@ import { BaseButton } from '../BaseButton/BaseButton';
 import logo from 'assets/logo_svg.svg';
 import { JobDetail } from '@app/components/jobDetail/JobDetail';
 import { calculateDateDifference, formatDate, formatOptionString } from '@app/utils/utils';
+import { useResponsive } from '@app/hooks/useResponsive';
 
 export interface IJobData {
   applyLink?: string;
@@ -36,6 +37,7 @@ export interface BaseJobProps {
 
 export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const { isDesktop } = useResponsive();
   const { t } = useTranslation();
 
   const handleOnCardClick = () => {
@@ -79,6 +81,7 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
           </S.InfoWrapper>
         </S.Wrapper>
       </S.JobCard>
+
       <BaseModal
         centered
         open={isModalOpen}
@@ -92,6 +95,7 @@ export const BaseJob: React.FC<BaseJobProps> = ({ jobData }) => {
         }}
         okButtonProps={{ hidden: true }}
         cancelButtonProps={{ hidden: true }}
+        width={isDesktop ? '60%' : '100%'}
       >
         <JobDetail id={jobData.id} />
       </BaseModal>
