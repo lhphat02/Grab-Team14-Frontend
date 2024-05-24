@@ -7,6 +7,9 @@ import { readToken } from '@app/services/localStorage.service';
 export const httpApi = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   withCredentials: true,
+  headers: {
+    'Content-Security-Policy': 'upgrade-insecure-requests',
+  },
 });
 
 httpApi.interceptors.request.use((config) => {

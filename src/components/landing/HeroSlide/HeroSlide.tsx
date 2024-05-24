@@ -20,6 +20,7 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ onSlideChange }) => {
     console.log('location', location);
     console.log('keyword', keyword);
     const initQuery: QueryModel = {
+      isMatchingCV: false,
       page: 1,
       limit: 10,
       search: keyword,
@@ -29,7 +30,6 @@ const HeroSlide: React.FC<HeroSlideProps> = ({ onSlideChange }) => {
       time: null,
       workingMode: null,
       industry: null,
-      isLoaded: false,
     };
     dispatch(setQuery(initQuery));
     navigate('/jobs');

@@ -108,7 +108,7 @@ export const PersonalInfo: React.FC = () => {
         .catch((error) => { console.log(error); notificationController.error({ message: error.message })})
         .finally(() => setLoading(false));
 
-      setUser(values);
+      setUser({...values});
     };
 
   return (
