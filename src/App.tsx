@@ -28,6 +28,9 @@ const App: React.FC = () => {
 
   return (
     <>
+    <meta
+  http-equiv="Content-Security-Policy"
+  content="upgrade-insecure-requests" />
       <meta name="theme-color" content={themeObject[theme].primary} />
       <GlobalStyle />
       <HelmetProvider>
