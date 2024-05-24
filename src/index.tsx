@@ -21,6 +21,7 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
+  
     {/* <SpeedInsights />
     <Analytics /> */}
     <Provider store={store}>
